@@ -1,0 +1,119 @@
+[
+  {
+    "timestamp": "2026-02-18T21:32:33.752Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,941.25",
+      "text": "MNQ1! Crossing 24,941.25"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T21:20:44.235Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,933.50",
+      "text": "MNQ1! Crossing 24,933.50"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T21:18:04.539Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,936.75",
+      "text": "MNQ1! Crossing 24,936.75"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T21:15:47.802Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,934.00",
+      "text": "MNQ1! Crossing 24,934.00"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T21:14:19.319Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,942.00",
+      "text": "MNQ1! Crossing 24,942.00"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T21:14:11.928Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,945.25",
+      "text": "MNQ1! Crossing 24,945.25"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T21:12:21.518Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,941.25",
+      "text": "MNQ1! Crossing 24,941.25"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:52:56.907Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,908.75",
+      "text": "MNQ1! Crossing 24,908.75"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:43:24.208Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,925.25",
+      "text": "MNQ1! Crossing 24,925.25"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:36:08.491Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,952.75",
+      "text": "MNQ1! Crossing 24,952.75"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:31:52.249Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,972.50",
+      "text": "MNQ1! Crossing 24,972.50"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:30:18.042Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,988.50",
+      "text": "MNQ1! Crossing 24,988.50"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:29:56.851Z",
+    "data": {
+      "raw": "MNQ1! Crossing 24,990.25",
+      "text": "MNQ1! Crossing 24,990.25"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:27:32.801Z",
+    "data": {
+      "raw": "MNQ1! Crossing 25,002.25",
+      "text": "MNQ1! Crossing 25,002.25"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:27:17.017Z",
+    "data": {
+      "raw": "MNQ1! Crossing 25,005.00",
+      "text": "MNQ1! Crossing 25,005.00"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T19:20:45.256Z",
+    "data": {
+      "test": "ok"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T18:11:32.914Z",
+    "data": {
+      "test": "ok"
+    }
+  }
+]

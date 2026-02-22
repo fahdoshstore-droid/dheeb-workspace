@@ -1,0 +1,187 @@
+//@version=5
+// 🐺 DHEEB ICT MASTER v3
+// Based on: ICT, SMC, Smart Money Concepts
+
+strategy("Dheeb ICT Master v3", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=2)
+
+// ═══════════════════════════════════════════════════════════════
+// INPUTS
+// ═══════════════════════════════════════════════════════════════
+
+// Session Times (UTC)
+sessionOpen = input.session("0930-1130", title="NY Killzone")
+showSessions = input(true, title="Show Session Boxes")
+
+// ICT Levels
+showPDH = input(true, title="Previous Day High")
+showPDL = input(true, title="Previous Day Low")
+showPWH = input(true, title="Previous Week High")
+showPWL = input(true, title="Previous Week Low")
+
+// Fibonacci
+showFib = input(true, title="Fibonacci")
+fibLevel = input(0.786, title="OTE Level", options=[0.382, 0.5, 0.618, 0.786])
+
+// Order Blocks
+showOB = input(true, title="Order Blocks")
+obLookback = input(10, title="OB Lookback")
+
+// FVG
+showFVG = input(true, title="Fair Value Gaps")
+fvgLookback = input(5, title="FVG Lookback")
+
+// Liquidity
+showLiq = input(true, title="Liquidity Levels")
+
+// ═══════════════════════════════════════════════════════════════
+// SESSIONS
+// ═══════════════════════════════════════════════════════════════
+
+nyKillzone = time(session, sessionOpen)
+isKillzone = not na(nyKillzone)
+
+plotshape(showSessions and isKillzone, title="Killzone", color=color.new(color.green, 90), 
+     textcolor=color.new(color.green, 50), text="KILLZONE", style=plot.style_bracketing, 
+     size=size.tiny, location=location.bottom)
+
+// ═══════════════════════════════════════════════════════════════
+// DAILY LEVELS
+// ═══════════════════════════════════════════════════════════════
+
+dayHigh = request.security(syminfo.tickerid, "D", high[1])
+dayLow = request.security(syminfo.tickerid, "D", low[1])
+dayOpen = request.security(syminfo.tickerid, "D", open[1])
+
+plot(showPDH and dayHigh, title="PDH", color=color.red, linewidth=2, style=plot.style_cross)
+plot(showPDL and dayLow, title="PDL", color=color.green, linewidth=2, style=plot.style_cross)
+plot(showPWH and dayHigh, title="W OPEN", color=color.gray, linewidth=1, style=plot.style_circles)
+
+// ═══════════════════════════════════════════════════════════════
+// WEEKLY LEVELS
+// ═══════════════════════════════════════════════════════════════
+
+weekHigh = request.security(syminfo.tickerid, "W", high[1])
+weekLow = request.security(syminfo.tickerid, "W", low[1])
+weekOpen = request.security(syminfo.tickerid, "W", open[1])
+
+plot(showPWH and weekHigh, title="PWH", color=color.red, linewidth=1, style=plot.style_circles)
+plot(showPWL and weekLow, title="PWL", color=color.green, linewidth=1, style=plot.style_circles)
+
+// ═══════════════════════════════════════════════════════════════
+// FIBONACCI (Current Day Range)
+// ═══════════════════════════════════════════════════════════════
+
+dayRange = dayHigh - dayLow
+oteBuy = dayLow + (dayRange * fibLevel)
+oteSell = dayHigh - (dayRange * fibLevel)
+
+plot(showFib, title="Fib OTE", color=color.purple, linewidth=1, style=plot.style_cross)
+
+// ═══════════════════════════════════════════════════════════════
+// ORDER BLOCK DETECTION
+// ═══════════════════════════════════════════════════════════════
+
+bullishOB = false
+bearishOB = false
+
+for i = 1 to obLookback
+    if close[i] < open[i] and close[i+1] > open[i+1] and high[i] < high[i+1]
+        bullishOB := true
+    
+    if close[i] > open[i] and close[i+1] < open[i+1] and low[i] > low[i+1]
+        bearishOB := true
+
+plotshape(showOB and bullishOB, title="Bullish OB", color=color.new(color.green, 70), 
+     style=plot.style_histogram, location=location.belowbar, size=size.tiny)
+
+// ═══════════════════════════════════════════════════════════════
+// FVG DETECTION
+// ═══════════════════════════════════════════════════════════════
+
+fvgBull = (low[2] > high[1]) and (low[1] > low[2])
+fvgBear = (high[2] < low[1]) and (high[1] < high[2])
+
+plotshape(showFVG and fvgBull, title="Bullish FVG", color=color.new(color.blue, 80), 
+     style=plot.style_histogram, location=location.belowbar, size=size.tiny)
+plotshape(showFVG and fvgBear, title="Bearish FVG", color=color.new(color.red, 80), 
+     style=plot.style_histogram, location=location.abovebar, size=size.tiny)
+
+// ═══════════════════════════════════════════════════════════════
+// MARKET STRUCTURE
+// ═══════════════════════════════════════════════════════════════
+
+// Recent High/Low
+high20 = ta.highest(high, 20)
+low20 = ta.lowest(low, 20)
+
+plot(showLiq ? high20 : na, title="20 High", color=color.new(color.red, 50), linewidth=1)
+plot(showLiq ? low20 : na, title="20 Low", color=color.new(color.green, 50), linewidth=1)
+
+// ═══════════════════════════════════════════════════════════════
+// SIGNALS
+// ═══════════════════════════════════════════════════════════════
+
+// Long Entry: Price at OTE + FVG + Killzone
+longSignal = isKillzone and close < oteBuy and fvgBull
+
+// Short Entry: Price at OTE + FVG + Killzone  
+shortSignal = isKillzone and close > oteSell and fvgBear
+
+// Exit
+longExit = ta.crossover(close, dayHigh)
+shortExit = ta.crossunder(close, dayLow)
+
+// ═══════════════════════════════════════════════════════════════
+// ALERTS
+// ═══════════════════════════════════════════════════════════════
+
+alertcondition(longSignal, title="🐺 LONG", message="🐺 DHEEB: Long Setup - Killzone + OTE + FVG")
+alertcondition(shortSignal, title="🐺 SHORT", message="🐺 DHEEB: Short Setup - Killzone + OTE + FVG")
+alertcondition(longExit, title="🐺 TP", message="🐺 DHEEB: Target Hit - PDH")
+
+// ═══════════════════════════════════════════════════════════════
+// PLOTS
+// ═══════════════════════════════════════════════════════════════
+
+plotshape(longSignal, title="LONG", color=color.green, size=size.large, 
+     style=plot.label_up, location=location.belowbar, text="🐺 BUY")
+plotshape(shortSignal, title="SHORT", color=color.red, size=size.large, 
+     style=plot.label_down, location=location.abovebar, text="🐺 SELL")
+
+// ═══════════════════════════════════════════════════════════════
+// STRATEGY
+// ═══════════════════════════════════════════════════════════════
+
+if longSignal
+    strategy.entry("LONG", strategy.long)
+
+if shortSignal  
+    strategy.entry("SHORT", strategy.short)
+
+if longExit and strategy.position_size > 0
+    strategy.close("LONG")
+
+if shortExit and strategy.position_size < 0
+    strategy.close("SHORT")
+
+// ═══════════════════════════════════════════════════════════════
+// INFO TABLE
+// ═══════════════════════════════════════════════════════════════
+
+var table infoTable = table.new(position.bottom_right, 2, 6, bgcolor=color.new(color.gray, 90), frame_visible=true)
+table.cell(infoTable, 0, 0, "🐺 DHEEB ICT v3", bgcolor=color.new(color.blue, 80))
+table.cell(infoTable, 1, 0, syminfo.ticker, bgcolor=color.new(color.gray, 80))
+table.cell(infoTable, 0, 1, "KILLZONE", bgcolor=isKillzone ? color.new(color.green, 70) : color.new(color.red, 70))
+table.cell(infoTable, 1, 1, isKillzone ? "ACTIVE" : "WAIT", bgcolor=color.new(color.gray, 80))
+table.cell(infoTable, 0, 2, "OTE BUY", bgcolor=color.new(color.gray, 80))
+table.cell(infoTable, 1, 2, str.tostring(oteBuy, "#.00"), bgcolor=color.new(color.green, 70))
+table.cell(infoTable, 0, 3, "OTE SELL", bgcolor=color.new(color.gray, 80))
+table.cell(infoTable, 1, 3, str.tostring(oteSell, "#.00"), bgcolor=color.new(color.red, 70))
+table.cell(infoTable, 0, 4, "PDH", bgcolor=color.new(color.gray, 80))
+table.cell(infoTable, 1, 4, str.tostring(dayHigh, "#.00"), bgcolor=color.new(color.red, 70))
+table.cell(infoTable, 0, 5, "PDL", bgcolor=color.new(color.gray, 80))
+table.cell(infoTable, 1, 5, str.tostring(dayLow, "#.00"), bgcolor=color.new(color.green, 70))
+
+// ═══════════════════════════════════════════════════════════════
+// END
+// ═══════════════════════════════════════════════════════════════

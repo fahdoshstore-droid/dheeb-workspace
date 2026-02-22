@@ -117,36 +117,9 @@ class TelegramCoach {
   async handleStart(msg) {
     const chatId = msg.chat.id;
     
-    const welcome = `
-🐺 أهلاً فهد
+    const welcome = "/check /trade /personality /plan";
 
-أنا ذيب. مدرب تداول فوري. ما في كلام فارغ - فقط نتائج.
-
-🎯 دورك:
-1. لما بتبيء تدخل صفقة → اكتب /check
-2. لما تخلص الصفقة → اكتب /trade ثم البيانات
-3. بدي أعرف من حاضر → اكتب /personality
-4. بدي أشوف الخطة → اكتب /plan
-
-⚠️ القواعد:
-• Max 2 صفقات يومياً
-• RRR يجب يكون 1:2
-• Daily Loss Limit: $600
-• بلا انتقام. بلا FOMO. بلا خوف.
-
-اختر من الخيارات:
-    `;
-
-    const keyboard = {
-      inline_keyboard: [
-        [{ text: '✅ Pre-Trade Check', callback_data: 'check' }],
-        [{ text: '📊 Daily Stats', callback_data: 'stats' }],
-        [{ text: '🎯 My Plan', callback_data: 'plan' }],
-        [{ text: '🧠 Who Am I?', callback_data: 'personality' }]
-      ]
-    };
-
-    await this.bot.sendMessage(chatId, welcome, { reply_markup: keyboard });
+    await this.bot.sendMessage(chatId, welcome);
     
     // تحميل البيانات من Notion
     this.loadUserDataFromNotion(chatId);
@@ -155,46 +128,9 @@ class TelegramCoach {
   async handlePreTradeCheck(msg) {
     const chatId = msg.chat.id;
 
-    const checklist = `
-🔍 PRE-TRADE CHECKLIST
+    const checklist = `هل تأكدت من الفريم 4H و 1D؟ هل شفت النمط الواضح؟ هل الوقت صحيح؟ هل RRR = واحد إلى اثنين بالضبط؟ هل عد 10 ثوان قبل الدخول؟ كام صفقة دخلت اليوم؟ كام خسرت بالفعل؟`;
 
-أجب عن كل سؤال بـ "نعم" أم "لا":
-
-1️⃣ هل تأكدت من الفريم 4H و 1D?
-   (هل في تأكيدات واضحة على الماكرو؟)
-
-2️⃣ هل شفت النمط الواضح؟
-   (IFVG + OB + BOS؟)
-
-3️⃣ هل الوقت صحيح؟
-   (London/Asia/NewYork فقط؟)
-
-4️⃣ هل RRR = 1:2 بالضبط؟
-   (للربح $200 = خسارة $100 ماكس؟)
-
-5️⃣ هل عد 10 ثوان قبل الدخول؟
-   (هل أنت هادي أم مستعجل؟)
-
-6️⃣ كام صفقة دخلت اليوم؟
-   (يجب تكون ≤2)
-
-7️⃣ كام خسرت بالفعل؟
-   (<$600 فقط؟)
-
----
-اكتب الإجابات (نعم/لا) رقم 1 رقم 2 ... الخ
-
-مثال: نعم نعم نعم نعم نعم ١ ٢٠٠
-    `;
-
-    const keyboard = {
-      inline_keyboard: [
-        [{ text: '✅ Go Ahead', callback_data: 'trade_go' }],
-        [{ text: '⛔ Stop - Not Ready', callback_data: 'trade_stop' }]
-      ]
-    };
-
-    await this.bot.sendMessage(chatId, checklist, { reply_markup: keyboard });
+    await this.bot.sendMessage(chatId, checklist);
   }
 
   async handleTradeAnalysis(msg) {
@@ -226,40 +162,16 @@ EURUSD|1.0850|1.0860|1.0900|1.0830|WIN|5MIN|Pro
   async handlePersonalityDetector(msg) {
     const chatId = msg.chat.id;
 
-    const personality = `
-🧠 PERSONALITY DETECTOR
-
-اختر اللي تحس فيه الآن:
-
-1️⃣ Mr. Chaos 🔴
-   - تحليلك عاطفي ومايتطابق مع الخطة
-   - تقاتل السوق وما تقبل الخسارة
-   - دخول عشوائي بلا تأكيدات
-
-2️⃣ Mr. Greedy 🟠
-   - مستعجل على الدخول
-   - خايف تفوت الفرصة
-   - تبي ربح أسرع من الممكن
-
-3️⃣ Mr. Fear 🔵
-   - خايف من الدخول
-   - تفكر كتير قبل لا تدخل
-   - نقص في الثقة بالنفس
-
-4️⃣ Mr. Pro 🟢
-   - تحليلك واضح ومنطقي
-   - تنتظر التأكيدات
-   - قرارات هادئة بدون عجلة
-
-👉 اختر الرقم اللي يطابقك الآن
-    `;
+    const personality = `اختر اللي تحس فيه الآن:
+Chaos - تحليل عاطفي تقاتل السوق دخول عشوائي
+Greedy - مستعجل خايف تفوت الفرصة تبي ربح أسرع
+Fear - خايف من الدخول تفكر كتير نقص ثقة
+Pro - تحليل واضح تنتظر التأكيدات قرارات هادئة`;
 
     const keyboard = {
       inline_keyboard: [
-        [{ text: '🔴 Mr. Chaos', callback_data: 'personality_chaos' }],
-        [{ text: '🟠 Mr. Greedy', callback_data: 'personality_greedy' }],
-        [{ text: '🔵 Mr. Fear', callback_data: 'personality_fear' }],
-        [{ text: '🟢 Mr. Pro', callback_data: 'personality_pro' }]
+        [{ text: 'Chaos', callback_data: 'personality_chaos' }, { text: 'Greedy', callback_data: 'personality_greedy' }],
+        [{ text: 'Fear', callback_data: 'personality_fear' }, { text: 'Pro', callback_data: 'personality_pro' }]
       ]
     };
 
@@ -269,41 +181,14 @@ EURUSD|1.0850|1.0860|1.0900|1.0830|WIN|5MIN|Pro
   async handleDailyPlan(msg) {
     const chatId = msg.chat.id;
 
-    const currentHour = new Date().getHours();
     const currentSession = this.getCurrentSession();
 
-    const plan = `
-📋 خطتك اليوم
-
-⏰ الجلسة الحالية: ${currentSession.name} (${currentSession.status})
-
-🎯 الأهداف:
-✓ تداول 1-2 صفقة فقط
-✓ RRR = 1:2 دقيق
-✓ بلا انتقام
-✓ بلا FOMO
-✓ Daily Loss < $600
-
-📍 الأوقات المتاحة:
-🇬🇧 London: 08:00-12:00 GMT (أفضل وقت)
-🇯🇵 Asia: 00:00-06:00 GMT
-🇺🇸 NewYork: 13:00-21:00 GMT
-
-🔍 ابحث عن:
-• IFVG + OB على 4H
-• تأكيدات على 1D
-• Break of Structure واضح
-
-⚡ قبل كل صفقة:
-☑️ شيك Pre-Trade Checklist
-☑️ عد 10 ثوان
-☑️ تأكد من RRR
-
-📝 بعد كل صفقة:
-☑️ سجل النتيجة فوراً
-☑️ حلل الأخطاء
-☑️ اكتب الدرس
-    `;
+    const plan = `الجلسة: ${currentSession.name}
+الأهداف: صفقة أو اثنتين فقط RRR = واحد إلى اثنين بلا انتقام بلا FOMO Daily Loss أقل من ستمائة دولار
+الأوقات: London صباح إلى ظهر GMT / Asia منتصف الليل إلى صباح GMT / NewYork بعد الظهر إلى المساء GMT
+ابحث عن: IFVG و OB على الفريم الأكبر تأكيدات على الفريم الأعظم Break of Structure واضح
+قبل الصفقة: شيك القائمة اعد عشر ثوان تأكد من RRR
+بعد الصفقة: سجل النتيجة حلل الأخطاء اكتب الدرس`;
 
     await this.bot.sendMessage(chatId, plan);
   }
@@ -314,31 +199,7 @@ EURUSD|1.0850|1.0860|1.0900|1.0830|WIN|5MIN|Pro
     // استحصل البيانات من Notion
     const stats = await this.notion.getRecentStats();
 
-    const statsMessage = `
-📊 إحصائياتك
-
-الفترة: آخر 7 أيام
-
-🏆 الأداء:
-• إجمالي الصفقات: ${stats.totalTrades || 0}
-• الفائز: ${stats.wins || 0}
-• الخاسر: ${stats.losses || 0}
-• Win Rate: ${stats.winRate || 0}%
-
-💰 المالي:
-• الربح/الخسارة: $${stats.pnl || 0}
-• Profit Factor: ${stats.profitFactor || 0}
-• Avg Win: $${stats.avgWin || 0}
-• Avg Loss: $${stats.avgLoss || 0}
-
-🧠 النفسي:
-• Discipline Score: ${stats.disciplineScore || 0}/100
-• أكثر خطأ: ${stats.topMistake || 'none'}
-• Personality: ${stats.dominantPersonality || 'Unknown'}
-
-📈 الترند:
-${this.generateTrendEmoji(stats.trend)}
-    `;
+    const statsMessage = `الإحصائيات: إجمالي الصفقات ${stats.totalTrades || '-'}, الفائز ${stats.wins || '-'}, الخاسر ${stats.losses || '-'}, Win Rate ${stats.winRate || '-'}%. الربح/الخسارة: ${stats.pnl || '-'}, Discipline Score: ${stats.disciplineScore || '-'}/100, أكثر خطأ: ${stats.topMistake || 'لا يوجد'}`;
 
     await this.bot.sendMessage(chatId, statsMessage);
   }
@@ -346,25 +207,7 @@ ${this.generateTrendEmoji(stats.trend)}
   async handleNewTrade(msg) {
     const chatId = msg.chat.id;
 
-    const prompt = `
-📝 سجل الصفقة الجديدة
-
-اكتب المعلومات بالترتيب:
-الزوج | Entry | Exit | TP | SL | الوقت | النتيجة | الأخطاء
-
-مثال:
-EURUSD | 1.0850 | 1.0860 | 1.0900 | 1.0830 | 08:15 | WIN | none
-
-أم اكتب كل معلومة على سطر:
-Symbol: EURUSD
-Entry: 1.0850
-Exit: 1.0860
-TP: 1.0900
-SL: 1.0830
-Time: 08:15
-Result: WIN
-Mistakes: none
-    `;
+    const prompt = `سجل الصفقة: الزوج - دخول - خروج - هدف - ستوب - وقت - نتيجة.`;
 
     await this.bot.sendMessage(chatId, prompt);
   }
@@ -379,10 +222,7 @@ Mistakes: none
     const tradeData = this.parseTradeData(text);
 
     if (!tradeData.isValid) {
-      await this.bot.sendMessage(
-        chatId,
-        `❌ بيانات غير صحيحة\n\nاكتب: EURUSD | 1.0850 | 1.0860 | 1.0900 | 1.0830 | WIN`
-      );
+      await this.bot.sendMessage(chatId, `بيانات غير صحيحة. أعد المحاولة.`);
       return;
     }
 
@@ -393,20 +233,7 @@ Mistakes: none
     const analysis = this.analyzeTradeQuick(tradeData);
 
     // إرسال النتيجة
-    const response = `
-✅ تم تسجيل الصفقة
-
-📊 النتيجة: ${analysis.result}
-💰 PnL: ${analysis.pnl}
-⏱️ المدة: ${analysis.duration}
-
-🧠 التحليل:
-${analysis.personality} حاضر الآن
-${analysis.lesson}
-
-✨ الخطوة التالية:
-${analysis.nextAction}
-    `;
+    const response = `تم تسجيل الصفقة. النتيجة: ${analysis.result}, PnL: ${analysis.pnl}. التحليل: ${analysis.personality}, ${analysis.lesson}. التالي: ${analysis.nextAction}`;
 
     await this.bot.sendMessage(chatId, response);
 
@@ -417,17 +244,11 @@ ${analysis.nextAction}
 
     // التحقق من الحدود
     if (this.userState.tradesCount >= 2) {
-      await this.bot.sendMessage(
-        chatId,
-        `⚠️ وصلت الحد اليومي (2 صفقات)\n\n❌ لا مزيد من الصفقات اليوم`
-      );
+      await this.bot.sendMessage(chatId, `وصلت الحد اليومي. لا صفقات جديدة.`);
     }
 
     if (this.userState.dailyLoss <= -600) {
-      await this.bot.sendMessage(
-        chatId,
-        `🛑 STOP\n\nخسارة اليوم وصلت $600\n❌ جميع الحسابات مغلقة`
-      );
+      await this.bot.sendMessage(chatId, `STOP. خسارة اليوم وصلت الحد الأقصى.`);
     }
   }
 
@@ -461,22 +282,22 @@ ${analysis.nextAction}
     const pnlValue = pnl > 0 ? pnl * 100000 : pnl * 100000; // تقريبي
     const riskReward = Math.abs((trade.tp - trade.entry) / (trade.sl - trade.entry));
 
-    let personality = '🟢 Mr. Pro';
+    let personality = 'Pro';
     let lesson = 'تحليل دقيق وتنفيذ صحيح';
-    let nextAction = '✅ استمر بنفس الأسلوب';
+    let nextAction = 'استمر بنفس الأسلوب';
 
     if (trade.psychology === 'Chaos') {
-      personality = '🔴 Mr. Chaos';
-      lesson = 'تحليل عاطفي. التالي: اعتمد على الماكرو فقط';
-      nextAction = '⛔ توقف 30 دقيقة قبل الصفقة التالية';
+      personality = 'Chaos';
+      lesson = 'تحليل عاطفي - اعتمد على الماكرو فقط';
+      nextAction = 'توقف قبل الصفقة التالية';
     } else if (trade.psychology === 'Greedy') {
-      personality = '🟠 Mr. Greedy';
-      lesson = 'مستعجل. التالي: أنتظر تأكيدات إضافية';
-      nextAction = '⏰ عد 10 ثوان قبل الدخول';
+      personality = 'Greedy';
+      lesson = 'مستعجل - أنتظر تأكيدات إضافية';
+      nextAction = 'عد ثوان قبل الدخول';
     } else if (trade.psychology === 'Fear') {
-      personality = '🔵 Mr. Fear';
-      lesson = 'خوف من الدخول. ركز على الثقة';
-      nextAction = '💪 خذ نص الحجم وادخل';
+      personality = 'Fear';
+      lesson = 'خوف من الدخول - ركز على الثقة';
+      nextAction = 'خذ نص الحجم وادخل';
     }
 
     return {
@@ -496,21 +317,21 @@ ${analysis.nextAction}
     const hour = now.getHours();
 
     if (hour >= 8 && hour < 12) {
-      return { name: 'London', status: '🟢 Active', trades: 2 };
+      return { name: 'London', status: 'Active' };
     } else if (hour >= 0 && hour < 6) {
-      return { name: 'Asia', status: '🟢 Active', trades: 1 };
+      return { name: 'Asia', status: 'Active' };
     } else if (hour >= 13 && hour < 21) {
-      return { name: 'NewYork', status: '🟢 Active', trades: 2 };
+      return { name: 'NewYork', status: 'Active' };
     } else {
-      return { name: 'Market Closed', status: '🔴 Closed', trades: 0 };
+      return { name: 'Closed', status: 'Closed' };
     }
   }
 
   generateTrendEmoji(trend) {
-    if (!trend) return '📊 بيانات غير كافية';
-    if (trend > 0) return '📈 اتجاه إيجابي';
-    if (trend < 0) return '📉 اتجاه سلبي';
-    return '➡️ ثابت';
+    if (!trend) return 'بيانات غير كافية';
+    if (trend > 0) return 'اتجاه إيجابي';
+    if (trend < 0) return 'اتجاه سلبي';
+    return 'ثابت';
   }
 
   async loadUserDataFromNotion(chatId) {
