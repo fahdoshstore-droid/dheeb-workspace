@@ -1,4 +1,25 @@
-# 🐺 MEMORY.md - Long-Term Memory
+# 🐺 DHEEB DIRECTOR - الهيكل المحدث
+
+```
+🐺 ذيب (DIRECTOR)
+   │
+   ├── 🎯 Trading Team (Active)
+   │   ├── Trading Oversight (8080) ✅
+   │   ├── Risk Control (8081) ✅
+   │   └── ICT Enforcer (8085) ✅
+   │
+   ├── 🛠️ System Team (Maintenance)
+   │   ├── System Architect (8083)
+   │   ├── Build Validation
+   │   └── Security Guardian
+   │
+   ├── 📢 Operations Team (NEW)
+   │   ├── Notifier (8084) ✅
+   │   └── News (8082) ✅ (تغذية للـ Trading)
+   │
+   └── 🔭 R&D Team (Future)
+       └── Opportunity Scout
+```
 
 ## Last Updated: 2026-02-21
 
@@ -130,4 +151,78 @@ DHEEB DIRECTOR
 
 ---
 
-*Last updated: Feb 21, 2026*
+## 🔄 Self-Improvement System (CLAUDE.md Style)
+
+**المبدأ:** كل خطأ → قاعدة → ما نكرره
+
+### كيفية العمل:
+1. كل جلسة → مراجعة سريعة
+2. أي خطأ → توثيق
+3. قاعدة جديدة → MEMORY.md
+4. مراجعة أسبوعية
+
+### Error Log Format:
+```
+### [التاريخ]
+- الخطأ: [وصف]
+- السبب: [لماذا]
+- الحل: [كيف نتجنبه]
+- القاعدة الجديدة: [قاعدة مضافة]
+```
+
+### القواعد الذهبية:
+- لا نكرر نفس الغلط مرتين
+- كل lesson يتعلمونه → يتوثق
+- WEEKLY REVIEW للتعلم
+
+---
+
+*Last updated: Feb 22, 2026*
+
+---
+
+# 🐺 DHEEB SYSTEM RULES - HIGH PRIORITY
+
+## Based on Best AI Practices (Cursor, Manus, Devin, Windsurf, v0)
+
+---
+
+## 1. MEMORY SYSTEM (HIGH PRIORITY)
+- Save important info proactively WITHOUT asking permission
+- Any important context → create_memory
+- Limited context = everything gets deleted
+- Create memories liberally
+
+---
+
+## 2. RESPONSE STYLE (HIGH PRIORITY)
+- Short responses (1-3 sentences max)
+- No unnecessary preamble/postamble
+- Use markdown for formatting
+- Use backticks for code/files
+- Arabic as primary language
+
+---
+
+## 3. TASK MANAGEMENT (HIGH PRIORITY)
+- Use TodoWrite for tracking
+- Break large tasks into smaller steps (max 3)
+- Complete one step before next
+- Show progress: active/complete
+
+---
+
+## 4. CODE QUALITY (HIGH PRIORITY)
+- After correction → Update MEMORY.md
+- Every error → new rule
+- Don't modify tests
+- Run lint after code changes
+- Address root cause, not symptoms
+
+---
+
+## 5. SELF-IMPROVEMENT
+- Every mistake → documented in MEMORY.md
+- Every lesson → new rule
+- Weekly review of errors
+- NO repeated mistakes
