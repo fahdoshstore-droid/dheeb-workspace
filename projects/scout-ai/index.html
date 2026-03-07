@@ -7,59 +7,76 @@
 <title>SCOUT AI | كشافة المواهب</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-:root { --bg:#0a0a0f; --surface:#16161f; --gold:#d4a843; --gold-d:#b8922e; --gold-glow:rgba(212,168,67,0.12); --white:#e8e6e3; --gray:#8a8a9a; --border:#2a2a3a; }
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--white);font-family:'Cairo',sans-serif;line-height:1.7}
+:root{--bg:#0a0a0f;--surface:#16161f;--gold:#d4a843;--gold-d:#b8922e;--gold-glow:rgba(212,168,67,0.12);--white:#e8e6e3;--gray:#8a8a9a;--border:#2a2a3a;--lime:#84cc16;--sky:#38bdf8;--cyan:#18ffff;--whatsapp:#25d366}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--white);font-family:'Cairo',sans-serif;line-height:1.7}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:100px 20px}
 .hero h1{font-family:'Outfit',sans-serif;font-size:clamp(32px,6vw,58px);font-weight:900;margin-bottom:16px}
-.hero h1 span{background:linear-gradient(135deg,var(--gold),#84cc16,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 span{background:linear-gradient(135deg,var(--gold),var(--lime),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{color:var(--gray);max-width:480px;margin:0 auto 28px;font-size:15px}
 .btn{display:inline-flex;gap:8px;padding:12px 28px;border-radius:10px;font-weight:700;text-decoration:none;transition:all 0.3s}
 .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--bg);box-shadow:0 4px 20px var(--gold-glow)}
 .btn-outline{border:1.5px solid var(--border);color:var(--white)}
 .stats{display:flex;gap:32px;justify-content:center;margin-top:40px;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-v{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--gold)}
+.stat{text-align:center}.stat-v{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--gold)}
 .stat-l{font-size:11px;color:var(--gray)}
-.problem{padding:60px 20px;max-width:800px;margin:0 auto}
-.problem h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:24px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
-.pc-n{font-size:36px;font-weight:900;color:rgba(212,168,67,0.15)}
-.pc-t{font-weight:700;margin:8px 0}
-.pc-d{font-size:12px;color:var(--gray)}
-.solution{background:#12121a;padding:60px 20px;text-align:center}
-.solution h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:16px}
+.problem{padding:60px 20px;max-width:800px;margin:0 auto}.problem h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:24px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
+.pc-n{font-size:36px;font-weight:900;color:rgba(212,168,67,0.15)}.pc-t{font-weight:700;margin:8px 0}.pc-d{font-size:12px;color:var(--gray)}
+.solution{background:#12121a;padding:60px 20px;text-align:center}.solution h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:16px}
 .hybrid{display:flex;align-items:center;justify-content:center;gap:20px;margin:30px 0;flex-wrap:wrap}
 .hy{flex:1;min-width:200px;padding:24px;border-radius:12px}
 .hy.ai{background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15)}
 .hy.sc{background:rgba(212,168,67,0.05);border:1px solid rgba(212,168,67,0.15)}
 .hy-pct{font-family:'Outfit',sans-serif;font-size:42px;font-weight:900}
-.hy.ai .hy-pct{color:#38bdf8}
-.hy.sc .hy-pct{color:var(--gold)}
-.steps{padding:60px 20px;max-width:900px;margin:0 auto}
-.steps h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
+.hy.ai .hy-pct{color:var(--sky)}.hy.sc .hy-pct{color:var(--gold)}
+.steps{padding:60px 20px;max-width:900px;margin:0 auto}.steps h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
 .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
 .step-n{width:32px;height:32px;border-radius:8px;background:var(--gold-glow);color:var(--gold);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
-.clubs{background:#12121a;padding:60px 20px}
-.clubs h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
+.clubs{background:#12121a;padding:60px 20px}.clubs h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
 .clubs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .cc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
-.cta{text-align:center;padding:80px 20px}
-.cta h2{font-family:'Outfit',sans-serif;font-size:32px;font-weight:900;margin-bottom:16px}
+.cta{text-align:center;padding:80px 20px}.cta h2{font-family:'Outfit',sans-serif;font-size:32px;font-weight:900;margin-bottom:16px}
 .cta p{color:var(--gray);margin-bottom:24px}
 footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:var(--gray);font-size:12px}
-@media(max-width:700px){.grid,.steps-grid,.clubs-grid{grid-template-columns:1fr}.hybrid{flex-direction:column}}
+.app-page{display:none;padding:80px 20px 40px;min-height:100vh}.app-page.active{display:block}
+.app-container{max-width:900px;margin:0 auto}
+.back-btn{background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px;margin-bottom:16px}
+.upload-zone{border:2px dashed var(--border);border-radius:16px;padding:36px;text-align:center;cursor:pointer;background:var(--surface);margin-bottom:20px}
+.upload-zone:hover{border-color:var(--gold);background:var(--gold-glow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:14px}.form-group.full{grid-column:1/-1}
+label{display:block;font-size:11px;color:var(--gray);margin-bottom:5px}
+input,select{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--white);font-family:inherit;font-size:13px}
+input:focus,select:focus{border-color:var(--gold);outline:none}
+.analyzing-page{display:none;min-height:100vh;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:40px 20px}
+.analyzing-page.active{display:flex}
+.spinner{width:80px;height:80px;border:4px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress{width:200px;height:6px;background:var(--border);border-radius:3px;margin:20px auto;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);transition:width 0.3s}
+.score-circle{width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:14px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin:2px}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.player-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;cursor:pointer}
+.player-card:hover{border-color:var(--gold)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:1000}
+.modal.active{display:flex}
+.modal-content{background:var(--surface);border:2px solid var(--gold);border-radius:20px;padding:28px;max-width:460px;width:90%}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);padding:12px 24px;border-radius:50px;font-weight:700;display:none;z-index:1001}
+.toast.show{display:block}
+@media(max-width:700px){.grid,.steps-grid,.clubs-grid,.form-grid{grid-template-columns:1fr}.hybrid{flex-direction:column}}
 </style>
 </head>
 <body>
-<section class="hero">
+<!-- Landing -->
+<section class="hero" id="landing">
 <h1>اكتشف المواهب<br><span>قبل الجميع</span></h1>
 <p class="sub">منصة ذكاء اصطناعي هجينة تجمع بين عين الكشّاف وقوة AI لتقييم اللاعبين بدقة غير مسبوقة</p>
 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-<a href="#" class="btn btn-primary">📸 حلل موهبتك</a>
-<a href="#" class="btn btn-outline">🔍 لوحة الكشاف</a>
+<a href="#" class="btn btn-primary" onclick="showApp('upload')">📸 حلل موهبتك</a>
+<a href="#" class="btn btn-outline" onclick="showApp('scout')">🔍 لوحة الكشاف</a>
 </div>
 <div class="stats">
 <div class="stat"><div class="stat-v">60%</div><div class="stat-l">Scout — خبرة بشرية</div></div>
@@ -67,6 +84,7 @@ footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:v
 <div class="stat"><div class="stat-v">3x</div><div class="stat-l">أسرع في الاكتشاف</div></div>
 </div>
 </section>
+<!-- Problem -->
 <section class="problem">
 <h2>المشكلة</h2>
 <div class="grid">
@@ -76,6 +94,7 @@ footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:v
 <div class="pc"><div class="pc-n">04</div><div class="pc-t">انعدام الثقة بالـ AI</div><div class="pc-d">الأندية لا تثق بأنظمة AI بحتة.</div></div>
 </div>
 </section>
+<!-- Solution -->
 <section class="solution">
 <h2>الحل — النموذج الهجين</h2>
 <div class="hybrid">
@@ -84,6 +103,7 @@ footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:v
 <div class="hy sc"><div class="hy-pct">60%</div><div style="font-weight:700;margin:8px 0">Scout</div><div style="font-size:12px;color:var(--gray)">تقييم الكشاف المحترف</div></div>
 </div>
 </section>
+<!-- Steps -->
 <section class="steps">
 <h2>4 خطوات للاكتشاف</h2>
 <div class="steps-grid">
@@ -93,6 +113,7 @@ footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:v
 <div class="step"><div class="step-n">4</div><div style="font-size:24px;margin:8px 0">🎯</div><div class="pc-t">التقرير</div><div style="font-size:11px;color:var(--gray)">توصية نهائية</div></div>
 </div>
 </section>
+<!-- Clubs -->
 <section class="clubs">
 <h2>لماذا SCOUT AI؟</h2>
 <div class="clubs-grid">
@@ -104,11 +125,182 @@ footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:v
 <div class="cc"><div style="font-size:24px;margin-bottom:8px">🇸🇦</div><div class="pc-t">Vision 2030</div><div class="pc-d">متوافق مع كأس 2034</div></div>
 </div>
 </section>
+<!-- CTA -->
 <section class="cta">
 <h2>المستقبل يبدأ من الملعب</h2>
 <p>SCOUT AI يغيّر طريقة اكتشاف المواهب</p>
-<a href="#" class="btn btn-primary">📸 جرّب الحين</a>
+<a href="#" class="btn btn-primary" onclick="showApp('upload')">📸 جرّب الحين</a>
 </section>
 <footer>SCOUT AI © 2026 — منتج من ذيب 🐺</footer>
+
+<!-- Upload Page -->
+<div class="app-page" id="appUpload">
+<div class="app-container">
+<button class="back-btn" onclick="showApp('landing')">→ الرئيسية</button>
+<h2 style="margin-bottom:6px">تحليل موهبة جديدة ⚡</h2>
+<p style="color:var(--gray);font-size:13px;margin-bottom:28px">ارفع صورة اللاعب — الذكاء الاصطناعي يحلل فعلياً</p>
+<div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+<input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFile(this.files[0])">
+<div style="font-size:36px;margin-bottom:10px" id="uploadIcon">📸</div>
+<div style="color:var(--gray);font-size:13px" id="uploadText">اضغط لرفع صورة اللاعب</div>
+</div>
+<div class="card">
+<div class="form-grid">
+<div class="form-group full"><label>اسم اللاعب *</label><input type="text" id="playerName" placeholder="مثال: محمد الأحمد"></div>
+<div class="form-group"><label>العمر *</label><input type="number" id="playerAge" placeholder="17" min="8" max="45"></div>
+<div class="form-group"><label>المدينة</label><select id="playerCity"><option>الرياض</option><option>جدة</option><option>الدمام</option><option>مكة</option></select></div>
+<div class="form-group"><label>المركز</label><select id="playerPosition"><option>مهاجم</option><option>جناح</option><option>وسط</option><option>مدافع</option><option>حارس مرمى</option></select></div>
+</div>
+</div>
+<button class="btn btn-primary" style="width:100%" onclick="startAnalysis()">⚡ ابدأ التحليل</button>
+</div>
+</div>
+
+<!-- Analyzing Page -->
+<div class="analyzing-page" id="appAnalyzing">
+<div class="spinner"></div>
+<h2 id="analyzingName" style="margin-bottom:6px">جاري التحليل...</h2>
+<p style="color:var(--gold);margin-bottom:20px" id="analyzingStep">جاري تحميل البيانات...</p>
+<div class="progress"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+</div>
+
+<!-- Report Page -->
+<div class="app-page" id="appReport">
+<div class="app-container">
+<button class="back-btn" onclick="showApp('landing')">→ الرئيسية</button>
+<button class="back-btn" onclick="showApp('upload')">+ تحليل جديد</button>
+<div class="card">
+<h2 id="reportName" style="font-size:24px;margin-bottom:10px"></h2>
+<div id="reportBadges"></div>
+<div class="score-circle" id="reportScore" style="margin:20px auto"></div>
+<div class="recommendation" id="reportRecommendation"></div>
+</div>
+<div class="card"><h3 style="margin-bottom:14px">خريطة المهارات</h3><canvas id="radarChart"></canvas></div>
+<div class="card"><h3 style="margin-bottom:14px">تفصيل المهارات</h3><div id="skillsBars"></div></div>
+<div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div class="card"><h4 style="color:var(--gold);margin-bottom:10px">✅ نقاط القوة</h4><div id="strengthsList"></div></div>
+<div class="card"><h4 style="color:var(--gray);margin-bottom:10px">⚠️ يحتاج تطوير</h4><div id="weaknessesList"></div></div>
+</div>
+<div class="card"><h3 style="margin-bottom:12px">💪 توصيات تدريبية</h3><div id="tipsList"></div></div>
+</div>
+</div>
+
+<!-- Scout Dashboard -->
+<div class="app-page" id="appScout">
+<div class="app-container">
+<button class="back-btn" onclick="showApp('landing')">→ الرئيسية</button>
+<h2 style="margin-bottom:6px">🔍 لوحة الكشاف</h2>
+<p style="color:var(--gray);font-size:13px;margin-bottom:20px">تصفّح المواهب المسجلة</p>
+<div class="players-grid" id="playersGrid"></div>
+</div>
+</div>
+
+<!-- WhatsApp Modal -->
+<div class="modal" id="whatsappModal">
+<div class="modal-content">
+<h3 style="margin-bottom:18px">📱 إرسال التقرير</h3>
+<div class="form-group"><label>رقم الجوال</label><input type="tel" id="modalPhone" placeholder="05xxxxxxxx"></div>
+<div class="form-group"><label>اسم ولي الأمر</label><input type="text" id="modalName" placeholder="أبو محمد"></div>
+<button class="btn btn-primary" style="width:100%;background:var(--whatsapp)" onclick="sendWhatsApp()">🚀 فتح واتساب</button>
+<button class="btn btn-outline" style="width:100%;margin-top:10px" onclick="closeModal()">إلغاء</button>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const POSITIONS=["مهاجم","جناح","وسط","مدافع","حارس مرنى"];
+const SK={speed:"السرعة",passing:"التمرير",shooting:"التسديد",dribbling:"المراوغة",positioning:"التمركز",stamina:"اللياقة",vision:"الرؤية",defending:"الدفاع"};
+const SKK=Object.keys(SK);
+let currentPlayer=null,currentData=null,radarChart=null;
+const SAMPLE_PLAYERS=[{id:1,name:"عبدالله الشمري",age:17,city:"الرياض",position:"مهاجم"},{id:2,name:"فيصل القحطاني",age:16,city:"جدة",position:"جناح"},{id:3,name:"محمد الدوسري",age:19,city:"الدمام",position:"وسط"}];
+
+function showApp(page){
+document.querySelectorAll('.hero,.problem,.solution,.steps,.clubs,.cta,footer,.app-page').forEach(el=>el.style.display='none');
+if(page==='landing'){document.querySelectorAll('.hero,.problem,.solution,.steps,.clubs,.cta,footer').forEach(el=>el.style.display='')}
+else if(document.getElementById('app'+page.charAt(0).toUpperCase()+page.slice(1))){
+const el=document.getElementById('app'+page.charAt(0).toUpperCase()+page.slice(1));
+el.style.display=el.classList.contains('analyzing-page')?'flex':'block';
+el.classList.add('active')}
+if(page==='scout')renderPlayers();
+}
+
+function handleFile(file){
+if(!file)return;
+document.getElementById('uploadIcon').textContent='✅';
+document.getElementById('uploadText').textContent='تم رفع الصورة';
+}
+
+function startAnalysis(){
+const name=document.getElementById('playerName').value;
+const age=document.getElementById('playerAge').value;
+if(!name||!age){showToast('يرجى إدخال الاسم والعمر');return;}
+currentPlayer={name,age,city:document.getElementById('playerCity').value,position:document.getElementById('playerPosition').value};
+showApp('analyzing');
+let progress=0;
+const iv=setInterval(()=>{progress+=5;document.getElementById('progressFill').style.width=progress+'%';
+if(progress>=100){clearInterval(iv);currentData=genAnalysis(name,age,currentPlayer.position);showReport();}},80);
+}
+
+function genAnalysis(name,age,pos){
+const seed=name.split('').reduce((a,c)=>a+c.charCodeAt(0),0)+age;
+const h=(s,i)=>{let x=s*1000+i*17;x=((x>>16)^x)*0x45d9f3b;x=((x>>16)^x)*0x45d9f3b;return((x>>16)^x&0x7fffffff)/0x7fffffff};
+let c=0;const r=(b,v)=>{c++;return Math.min(99,Math.max(30,Math.round(b+(h(seed,c)*2-1)*v)))};
+const P={ مهاجم:{speed:r(82,8),passing:r(65,10),shooting:r(85,8),dribbling:r(80,8),positioning:r(83,7),stamina:r(70,10),vision:r(65,10),defending:r(40,10)},
+جناح:{speed:r(88,6),passing:r(70,10),shooting:r(72,10),dribbling:r(85,7),positioning:r(75,8),stamina:r(78,8),vision:r(72,8),defending:r(42,10)},
+وسط:{speed:r(72,8),passing:r(85,6),shooting:r(75,8),dribbling:r(78,8),positioning:r(80,7),stamina:r(75,8),vision:r(88,6),defending:r(55,10)},
+مدافع:{speed:r(70,8),passing:r(62,10),shooting:r(42,10),dribbling:r(50,10),positioning:r(85,6),stamina:r(82,7),vision:r(65,10),defending:r(88,6)},
+حارس:{speed:r(55,10),passing:r(55,12),shooting:r(30,8),dribbling:r(35,8),positioning:r(88,6),stamina:r(72,8),vision:r(78,8),defending:r(90,5)}};
+const sk=P[pos]||P['مهاجم'];
+const sorted=SKK.map(k=>({k,v:sk[k]})).sort((a,b)=>b.v-a.v);
+return{skills:sk,overall:Math.round(Object.values(sk).reduce((a,b)=>a+b,0)/8),
+strengths:sorted.slice(0,3).map(s=>SK[s.k]),weaknesses:sorted.slice(-2).map(s=>SK[s.k]),
+recommendation:sk.shooting>80?'موهبة واعدة':'مستوى جيد',
+tips:["تطوير "+SK[sorted.slice(-1)[0].k],"تمارين لياقة","تحسين الوعي التكتيكي"]};
+}
+
+function showReport(){
+showApp('report');
+const p=currentPlayer,d=currentData;
+document.getElementById('reportName').textContent=p.name;
+document.getElementById('reportBadges').innerHTML='<span class="badge" style="color:var(--gold);border:1px solid var(--gold)">'+p.position+'</span><span class="badge">'+p.age+' سنة</span>';
+document.getElementById('reportScore').textContent=d.overall;
+document.getElementById('reportScore').style.color=var(--gold);
+document.getElementById('reportRecommendation').textContent='🎯 '+d.recommendation;
+document.getElementById('reportRecommendation').style='margin-top:14px;padding:11px;border-radius:10px;background:var(--gold-glow);color:var(--gold)';
+document.getElementById('strengthsList').innerHTML=d.strengths.map(s=>'<div style="padding:5px 0;border-bottom:1px solid var(--border)">'+s+'</div>').join('');
+document.getElementById('weaknessesList').innerHTML=d.weaknesses.map(s=>'<div style="padding:5px 0;border-bottom:1px solid var(--border)">'+s+'</div>').join('');
+document.getElementById('tipsList').innerHTML=d.tips.map((t,i)=>'<div style="display:flex;gap:8px;margin-bottom:8px"><span style="width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--bg);font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:800">'+(i+1)+'</span>'+t+'</div>').join('');
+renderRadar(d.skills);
+}
+
+function renderRadar(skills){
+const ctx=document.getElementById('radarChart').getContext('2d');
+if(radarChart)radarChart.destroy();
+radarChart=new Chart(ctx,{type:'radar',data:{labels:SKK.map(k=>SK[k]),datasets:[{label:'المهارات',data:SKK.map(k=>skills[k]),borderColor:'#d4a843',backgroundColor:'rgba(212,168,67,0.2)',borderWidth:2,pointBackgroundColor:'#d4a843'}]},options:{responsive:true,scales:{r:{beginAtZero:true,max:100,ticks:{display:false},grid:{color:'#2a2a3a'},pointLabels:{color:'#8a8a9a',font:{size:10}}}},plugins:{legend:{display:false}}}});
+}
+
+function renderPlayers(){
+document.getElementById('playersGrid').innerHTML=SAMPLE_PLAYERS.map(p=>{
+const a=genAnalysis(p.name,p.age,p.position);
+return'<div class="player-card" onclick="showPlayerReport('+p.id+')"><div style="display:flex;justify-content:space-between;margin-bottom:10px"><div><div style="font-weight:700">'+p.name+'</div><span class="badge">'+p.position+'</span></div><div class="score-circle" style="width:40px;height:40px;font-size:14px">'+a.overall+'</div></div><div style="font-size:11px;color:var(--gray)">'+p.age+' سنة • '+p.city+'</div></div>';
+}).join('');
+}
+
+function showPlayerReport(id){
+const p=SAMPLE_PLAYERS.find(x=>x.id===id);
+currentPlayer={name:p.name,age:p.age,city:p.city,position:p.position};
+currentData=genAnalysis(p.name,p.age,p.position);
+showReport();
+}
+
+function showToast(msg){
+const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+function closeModal(){document.getElementById('whatsappModal').classList.remove('active');}
+</script>
 </body>
 </html>
