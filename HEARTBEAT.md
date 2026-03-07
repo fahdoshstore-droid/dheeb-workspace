@@ -31,7 +31,7 @@
 | Structure Engine | ✅ PASSED |
 | Command Center | ✅ READY |
 | MemoryAgent | ✅ WORKING |
-| **Discord** | ✅ **WORKING** |
+| **Discord** | ❌ **TOKEN INVALID** (needs new token) |
 | **Perplexica** | ✅ **RUNNING** (port 3000) |
 | **Signal Bot** | ✅ **READY** |
 | **Analytics Dashboard** | ✅ **RUNNING** (port 3002) |
