@@ -1,0 +1,10 @@
+{
+  "name": "scout-ai",
+  "version": "1.0.0",
+  "description": "SCOUT AI - Sports Talent Scout with AI",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {}
+}
