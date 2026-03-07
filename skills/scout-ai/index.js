@@ -123,6 +123,16 @@ module.exports = {
         )
       `);
       console.log('SCOUT AI: Database ready');
+    },
+    
+    onWebhook: async (payload, { api }) => {
+      // Handle webhooks from frontend
+      if (payload.event === 'analysis_started') {
+        console.log('Analysis started:', payload.player);
+      }
+      if (payload.event === 'analysis_completed') {
+        await api.notify(`New analysis: ${payload.player.name} - ${payload.data.finalScore}/100`);
+      }
     }
   }
 };
