@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHEEB - Trade Setup</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0f1a; font-family: 'JetBrains Mono', monospace; color: #f0f4f8; padding: 20px; }
+    .container { max-width: 500px; margin: 0 auto; }
+    
+    .header { text-align: center; margin-bottom: 20px; }
+    .logo { font-size: 20px; font-weight: bold; }
+    .logo span { color: #00e676; }
+    .info { color: #8892a4; font-size: 11px; margin-top: 5px; }
+    
+    .chart-box { background: #111827; border: 2px solid #1e2a3a; border-radius: 12px; padding: 15px; }
+    
+    .level { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #1e2a3a; }
+    .level:last-child { border-bottom: none; }
+    .level-price { width: 75px; font-size: 13px; font-weight: bold; }
+    .level-line { flex: 1; height: 2px; position: relative; }
+    .level-label { width: 180px; font-size: 11px; text-align: left; padding-left: 10px; }
+    
+    .bsl .level-line { background: #ff5252; }
+    .bsl .level-label { color: #ff5252; }
+    .bsl .level-price { color: #ff5252; }
+    
+    .ssl .level-line { background: #00e676; }
+    .ssl .level-label { color: #00e676; }
+    .ssl .level-price { color: #00e676; }
+    
+    .bearish-ob .level-line { background: #ff5252; }
+    .bearish-ob .level-label { color: #ff5252; background: rgba(255,82,82,0.15); padding: 3px 8px; border-radius: 4px; }
+    .bearish-ob .level-price { color: #ff5252; }
+    
+    .fvg .level-line { background: #9c27b0; }
+    .fvg .level-label { color: #9c27b0; background: rgba(156,39,176,0.15); padding: 3px 8px; border-radius: 4px; }
+    .fvg .level-price { color: #9c27b0; }
+    
+    .entry .level-line { background: #42a5f5; border: 2px dashed #42a5f5; }
+    .entry .level-label { color: #42a5f5; background: rgba(66,165,245,0.2); padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+    .entry .level-price { color: #42a5f5; }
+    
+    .current .level-line { background: #ff9800; }
+    .current .level-label { color: #ff9800; font-weight: bold; }
+    .current .level-price { color: #ff9800; }
+    
+    .tp .level-line { background: #00e676; }
+    .tp .level-label { color: #00e676; background: rgba(0,230,118,0.15); padding: 3px 8px; border-radius: 4px; }
+    .tp .level-price { color: #00e676; }
+    
+    .sl .level-line { background: #ff5252; }
+    .sl .level-label { color: #ff5252; background: rgba(255,82,82,0.15); padding: 3px 8px; border-radius: 4px; }
+    .sl .level-price { color: #ff5252; }
+    
+    .trade-box { background: linear-gradient(135deg, #1e2a3a, #111827); border: 2px solid #00e676; border-radius: 12px; padding: 15px; margin-top: 15px; }
+    .trade-title { text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 12px; color: #00e676; }
+    .trade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .trade-item { background: #0a0f1a; padding: 10px; border-radius: 6px; text-align: center; }
+    .trade-label { font-size: 9px; color: #8892a4; }
+    .trade-value { font-size: 13px; font-weight: bold; margin-top: 3px; }
+    
+    .decision { text-align: center; margin-top: 15px; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 13px; }
+    .decision.deny { background: rgba(255,82,82,0.2); color: #ff5252; }
+    .decision.allow { background: rgba(0,230,118,0.2); color: #00e676; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">DHEEB <span>SETUP</span></div>
+      <div class="info">MNQ 15M | 2026-03-07</div>
+    </div>
+    
+    <div class="chart-box">
+      <!-- BSL -->
+      <div class="level bsl">
+        <div class="level-price">25,270</div>
+        <div class="level-line"></div>
+        <div class="level-label">📍 HH</div>
+      </div>
+      
+      <!-- PDH -->
+      <div class="level bsl">
+        <div class="level-price">25,200</div>
+        <div class="level-line"></div>
+        <div class="level-label">📍 PDH</div>
+      </div>
+      
+      <!-- Bearish OB -->
+      <div class="level bearish-ob">
+        <div class="level-price">25,120</div>
+        <div class="level-line"></div>
+        <div class="level-label">▓▓ BEARISH OB ▓▓</div>
+      </div>
+      
+      <!-- SSL -->
+      <div class="level ssl">
+        <div class="level-price">24,940</div>
+        <div class="level-line"></div>
+        <div class="level-label">📍 SSL</div>
+      </div>
+      
+      <!-- Entry -->
+      <div class="level entry">
+        <div class="level-price">24,880</div>
+        <div class="level-line"></div>
+        <div class="level-label">📍 ENTRY</div>
+      </div>
+      
+      <!-- FVG -->
+      <div class="level fvg">
+        <div class="level-price">24,660</div>
+        <div class="level-line"></div>
+        <div class="level-label">▒▒ FVG ▒▒</div>
+      </div>
+      
+      <!-- Current -->
+      <div class="level current">
+        <div class="level-price">24,660</div>
+        <div class="level-line"></div>
+        <div class="level-label">● PRICE NOW</div>
+      </div>
+      
+      <!-- TP -->
+      <div class="level tp">
+        <div class="level-price">24,480</div>
+        <div class="level-line"></div>
+        <div class="level-label">○ TP (PDL)</div>
+      </div>
+      
+      <!-- SL -->
+      <div class="level ssl">
+        <div class="level-price">24,340</div>
+        <div class="level-line"></div>
+        <div class="level-label">📍 SSL 2</div>
+      </div>
+    </div>
+    
+    <div class="trade-box">
+      <div class="trade-title">🎯 TRADE SETUP</div>
+      <div class="trade-grid">
+        <div class="trade-item">
+          <div class="trade-label">TYPE</div>
+          <div class="trade-value" style="color:#ff5252">SHORT</div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-label">ENTRY</div>
+          <div class="trade-value" style="color:#42a5f5">24,880</div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-label">RRR</div>
+          <div class="trade-value" style="color:#00e676">1:2</div>
+        </div>
+      </div>
+      <div class="trade-grid" style="margin-top:8px">
+        <div class="trade-item">
+          <div class="trade-label">TP</div>
+          <div class="trade-value" style="color:#00e676">24,480</div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-label">SL</div>
+          <div class="trade-value" style="color:#ff5252">24,340</div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-label">RISK</div>
+          <div class="trade-value" style="color:#ff9800">540 pts</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="decision deny">
+      ⛔ NOT ALLOWED - Outside Kill Zone
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1483 @@
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T00:40:02.075359] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x70d56a472510>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T00:45:01.788254] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: WAIT
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+[2026-02-27T00:50:01.787494] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+Traceback (most recent call last):
+  File "/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py", line 161, in <module>
+    main()
+  File "/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py", line 103, in main
+    in_killzone = is_in_killzone()
+                  ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py", line 43, in is_in_killzone
+    config = load_config()
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py", line 17, in load_config
+    return json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 3 column 21 (char 46)
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T00:55:01.634102] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x75ef0e9b6fc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:00:02.352839] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x79dc41b8f1d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:05:02.228741] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7c0487a45d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:10:02.149932] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7811572d23f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:15:02.202515] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71977de71e50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:20:02.037569] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+Error sending to decision engine: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /decide (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7c09335a5f40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:25:02.110836] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: WAIT
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:30:02.910220] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: WAIT
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:35:01.796142] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: WAIT
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:40:01.805820] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:45:01.640152] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:50:01.606946] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T01:55:01.394883] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:00:02.215092] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:05:02.178685] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:10:01.959747] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:15:01.748029] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:20:01.756239] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:25:01.588401] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:30:01.416000] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:35:02.305638] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:40:02.112210] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:45:02.135741] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:50:02.049118] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T02:55:01.835248] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:00:01.821943] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:05:01.682122] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:10:01.495997] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:15:02.290083] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:20:02.196530] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:25:02.038086] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:30:02.020531] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:35:01.860606] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:40:01.661862] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:45:01.447920] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:50:01.499341] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T03:55:02.347119] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:00:02.250160] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:05:02.174876] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:10:02.233397] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:15:02.047188] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:20:02.101341] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:25:01.886209] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:30:01.688642] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:35:01.620856] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:40:01.417738] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:45:02.221744] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:50:02.089155] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T04:55:01.899583] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:00:01.735797] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:05:01.537509] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:10:02.365095] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:15:02.228874] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:20:02.225508] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:25:02.113418] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:30:02.060588] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:35:01.918320] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:40:01.725799] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:45:01.734676] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:50:01.571455] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T05:55:01.512403] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:00:02.339561] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:05:01.448629] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:10:02.288691] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:15:02.176848] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:20:02.145722] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:25:02.056188] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:30:01.876278] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:35:01.896243] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:40:01.768219] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:45:02.111437] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:50:02.472666] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T06:55:01.973873] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:00:02.476255] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:05:02.155418] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:10:02.522946] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:15:01.767823] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:20:02.443013] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:25:02.064154] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:30:02.389532] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:35:02.631307] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:40:02.010941] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:45:02.190051] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:50:02.505873] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T07:55:02.002138] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:00:02.476887] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:05:02.724401] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:10:02.105342] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:15:02.222083] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:20:02.434564] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:25:01.906435] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:30:02.322798] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:35:02.638064] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:40:01.705559] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:45:01.843528] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:50:02.108069] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T08:55:02.229306] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:00:02.682505] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:05:02.056781] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:10:02.141395] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:15:02.360014] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:20:02.610924] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:25:02.701986] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:30:01.610229] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:35:02.801477] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:40:01.975430] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:45:02.519046] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:50:02.032809] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T09:55:02.221225] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:00:02.441805] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:05:02.698649] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:10:01.928761] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:15:02.266535] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:20:02.597422] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:25:02.729539] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:30:01.905448] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:35:02.033150] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:40:02.275805] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:45:02.395323] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:50:02.873747] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T10:55:02.284550] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ✅ YES
+   Setup: NONE
+   ⏭️ Skipping - no setup detected
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'timestamp': datetime.utcnow().isoformat()
+/home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+[2026-02-27T11:00:02.870047] 🔍 Checking NDX...
+   Price: 25034.37 | High: 25343.97 | Low: 24618.23
+   Kill Zone: ❌ NO
+   Setup: NONE
+   ⏭️ Skipping - not in kill zone
+   📡 Decision: REJECTED

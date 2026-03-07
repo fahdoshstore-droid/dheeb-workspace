@@ -1,0 +1,477 @@
+// DHEEB Unified System v2.0 - Full Automation
+// @version=5
+// Supports: Sessions, Liquidity, SD, OB, FVG, IFVG, Macro Times
+
+//@strategy("DHEEB v2.0", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=1)
+
+// ========================
+// INPUTS
+// ========================
+
+group1 = "📊 SESSIONS"
+enableSessions = input.bool(true, "Enable Sessions", group=group1)
+sessionAsia = input.bool(true, "Asia (0-8 UTC)", group=group1)
+sessionLondon = input.bool(true, "London (8-11 UTC)", group=group1)
+sessionNY = input.bool(true, "NY (13:30-16 UTC)", group=group1)
+
+group2 = "🎯 SMC"
+enableSMC = input.bool(true, "Enable SMC", group=group2)
+obLookback = input.int(10, "OB Lookback Candles", group=group2)
+obMinCandles = input.int(3, "OB Min Candles", group=group2)
+showFVG = input.bool(true, "Show FVG", group=group2)
+showIFVG = input.bool(true, "Show IFVG", group=group2)
+
+group3 = "📈 SD LEVELS"
+enableSD = input.bool(true, "Enable SD", group=group3)
+sdLength = input.int(20, "SD Length", group=group3)
+
+group4 = "💧 LIQUIDITY"
+enableLiquidity = input.bool(true, "Enable Liquidity", group=group4)
+liqLookback = input.int(20, "Liquidity Lookback", group=group4)
+
+group5 = "🛡️ RISK"
+maxRisk = input.float(1.0, "Max Risk %", group=group5)
+rrMin = input.float(2.5, "Min R:R", group=group5)
+
+// ========================
+// SESSION TIMES
+// ========================
+
+inAsia = enableSessions and sessionAsia and sessionChange("Asia")
+inLondon = enableSessions and sessionLondon and sessionChange("London")
+inNY = enableSessions and sessionNY and sessionChange("NY")
+
+// ========================
+// SESSION LIQUIDITY (Asian, London, NY)
+// ========================
+
+var float asianHigh = na
+var float asianLow = na
+var float londonHigh = na
+var float londonLow = na
+var float nyHigh = na
+var float nyLow = na
+var float amd = na // Average Daily Move
+
+// Asian Session (0:00 - 8:00 UTC)
+asianHigh := inAsia ? math.max(asianHigh, high) : na
+asianLow := inAsia ? math.min(asianLow, low) : na
+
+// Update on session change
+if sessionChange("Asia")
+    asianHigh := high
+    asianLow := low
+
+if sessionChange("London")
+    londonHigh := high
+    londonLow := low
+
+if sessionChange("NY")
+    nyHigh := high
+    nyLow := low
+
+// AMD Calculation
+amd := ta.sma(high - low, 14)
+
+// ========================
+// STANDARD DEVIATION
+// ========================
+
+sd = ta.stdev(close, sdLength)
+sd1 = sd * 1
+sd2 = sd * 2
+sd3 = sd * 3
+sd4 = sd * 4
+
+upperSD1 = close + sd1
+lowerSD1 = close - sd1
+upperSD2 = close + sd2
+lowerSD2 = close - sd2
+upperSD3 = close + sd3
+lowerSD3 = close - sd3
+upperSD4 = close + sd4
+lowerSD4 = close - sd4
+
+// ========================
+// ORDER BLOCKS (Bullish & Bearish)
+// ========================
+
+// Bullish OB: Green candle followed by red candle(s), price returns
+bullishOB = false
+var int obStrength = 0
+var float obEntry = na
+var int obAge = 0
+
+for i = 1 to obLookback
+    if enableSMC and close[i] > open[i] and close[i-1] < open[i-1]
+        if low < low[i]
+            bullishOB := true
+            obEntry := low[i]
+            obAge := i
+            obStrength := math.min(obAge, 10)
+            break
+
+// Bearish OB: Red candle followed by green candle(s), price returns
+bearishOB = false
+
+for i = 1 to obLookback
+    if enableSMC and close[i] < open[i] and close[i-1] > open[i-1]
+        if high > high[i]
+            bearishOB := true
+            obEntry := high[i]
+            obAge := i
+            obStrength := math.min(obAge, 10)
+            break
+
+// ========================
+// FVG (Fair Value Gap)
+// ========================
+
+fvgBull = showFVG and (low[2] > high[1])  // Bullish FVG
+fvgBear = showFVG and (high[2] < low[1])  // Bearish FVG
+
+var float fvgTop = na
+var float fvgBottom = na
+
+if fvgBull
+    fvgBottom := low[2]
+    fvgTop := high[1]
+
+if fvgBear
+    fvgTop := high[2]
+    fvgBottom := low[1]
+
+// ========================
+// IFVG (Internal Fair Value Gap)
+// ========================
+
+ifvgBull = showIFVG and (low[1] > high[2]) and (low > high[1])
+ifvgBear = showIFVG and (high[1] < low[2]) and (high < low[1])
+
+var float ifvgTop = na
+var float ifvgBottom = na
+
+if ifvgBull
+    ifvgBottom := math.max(low[1], low)
+    ifvgTop := math.min(high[1], high[2])
+
+if ifvgBear
+    ifvgTop := math.min(high[1], high)
+    ifvgBottom := math.max(low[1], low[2])
+
+// ========================
+// LIQUIDITY GRAB DETECTION
+// ========================
+
+var float lastHigh = na
+var float lastLow = na
+var string liqGrabber = "None"
+
+lastHigh := ta.highest(high, liqLookback)
+lastLow := ta.lowest(low, liqLookback)
+
+// Who grabbed liquidity?
+bullGrabbed = close < lastLow
+bearGrabbed = close > lastHigh
+
+if bullGrabbed
+    liqGrabber := "BEARS (SSL)"
+if bearGrabbed
+    liqGrabber := "BULLS (BSL)"
+
+// ========================
+// MANIPULATION / DISTRIBUTION
+// ========================
+
+// Simple manipulation detection: price goes beyond then returns
+var string marketStructure = "NEUTRAL"
+
+// Distribution: Lower highs, sellers in control
+if bearGrabbed and (close < open)
+    marketStructure := "DISTRIBUTION"
+
+// Accumulation: Higher lows, buyers in control  
+if bullGrabbed and (close > open)
+    marketStructure := "ACCUMULATION"
+
+// Manipulation: Sharp move then reversal
+manipulation = math.abs(close - open) > amd * 1.5
+
+// ========================
+// SMART MONEY ENTRY ZONES
+// ========================
+
+var string smartMoneyZone = "NONE"
+
+// Reversal: Price returns to OB/FVG after liquidity grab
+reversalLong = fvgBull or (bullishOB and bullGrabbed)
+reversalShort = fvgBear or (bearishOB and bearGrabbed)
+
+if reversalLong
+    smartMoneyZone := "REVERSAL LONG"
+if reversalShort
+    smartMoneyZone := "REVERSAL SHORT"
+
+// Retracement: Price retraces to SD level then continues
+retracement = false
+retracementLevel = 0.0
+
+if close > open and (close < (asianHigh + asianLow) / 2) and (close > asianLow)
+    retracement := true
+    retracementLevel := 0.5
+
+if close > open and (close < (asianHigh - (asianHigh - asianLow) * 0.618)) and (close > (asianHigh - (asianHigh - asianLow) * 0.382))
+    retracement := true
+    retracementLevel := 0.618
+
+if retracement
+    smartMoneyZone := "RETRACEMENT"
+
+// Expansion: Price breaks previous high/low with momentum
+expansionLong = close > londonHigh and (volume > ta.sma(volume, 20) * 1.5)
+expansionShort = close < londonLow and (volume > ta.sma(volume, 20) * 1.5)
+
+if expansionLong
+    smartMoneyZone := "EXPANSION LONG"
+if expansionShort
+    smartMoneyZone := "EXPANSION SHORT"
+
+// Accumulation: Price in range, building position
+accumulation = (high - low) < amd * 0.5 and (close > open)
+
+if accumulation
+    smartMoneyZone := "ACCUMULATION"
+
+// Distribution: Selling into liquidity
+distribution = (high - low) < amd * 0.5 and (close < open)
+
+if distribution
+    smartMoneyZone := "DISTRIBUTION"
+
+// ========================
+// CONFLUENCES (Confirmations)
+// ========================
+
+var int confluences = 0
+confluences := 0
+
+if inAsia or inLondon or inNY
+    confluences += 1
+if bullGrabbed or bearGrabbed
+    confluences += 1
+if bullishOB or bearishOB
+    confluences += 1
+if fvgBull or fvgBear or ifvgBull or ifvgBear
+    confluences += 1
+if close >= upperSD2 or close <= lowerSD2
+    confluences += 1
+if smartMoneyZone != "NONE"
+    confluences += 1
+
+htfTrend = close > ta.sma(close, 50) ? "BULLISH" : "BEARISH"
+if htfTrend == "BULLISH" and close > open
+    confluences += 1
+if htfTrend == "BEARISH" and close < open
+    confluences += 1
+
+momentum = ta.rsi(close, 14)
+if (momentum > 50 and close > open) or (momentum < 50 and close < open)
+    confluences += 1
+
+highProb = confluences >= 6
+
+// ========================
+// MACRO TIMES
+// ========================
+
+var string macroTime = "OFF-HOURS"
+hourUTC = hour(time, "UTC")
+
+if hourUTC >= 0 and hourUTC < 8
+    macroTime := "ASIA"
+if hourUTC >= 8 and hourUTC < 11
+    macroTime := "LONDON"
+if hourUTC >= 13.5 and hourUTC < 16
+    macroTime := "NEW YORK"
+if hourUTC >= 13 and hourUTC < 14
+    macroTime := "LONDON CLOSE"
+
+// ========================
+// CONFIDENCE SCORING
+// ========================
+
+var float confidence = 0
+confidence := 0
+
+// Session
+if inAsia or inLondon or inNY
+    confidence += 20
+
+// SD Level
+if close >= upperSD2 and close < upperSD3
+    confidence += 15
+if close >= upperSD3 or close <= lowerSD3
+    confidence += 20
+if close <= lowerSD2 and close > lowerSD3
+    confidence += 15
+
+// Order Block
+if bullishOB or bearishOB
+    confidence += 15 + obStrength
+
+// FVG
+if fvgBull or fvgBear
+    confidence += 15
+
+// IFVG
+if ifvgBull or ifvgBear
+    confidence += 10
+
+// Liquidity Grab
+if bullGrabbed or bearGrabbed
+    confidence += 10
+
+// Structure
+if marketStructure == "DISTRIBUTION" or marketStructure == "ACCUMULATION"
+    confidence += 10
+
+// ========================
+// PLOTTING
+// ========================
+
+// Sessions Background
+bgColor(inAsia ? color.new(color.blue, 90) : inLondon ? color.new(color.green, 90) : inNY ? color.new(color.red, 90) : na, title="Session")
+
+// SD Levels
+plot(enableSD ? upperSD1 : na, "SD1+", color.new(color.blue, 70), 1)
+plot(enableSD ? upperSD2 : na, "SD2+", color.new(color.orange, 70), 2)
+plot(enableSD ? upperSD3 : na, "SD3+", color.new(color.red, 70), 2)
+plot(enableSD ? lowerSD1 : na, "SD1-", color.new(color.blue, 70), 1)
+plot(enableSD ? lowerSD2 : na, "SD2-", color.new(color.orange, 70), 2)
+plot(enableSD ? lowerSD3 : na, "SD3-", color.new(color.red, 70), 2)
+
+// Order Blocks
+plotshape(bullishOB, title="Bullish OB", location=location.belowbar, style=shape.triangleup, size=size.tiny, color=color.lime, transp=50)
+plotshape(bearishOB, title="Bearish OB", location=location.abovebar, style=shape.triangledown, size=size.tiny, color=color.red, transp=50)
+
+// FVG
+fill(plot(fvgTop), plot(fvgBottom), color=fvgBull ? color.new(color.green, 80) : color.new(color.red, 80), title="FVG")
+
+// Liquidity
+plot(enableLiquidity ? lastHigh : na, "High Liquidity", color.red, 1, plot.style_circles)
+plot(enableLiquidity ? lastLow : na, "Low Liquidity", color.green, 1, plot.style_circles)
+
+// ========================
+// TABLE OUTPUT
+// ========================
+
+var table infoTable = table.new(position.top_right, 2, 15, bgcolor=color.new(color.gray, 90), frame=true, frame_width=1)
+
+// Session Info
+table.cell(infoTable, 0, 0, "SESSION", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 0, macroTime, text_color=color.yellow, text_size=size.small)
+
+// Liquidity
+table.cell(infoTable, 0, 1, "LIQUIDITY", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 1, str.tostring(lastHigh, "#.##") + " / " + str.tostring(lastLow, "#.##"), text_color=color.yellow, text_size=size.small)
+
+// Who Grabbed
+table.cell(infoTable, 0, 2, "GRABBER", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 2, liqGrabber, text_color=color.orange, text_size=size.small)
+
+// Structure
+table.cell(infoTable, 0, 3, "STRUCTURE", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 3, marketStructure, text_color=color.aqua, text_size=size.small)
+
+// SD
+table.cell(infoTable, 0, 4, "SD", text_color=color.white, text_size=size.small)
+sdText = "SD1"
+if close >= upperSD3 or close <= lowerSD3
+    sdText := "SD3"
+else if close >= upperSD2 or close <= lowerSD2
+    sdText := "SD2"
+table.cell(infoTable, 1, 4, sdText, text_color=color.orange, text_size=size.small)
+
+// AMD
+table.cell(infoTable, 0, 5, "AMD", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 5, str.tostring(amd, "#.##") + " pts", text_color=color.lime, text_size=size.small)
+
+// Confidence
+table.cell(infoTable, 0, 6, "CONFIDENCE", text_color=color.white, text_size=size.small)
+confColor = confidence >= 85 ? color.lime : confidence >= 70 ? color.yellow : color.red
+table.cell(infoTable, 1, 6, str.tostring(confidence, "#") + "%", text_color=confColor, text_size=size.small)
+
+// Asian Levels
+table.cell(infoTable, 0, 7, "ASIA H/L", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 7, str.tostring(asianHigh, "#.##") + " / " + str.tostring(asianLow, "#.##"), text_color=color.blue, text_size=size.small)
+
+// London Levels
+table.cell(infoTable, 0, 8, "LONDON H/L", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 8, str.tostring(londonHigh, "#.##") + " / " + str.tostring(londonLow, "#.##"), text_color=color.green, text_size=size.small)
+
+// NY Levels
+table.cell(infoTable, 0, 9, "NY H/L", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 9, str.tostring(nyHigh, "#.##") + " / " + str.tostring(nyLow, "#.##"), text_color=color.red, text_size=size.small)
+
+// OB Status
+table.cell(infoTable, 0, 10, "ORDER BLOCK", text_color=color.white, text_size=size.small)
+obText = bullishOB ? "BULLISH" : bearishOB ? "BEARISH" : "NONE"
+table.cell(infoTable, 1, 10, obText + " (" + str.tostring(obStrength, "#") + ")", text_color=color.yellow, text_size=size.small)
+
+// FVG Status
+table.cell(infoTable, 0, 11, "FVG", text_color=color.white, text_size=size.small)
+fvgText = fvgBull ? "BULLISH" : fvgBear ? "BEARISH" : "NONE"
+table.cell(infoTable, 1, 11, fvgText, text_color=color.orange, text_size=size.small)
+
+// IFVG Status
+table.cell(infoTable, 0, 12, "IFVG", text_color=color.white, text_size=size.small)
+ifvgText = ifvgBull ? "BULLISH" : ifvgBear ? "BEARISH" : "NONE"
+table.cell(infoTable, 1, 12, ifvgText, text_color=color.orange, text_size=size.small)
+
+// Smart Money Zone
+table.cell(infoTable, 0, 13, "SMART MONEY", text_color=color.white, text_size=size.small)
+smColor = smartMoneyZone == "NONE" ? color.gray : smartMoneyZone == "REVERSAL LONG" or smartMoneyZone == "REVERSAL SHORT" ? color.lime : smartMoneyZone == "EXPANSION LONG" or smartMoneyZone == "EXPANSION SHORT" ? color.red : color.yellow
+table.cell(infoTable, 1, 13, smartMoneyZone, text_color=smColor, text_size=size.small)
+
+// Confluences
+table.cell(infoTable, 0, 14, "CONFLUENCES", text_color=color.white, text_size=size.small)
+confText = str.tostring(confluences, "#") + "/8"
+confColor2 = confluences >= 6 ? color.lime : confluences >= 4 ? color.yellow : color.red
+table.cell(infoTable, 1, 14, confText, text_color=confColor2, text_size=size.small)
+
+// Trend
+table.cell(infoTable, 0, 15, "HTF TREND", text_color=color.white, text_size=size.small)
+trendColor = htfTrend == "BULLISH" ? color.lime : color.red
+table.cell(infoTable, 1, 15, htfTrend, text_color=trendColor, text_size=size.small)
+
+// RSI
+table.cell(infoTable, 0, 16, "RSI", text_color=color.white, text_size=size.small)
+rsiColor = momentum > 50 ? color.lime : momentum < 30 ? color.red : color.yellow
+table.cell(infoTable, 1, 16, str.tostring(momentum, "#.#"), text_color=rsiColor, text_size=size_small)
+
+// ========================
+// ALERTS
+// ========================
+
+alertcondition(confidence >= 85, "🔔 High Confidence Setup", "Confidence: {{plot_confidence}}%")
+alertcondition(bullishOB, "🟢 Bullish OB Detected", "Bullish Order Block at {{plot_obEntry}}")
+alertcondition(bearishOB, "🔴 Bearish OB Detected", "Bearish Order Block at {{plot_obEntry}}")
+alertcondition(bullGrabbed, "📉 Liquidity Grab by BEARS", "Bears took liquidity at {{plot_lastLow}}")
+alertcondition(bearGrabbed, "📈 Liquidity Grab by BULLS", "Bulls took liquidity at {{plot_lastHigh}}")
+alertcondition(marketStructure == "DISTRIBUTION", "⚠️ Distribution", "Market in Distribution mode")
+alertcondition(marketStructure == "ACCUMULATION", "⚠️ Accumulation", "Market in Accumulation mode")
+
+// ========================
+// FUNCTIONS
+// ========================
+
+// Session change detection
+sessionChange(sessionName) =>
+    sessionChange = false
+    if sessionName == "Asia"
+        sessionChange := hourUTC >= 0 and hourUTC < 8
+    if sessionName == "London"
+        sessionChange := hourUTC >= 8 and hourUTC < 11
+    if sessionName == "NY"
+        sessionChange := hourUTC >= 13.5 and hourUTC < 16
+    sessionChange

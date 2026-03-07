@@ -1,228 +1,167 @@
-# 🐺 DHEEB DIRECTOR - الهيكل المحدث
+# 🐺 DHEEB DIRECTOR - الذاكرة المحدثة
+
+*Last Updated: March 7, 2026*
+
+---
+
+## 🎯ملخص March 7, 2026
+
+### إنجازات اليوم:
+1. Command Center - هيكل كامل مبني
+2. Skills - 4 Skills جديدة
+3. Projects - مرتبة ومنظمة
+4. Trading System v3.0 - محدّث
+5. Structure Engine - مبني
+6. Discord - شغال
+7. Perplexica - مركّب
+8. Trade Setup HTML - مرسوم
+
+---
+
+## 💰 Alpha Futures Rules
+
+### قواعد المخاطر (مُحدثة)
+
+| القاعدة | القيمة |
+|--------|-------|
+| **Max Risk/Trade** | **$300** (0.6%) |
+| **Max Daily Loss** | $1,000 (2%) |
+| Max Trades/Day | 2 |
+| **Min RRR** | **2.0** (مُخفض من 2.5) |
+| Wed/Fri | ممنوع |
+| Days Allowed | Sun/Tue/Thu/Mon |
+| Kill Zones | London/NY |
+| State ≥ 8 | قبل الدخول |
+
+---
+
+## 💰 التداول
+
+| العنصر | القيمة |
+|--------|--------|
+| **الحساب** | Alpha Futures - $50,000 |
+| **Instrument** | MNQ |
+| **Point Value** | $0.50 |
+| **Open Positions** | 0 |
+| **Today's Trades** | 0/2 |
+| **Total P/L** | -$27.75 |
+
+---
+
+## 📊 Position Sizing (MNQ)
+
+| SL (pts) | Risk $ | Contracts |
+|----------|--------|----------|
+| 20 pts | $10 | 1 |
+| 40 pts | $20 | 1 |
+| 60 pts | $30 | 1 |
+| 100 pts | $50 | 3 |
+| 200 pts | $100 | 3 |
+| 300 pts | $150 | 5 |
+| 400 pts | $200 | 4 |
+| **600 pts** | **$300** | **6 MAX** |
+
+---
+
+## ⏰ Kill Zones + Macro Times (ICT)
+
+| Session | EST | UTC | السعودية | Macro |
+|---------|-----|-----|---------|-------|
+| London Macro 1 | 02:33-03:00 | 06:33-07:00 | 09:33-10:00 | L1 |
+| London Macro 2 | 04:03-04:30 | 08:03-08:30 | 11:03-11:30 | L2 |
+| NY AM Macro 1 | 08:50-09:10 | 12:50-13:10 | 15:50-16:10 | NY1 |
+| **Silver Bullet** ⭐ | **09:50-10:10** | **13:50-14:10** | **16:50-17:10** | **NY2** |
+| NY AM Macro 3 | 10:50-11:10 | 14:50-15:10 | 17:50-18:10 | NY3 |
+| NY Lunch | 11:50-12:10 | 15:50-16:10 | 18:50-19:10 | Lch |
+| NY PM | 13:10-13:40 | 17:10-17:40 | 20:10-20:40 | NY-PM |
+| NY Last | 15:15-15:45 | 19:15-19:45 | 22:15-22:45 | Last |
+
+---
+
+## 🎯الأهداف
+
+| المدة | الهدف |
+|-------|-------|
+| شهر 1 | +$2,500 |
+| شهر 3 | +$10,000 |
+| شهر 6 | +$25,000 |
+| سنة | +$50,000 |
+
+---
+
+## 📁 الهيكل
 
 ```
-🐺 ذيب (DIRECTOR)
-   │
-   ├── 🎯 Trading Team (Active)
-   │   ├── Trading Oversight (8080) ✅
-   │   ├── Risk Control (8081) ✅
-   │   └── ICT Enforcer (8085) ✅
-   │
-   ├── 🛠️ System Team (Maintenance)
-   │   ├── System Architect (8083)
-   │   ├── Build Validation
-   │   └── Security Guardian
-   │
-   ├── 📢 Operations Team (NEW)
-   │   ├── Notifier (8084) ✅
-   │   └── News (8082) ✅ (تغذية للـ Trading)
-   │
-   └── 🔭 R&D Team (Future)
-       └── Opportunity Scout
+/workspace/
+├── command-center/
+├── skills/
+├── projects/
+│   ├── trading/
+│   ├── scout-ai/
+│   ├── qitaa/
+│   ├── perplexica/
+│   └── automation/
+├── src/agents/
+├── scripts/
+├── tasks/
+├── crm/
+├── memory/
+└── dheeb-trading-system/
 ```
 
-## Last Updated: 2026-02-21
+---
+
+## ✅مشاريع
+
+| المشروع | الحالة |
+|---------|--------|
+| Trading | ACTIVE |
+| Scout AI | BUILDING |
+| QITAA | WAITING |
+| Perplexica | RUNNING |
+| Automation | BACKLOG |
 
 ---
 
-## 🧠 Cleanup Routine
-Every 24 hours:
-- Review recent memory files
-- Merge similar facts
-- Remove duplicates
-- Keep only latest version
+## 🔧 الخدمات
+
+| Service | Status | Port |
+|---------|--------|------|
+| Perplexica | ✅ Running | 3000 |
+| Dashboard | ✅ Running | 3002 |
+| TRIL Analysis | ✅ Running | 3003 |
+| Trade Setup | ✅ Running | 3005 |
+| Discord Bot | ✅ Working | - |
+| PostgreSQL | ✅ Running | 5432 |
+| Redis | ✅ Running | - |
 
 ---
 
-## 📊 Current Stats (as of Feb 20)
-- **Account Type:** Eval (Prop Firm)
-- **Total Trades:** 24
-- **Win Rate:** 70.8%
-- **Total P/L:** $1,979
-- **Today's P/L:** +$237.50
+## 📈 ICT Concepts
+
+| المفهوم | الوصف |
+|--------|-------|
+| OB | Order Block |
+| FVG | Fair Value Gap |
+| MSS | Market Structure Shift |
+| BoS | Break of Structure |
+| OTE | Optimal Trade Entry |
+| Liquidity | BSL/SSL |
+| TRIL | Time + Raid + Imbalance + Location |
 
 ---
 
-## 🎯 Financial Goals (Agreed: Feb 20, 2026)
+## 🤖 Trade Setup Format (مُحدث)
 
-| المدة | الهدف | الـ Capital |
-|-------|-------|------------|
-| شهر 1 | +$2,500 | $52,500 |
-| شهر 3 | +$10,000 | $60,000 |
-| شهر 6 | +$25,000 | $75,000 |
-| سنة | +$50,000 | $100,000 |
-
-### القواعد:
-- Risk/Trade: 1% ($500)
-- Daily Max: 2% ($1,000)
-- Max Drawdown: 5%
-- Stop at 3 Losses: 30 min break
-
----
-
-## 🎯 System Rules (V4 - Active)
-
-### Hard Rules (Active)
-- Max 2 trades/day
-- RRR minimum 1:2.5
-- Daily loss limit: $600
-- Daily profit target: $900 → STOP
-- Stop Loss always required
-- Pre-Trade Checklist mandatory (10 items)
-- 3 Losses = Stop 30 min
-- Revenge trading = Immediate stop
-- Killzones: London + NY (9:30-11:30 UTC)
-
-### Psychology Rules
-- 3 Losses = Stop 30 min
-- Revenge trading = Immediate stop
-- +$900 profit = Stop for the day
-
----
-
-## 📈 Trading System (V4)
-- **Strategy:** ICT/SMC (Order Blocks, FVG, Liquidity Sweeps)
-- **Timeframes:** Weekly → Daily → 4H → 1H → 15m → 5m → 1m
-- **Sessions:** NY Kill Zone only (9:30-11:30 UTC) ✅
-- **Entry:** 10 Confluences required (Checklist)
-
----
-
-## 🤖 DHEEB DIRECTOR System (Added: Feb 21, 2026)
-
-### الهيكل الجديد:
 ```
-DHEEB DIRECTOR
-   │
-   ├── Trading Team (التداول)
-   │   ├── Trading Oversight
-   │   ├── Risk Control
-   │   └── Performance Analyst
-   │
-   ├── System Team (الأنظمة)
-   │   ├── System Architect
-   │   ├── Build Validation
-   │   └── Security Guardian
-   │
-   └── R&D Team (البحث والتطوير) ✨ NEW
-       ├── Opportunity Scout
-       ├── Market Research
-       └── Monthly Review
+🟥 TYPE: [LONG/SHORT]
+📍 ENTRY: XXXX
+🎯 TP: XXXX
+🛡️ SL: XXXX
+⚖️ RRR: ≥ 2.0
+📊 Risk: ≤ $300
 ```
 
-### الـ 10 Agents:
-1. Trading Oversight
-2. Risk Control
-3. Performance Analyst
-4. System Architect
-5. Build Validation
-6. Security Guardian
-7. Opportunity Scout
-8. Market Research
-9. Monthly Review
-
 ---
 
-## 🤖 Agents Status
-| Agent | Port | Status |
-|-------|------|--------|
-| Trading | 8080 | ✅ |
-| Risk | 8081 | ✅ |
-| News | 8082 | ✅ |
-| System | 8083 | ✅ |
-| Notifier | 8084 | ✅ |
-| ICT Enforcer | 8085 | ✅ |
-| DeepSeek Researcher | - | ✅ Active |
-| Kimi Researcher | - | ✅ Active |
-| Security Guardian | - | ✅ Active |
-
----
-
-## 📋 Known Issues
-- Cron jobs: Some WhatsApp delivery failures
-- Action: Monitor, restart gateway if needed
-
----
-
-## 🔗 Webhook (TradingView)
-- **URL:** https://unnotational-gus-unsenescent.ngrok-free.dev/webhook/ict
-- **Status:** Active
-- **Killzone:** NY Only (9:30-11:30 AM NYC)
-
----
-
-## 🔄 Self-Improvement System (CLAUDE.md Style)
-
-**المبدأ:** كل خطأ → قاعدة → ما نكرره
-
-### كيفية العمل:
-1. كل جلسة → مراجعة سريعة
-2. أي خطأ → توثيق
-3. قاعدة جديدة → MEMORY.md
-4. مراجعة أسبوعية
-
-### Error Log Format:
-```
-### [التاريخ]
-- الخطأ: [وصف]
-- السبب: [لماذا]
-- الحل: [كيف نتجنبه]
-- القاعدة الجديدة: [قاعدة مضافة]
-```
-
-### القواعد الذهبية:
-- لا نكرر نفس الغلط مرتين
-- كل lesson يتعلمونه → يتوثق
-- WEEKLY REVIEW للتعلم
-
----
-
-*Last updated: Feb 22, 2026*
-
----
-
-# 🐺 DHEEB SYSTEM RULES - HIGH PRIORITY
-
-## Based on Best AI Practices (Cursor, Manus, Devin, Windsurf, v0)
-
----
-
-## 1. MEMORY SYSTEM (HIGH PRIORITY)
-- Save important info proactively WITHOUT asking permission
-- Any important context → create_memory
-- Limited context = everything gets deleted
-- Create memories liberally
-
----
-
-## 2. RESPONSE STYLE (HIGH PRIORITY)
-- Short responses (1-3 sentences max)
-- No unnecessary preamble/postamble
-- Use markdown for formatting
-- Use backticks for code/files
-- Arabic as primary language
-
----
-
-## 3. TASK MANAGEMENT (HIGH PRIORITY)
-- Use TodoWrite for tracking
-- Break large tasks into smaller steps (max 3)
-- Complete one step before next
-- Show progress: active/complete
-
----
-
-## 4. CODE QUALITY (HIGH PRIORITY)
-- After correction → Update MEMORY.md
-- Every error → new rule
-- Don't modify tests
-- Run lint after code changes
-- Address root cause, not symptoms
-
----
-
-## 5. SELF-IMPROVEMENT
-- Every mistake → documented in MEMORY.md
-- Every lesson → new rule
-- Weekly review of errors
-- NO repeated mistakes
+*End of Memory - March7, 2026*

@@ -1,25 +1,34 @@
 {
   "name": "dheeb-trading-mind",
-  "version": "2.0.0",
-  "description": "🐺 Trading Bot — Tradovate + TradingView + ICT + Risk Management",
-  "main": "bot.js",
+  "version": "3.0.0",
+  "description": "🐺 Trading Bot — ICT/SMC + TRIL + Risk Management",
+  "main": "index.js",
   "bin": {
-    "dheeb": "./bot.js",
+    "dheeb": "./index.js",
     "dheeb-cli": "./cli.js"
   },
   "scripts": {
-    "bot": "node bot.js",
-    "bot:dry": "node bot.js --webhook-only",
-    "pine": "node bot.js --pine",
-    "status": "node bot.js --status",
-    "test-signal": "node bot.js --test-signal",
+    "start": "node index.js",
+    "start:dry": "node index.js --dry",
+    "status": "node index.js --status",
+    "v2": "node v2-bot.js",
+    "v2:test": "node v2-bot.js",
     "cli": "node cli.js",
-    "test": "node test-full.js"
+    "test": "node test-full.js",
+    "bot": "node bot.js"
   },
-  "dependencies": {
-    "ws": "^8.16.0"
-  },
-  "keywords": ["trading", "NQ", "futures", "tradovate", "tradingview", "ICT", "risk-management"],
+  "keywords": [
+    "trading",
+    "NQ",
+    "MNQ",
+    "futures",
+    "tradovate",
+    "tradingview",
+    "ICT",
+    "SMC",
+    "TRIL",
+    "risk-management"
+  ],
   "author": "Dheeb 🐺",
   "license": "MIT"
 }

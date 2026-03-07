@@ -1,92 +1,173 @@
+#!/usr/bin/env node
 /**
- * TradingView Webhook Server v2
- * With News & Analysis
+ * DHEEB TradingView Webhook Handler
+ * Receives alerts from TradingView and processes based on Unified System
  */
 
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
+const app = express();
+app.use(express.json());
 
-const PORT = process.env.PORT || 8080;
-const WHATSAPP_TARGET = '+966565111696';
+// Configuration
+const config = {
+    telegramToken: '8307993465:AAHAH8rU4mZf9cJXoHSdgY2IIUXnmwF3oQ8',
+    chatId: '688493754'
+};
 
-// Log file
-const LOG_FILE = '/home/ubuntu/.openclaw/workspace/memory/webhook-log.json';
+// Rules from Unified System
+const RULES = {
+    minConfidence: 85,
+    minRRR: 2.5,
+    killZones: {
+        london: { start: 8, end: 11 },
+        ny: { start: 13.5, end: 16 }
+    }
+};
 
-function logSignal(data) {
-  const log = {
-    timestamp: new Date().toISOString(),
-    data: data
-  };
-  
-  let logs = [];
-  try {
-    const existing = fs.readFileSync(LOG_FILE, 'utf8');
-    logs = JSON.parse(existing);
-  } catch (e) {}
-  
-  logs.unshift(log);
-  if (logs.length > 100) logs = logs.slice(0, 100);
-  
-  fs.writeFileSync(LOG_FILE, JSON.stringify(logs, null, 2));
-  console.log('Signal received:', JSON.stringify(data, null, 2));
+// Telegram sender
+async function sendTelegram(message) {
+    const TelegramBot = require('node-telegram-bot-api');
+    const bot = new TelegramBot(config.telegramToken, { polling: false });
+    try {
+        await bot.sendMessage(config.chatId, message, { parse_mode: 'Markdown' });
+        return true;
+    } catch (e) {
+        console.log('Telegram error:', e.message);
+        return false;
+    }
 }
 
-function sendWhatsAppNotification(data) {
-  const { exec } = require('child_process');
-  
-  let message = '📊 *TradingView Alert*\n\n';
-  if (data.raw) {
-    message += `Signal: ${data.raw}\n`;
-    message += `\n📈 Analysis:\n`;
-    message += `- Price: ${data.raw.replace('MNQ1! Crossing ', '')}\n`;
-    message += `- Zone: Premium\n`;
-    message += `- Recommend: Wait for discount\n`;
-  } else {
-    message += JSON.stringify(data, null, 2);
-  }
-  
-  const cmd = `openclaw message send --channel whatsapp --target ${WHATSAPP_TARGET} --message "${message.replace(/"/g, '\\"')}"`;
-  
-  exec(cmd, (err) => {
-    if (err) console.log('WhatsApp error:', err.message);
-    else console.log('WhatsApp sent');
-  });
+// Get current session
+function getSession() {
+    const now = new Date();
+    const hour = now.getUTCHours() + now.getUTCMinutes() / 60;
+    
+    const london = hour >= RULES.killZones.london.start && hour < RULES.killZones.london.end;
+    const ny = hour >= RULES.killZones.ny.start && hour < RULES.killZones.ny.end;
+    
+    return { london, ny, hour };
 }
 
-const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/webhook') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', () => {
-      let data;
-      try {
-        data = JSON.parse(body);
-      } catch (e) {
-        data = { raw: body, text: body };
-      }
-      
-      logSignal(data);
-      sendWhatsAppNotification(data);
-      
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ status: 'ok', received: true }));
-    });
-  } else if (req.method === 'GET' && req.url === '/news') {
-    // Return simple news info
-    const news = {
-      date: new Date().toISOString().split('T')[0],
-      events: [
-        { time: '14:30 UTC', event: 'US Retail Sales', impact: 'High' }
-      ]
+// Process TradingView alert
+function processAlert(data) {
+    // No time restrictions - accept all alerts
+    // User decides based on their own rules
+    
+    // Calculate confidence (simplified)
+    let confidence = 50;
+    if (data.sd2) confidence += 20;
+    if (data.ob) confidence += 15;
+    if (data.fvg) confidence += 15;
+    if (data.liquidity) confidence += 10;
+    
+    return {
+        valid: true,
+        confidence,
+        message: formatAlertMessage(data, confidence)
     };
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(news));
-  } else {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('TradingView Webhook Server v2. Send POST to /webhook');
-  }
+}
+
+function formatAlertMessage(data, confidence) {
+    const direction = data.direction || 'BUY/SELL';
+    const directionText = direction === 'BUY' ? 'bullish' : 'bearish';
+    const entry = data.entry || 'TBD';
+    const sl = data.sl || 'TBD';
+    const tp = data.tp || 'TBD';
+    const rrr = data.rrr || 'TBD';
+    const price = data.price || data.close || 'TBD';
+    const bsl = data.bsl || '---';
+    const ssl = data.ssl || '---';
+    const ob = data.ob || '---';
+    const fvg = data.fvg || '---';
+    
+    // Calculate distances
+    const entryNum = parseFloat(entry);
+    const slNum = parseFloat(sl);
+    const tpNum = parseFloat(tp);
+    const priceNum = parseFloat(price);
+    
+    let slDist = 'TBD';
+    let tpDist = 'TBD';
+    
+    if (!isNaN(entryNum) && !isNaN(slNum)) {
+        const diff = Math.abs(entryNum - slNum);
+        slDist = direction === 'BUY' ? `-${diff} pts` : `+${diff} pts`;
+    }
+    
+    if (!isNaN(entryNum) && !isNaN(tpNum)) {
+        const diff = Math.abs(tpNum - entryNum);
+        tpDist = direction === 'BUY' ? `+${diff} pts` : `-${diff} pts`;
+    }
+    
+    // TRIL Format exact
+    return `📍 DHEEB TRIL ANALYZER
+
+Status: price = ${price} | trend = ${directionText}
+
+┌─────────────────────────────────────────────────┐
+│  ${bsl} ─── BSL                              │
+│          │                                       │
+│          │  SL = ${slDist}                      │
+│  ${sl} ─── ● SL ────────────────── ${!isNaN(entryNum) && !isNaN(slNum) ? Math.abs(entryNum - slNum) : '?'} pts │
+│          │                                       │
+│  ${ob} ─── ┌─────────────────────┐          │
+│              │    ORDER BLOCK      │          │
+│              │    ${entry} │          │
+│              └─────────────────────┘          │
+│                             │                   │
+│  ${entry} ─── Entry 📍 (${direction})               │
+│                             │                   │
+│  ${price} ─── ● PRICE NOW                    │
+│                             │                   │
+│  ${tp} ─── ○ TP ────────────────── ${!isNaN(entryNum) && !isNaN(tpNum) ? Math.abs(tpNum - entryNum) : '?'} pts│
+│                             │                   │
+│  ${ssl} ─── ○ SSL                           │
+└─────────────────────────────────────────────────┘
+
+---
+| Item | Value |
+| --------- | ------------------------ |
+| Direction | ${direction} |
+| Entry | ${entry} |
+| SL | ${sl} ${!isNaN(priceNum) && !isNaN(slNum) ? `(${(slNum - priceNum).toFixed(0)} from price)` : ''} |
+| TP | ${tp} ${!isNaN(priceNum) && !isNaN(tpNum) ? `(${(tpNum - priceNum).toFixed(0)} from price)` : ''} |
+| R:R | ${rrr} |
+
+---
+🐺
+`;
+}
+
+// Webhook endpoint
+app.post('/webhook', async (req, res) => {
+    const data = req.body;
+    console.log('Received alert:', JSON.stringify(data));
+    
+    // Process the alert
+    const result = processAlert(data);
+    
+    if (result.valid) {
+        // Send to Telegram
+        await sendTelegram(result.message);
+        res.json({ success: true, ...result });
+    } else {
+        console.log('Alert rejected:', result.reason);
+        res.json({ success: false, ...result });
+    }
 });
 
-server.listen(PORT, () => {
-  console.log(`🚀 Webhook server v2 running on port ${PORT}`);
+// Health check
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'OK', 
+        session: getSession(),
+        rules: RULES 
+    });
 });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🟢 DHEEB Webhook listening on port ${PORT}`);
+});
+
+module.exports = app;

@@ -1,0 +1,28 @@
+{
+  "ndx_symbol": "^NDX",
+  "symbol": "MNQ",
+  "kill_zones": {
+    "london": {"start": "08:00", "end": "11:00", "timezone": "UTC"},
+    "ny": {"start": "14:00", "end": "21:00", "timezone": "UTC"}
+  },
+  "risk": {
+    "min_rrr": 2.0,
+    "max_risk_percent": 1.0,
+    "max_daily_loss": 600,
+    "max_trades_per_day": 2,
+    "account_balance": 50000,
+    "contracts_max": 5,
+    "max_sl_points": 50
+  },
+  "detection": {
+    "near_high_low_threshold": 0.005,
+    "fvg_min_gap": 10
+  },
+  "decision_engine": {
+    "url": "http://localhost:3000/decide",
+    "timeout": 5000
+  },
+  "telegram": {
+    "chat_id": "688493754"
+  }
+}

@@ -1,0 +1,60 @@
+2026-02-27 00:36:03: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:03:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:03: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:03:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:03: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:03:   now = datetime.utcnow()
+2026-02-27 00:36:04: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:04:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:04: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:04:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:04: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:04:   now = datetime.utcnow()
+2026-02-27 00:36:04: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:04:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:05: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:05:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:05: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:05:   now = datetime.utcnow()
+2026-02-27 00:36:05: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:05:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:05: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:05:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:05: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:05:   now = datetime.utcnow()
+2026-02-27 00:36:06: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:06:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:06: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:06:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:06: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:06:   now = datetime.utcnow()
+2026-02-27 00:36:06: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:06:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:07: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:07:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:07: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:07:   now = datetime.utcnow()
+2026-02-27 00:36:07: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:07:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:07: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:07:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:07: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:07:   now = datetime.utcnow()
+2026-02-27 00:36:08: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:08:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:08: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:08:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:08: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:08:   now = datetime.utcnow()
+2026-02-27 00:36:08: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:08:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:08: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:08:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:08: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:08:   now = datetime.utcnow()
+2026-02-27 00:36:09: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:93: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:09:   print(f"[{datetime.utcnow().isoformat()}] 🔍 Checking NDX...")
+2026-02-27 00:36:09: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:09:   'timestamp': datetime.utcnow().isoformat()
+2026-02-27 00:36:09: /home/ubuntu/.openclaw/workspace/dheeb-mvp/heartbeat-ndx.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+2026-02-27 00:36:09:   now = datetime.utcnow()

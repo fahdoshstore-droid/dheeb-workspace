@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1771966377723,
+    "timestamp": "2026-02-24T20:52:57.723Z",
+    "direction": "SHORT",
+    "entryPrice": 24829,
+    "quantity": 2,
+    "exitPrice": 24757,
+    "pnl": 72,
+    "notes": "Trade 1 - First trade",
+    "source": "manual",
+    "status": "CLOSED",
+    "closedAt": "2026-02-24T20:52:57.730Z"
+  },
+  {
+    "id": 1771966377762,
+    "timestamp": "2026-02-24T20:52:57.762Z",
+    "direction": "SHORT",
+    "entryPrice": 25018.5,
+    "quantity": 3,
+    "exitPrice": 25085,
+    "pnl": -99.75,
+    "notes": "Trade 2 - Second trade",
+    "source": "manual",
+    "status": "CLOSED",
+    "closedAt": "2026-02-24T20:52:57.730Z"
+  }
+]

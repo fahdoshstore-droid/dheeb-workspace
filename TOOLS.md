@@ -2,54 +2,57 @@
 
 ### Language
 - Dialect: Saudi Arabic (السعودية)
-- Keep it consistent
 
-### قواعد صارمة
-- جواب مباشر, بدون لف
-- لا filler words
-- كل رد = فكرة وحدة
-- لا عاطفة, لا مواساة
-- أخطاء = تصحيح فوري
-- إذا ما أقدر أسوي شيء, أقول مباشرة
+### Kimi AI API
+- URL: https://platform.moonshot.ai/
+- Get API Key: Register → API Keys
+- Used for: Vision + Chat
+- Project: SCOUT AI
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+### Gmail
+- Email: TheebMind@gmail.com
+- Password: Theeb@openclaw123
+- Status: NEEDS APP PASSWORD
 
-## What Goes Here
+### الطريقة الحصرية:
+1. افتح: https://myaccount.google.com/signinoptions/two-step-verification
+2. فعّل 2-Step Verification
+3. افتح: https://myaccount.google.com/apppasswords  
+4. اسم التطبيق: Dheeb
+5. احفظ الـ 16 رقم
 
-Things like:
+### Twitter/X Access
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+**Method:** Use fxtwitter API
 
-## Examples
+```bash
+# Get tweet JSON
+curl https://api.fxtwitter.com/status/{tweet_id}
 
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
+# Example
+curl https://api.fxtwitter.com/status/2027744530124951831
 ```
+
+**Why:** Twitter blocked, fxtwitter works without login
+
+---
+
+### yt-dlp
+- Download videos: YouTube, Twitter, TikTok, Instagram
+- Used for: SCOUT AI player videos
+
+### Previous Methods (Failed)
+- Direct Twitter → Blocked
+- Nitter → Blocked
+- vxtwitter → Blocked
+- fixupx → Blocked
+
+---
 
 ### Tradovate
 - Username: fodiiis116229
 - Password: p$QcR4mJ9v
-- Status: Trying to connect via API
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+*Last updated: March 2, 2026*

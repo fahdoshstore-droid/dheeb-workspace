@@ -1,0 +1,108 @@
+// DHEEB Unified Trading System - Pine Script v1.0
+// Based on SMC + SD Levels + Session Strategy
+// @version=5
+
+//@strategy("DHEEB Unified Strategy", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=1)
+
+// === INPUTS ===
+group1 = "📊 Kill Zones"
+enableKillZone = input.bool(true, "Enable Kill Zones", group=group1)
+sessionLondon = input.bool(true, "London Session (8-11 UTC)", group=group1)
+sessionNY = input.bool(true, "NY Session (13:30-16 UTC)", group=group1)
+
+group2 = "🎯 SMC Settings"
+enableSMC = input.bool(true, "Enable SMC Patterns", group=group2)
+showOB = input.bool(true, "Show Order Blocks", group=group2)
+showFVG = input.bool(true, "Show FVG", group=group2)
+showLiquidity = input.bool(true, "Show Liquidity Levels", group=group2)
+
+group3 = "📈 Standard Deviation"
+enableSD = input.bool(true, "Enable SD Levels", group=group3)
+sdLength = input.int(20, "SD Length", group=group3)
+sdMultiplier = input.float(2.0, "SD Multiplier", group=group3)
+
+group4 = "🛡️ Risk Management"
+maxRisk = input.float(1.0, "Max Risk %", group=group4)
+rrMin = input.float(2.5, "Min R:R", group=group4)
+
+// === INDICATORS ===
+
+// Standard Deviation
+sdLevel = ta.stdev(close, sdLength)
+sdUpper1 = close + sdLevel * 1
+sdLower1 = close - sdLevel * 1
+sdUpper2 = close + sdLevel * 2
+sdLower2 = close - sdLevel * 2
+sdUpper3 = close + sdLevel * 3
+sdLower3 = close - sdLevel * 3
+
+// === SESSION TIMES ===
+// London: 8:00 - 11:00 UTC
+inLondon = time("1", "0800-1100:1234567")
+// NY: 13:30 - 16:00 UTC  
+inNY = time("1", "1330-1600:1234565")
+
+killZoneActive = enableKillZone and (inLondon or inNY)
+
+// === ORDER BLOCK DETECTION ===
+// Bullish OB (last green candle before down move)
+bullishOB = enableSMC and close > open and (close[1] < open[1]) and (low < low[1])
+bearishOB = enableSMC and close < open and (close[1] > open[1]) and (high > high[1])
+
+// === FVG DETECTION ===
+// Fair Value Gap
+fvgUp = enableSMC and (low[2] > high[1])
+fvgDown = enableSMC and (high[2] < low[1])
+
+// === LIQUIDITY ===
+// High/Low liquidity zones
+highLiquidity = enableLiquidity and ta.highest(high, 20)
+lowLiquidity = enableLiquidity and ta.lowest(low, 20)
+
+// === CONFIDENCE SCORING ===
+var float confidence = 0
+confidence := 0
+
+// Kill Zone: +20
+if killZoneActive
+    confidence += 20
+
+// SD Level: +15 for SD2, +20 for SD3
+if enableSD and (close >= sdUpper2 and close < sdUpper3)
+    confidence += 15
+if enableSD and (close >= sdUpper3 or close <= sdLower3)
+    confidence += 20
+
+// Order Block: +15
+if bullishOB or bearishOB
+    confidence += 15
+
+// FVG: +15
+if fvgUp or fvgDown
+    confidence += 15
+
+// === ALERTS ===
+// High Probability Setup (>= 85%)
+highProbSetup = confidence >= 85
+
+// === PLOTTING ===
+plot(enableSD ? sdUpper1 : na, "SD1", color.blue, 1, plot.style_line)
+plot(enableSD ? sdUpper2 : na, "SD2", color.orange, 2, plot.style_line)
+plot(enableSD ? sdUpper3 : na, "SD3", color.red, 2, plot.style_line)
+plot(enableSD ? sdLower1 : na, "SD1", color.blue, 1, plot.style_line)
+plot(enableSD ? sdLower2 : na, "SD2", color.orange, 2, plot.style_line)
+plot(enableSD ? sdLower3 : na, "SD3", color.red, 2, plot.style_line)
+
+// Plot Kill Zone Background
+bgcolor(killZoneActive ? color.new(color.green, 90) : na, title="Kill Zone")
+
+// === ALERTS ===
+alertcondition(highProbSetup, "🔔 High Probability Setup", "DHEEB Alert: {{ticker}} - Confidence: {{plot_confidence}}%")
+
+// === NOTIFICATIONS ===
+if highProbSetup
+    alert("🎯 DHEEB SETUP ALERT\n" + 
+          "Symbol: {{ticker}}\n" +
+          "Confidence: {{plot_confidence}}%\n" +
+          "Price: {{close}}\n" +
+          "Time: {{timenow}}", alert.freq_once_per_bar)
