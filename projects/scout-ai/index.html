@@ -632,3 +632,38 @@ renderPlayers();
 </script>
 </body>
 </html>
+
+// ==================== INIT ====================
+function init(){
+renderPlayers();
+checkApiStatus();
+}
+
+// ==================== OPENCLAW WEBHOOK ====================
+function sendToOpenClaw(event, payload){
+const url = 'https://your-openclaw-server.com/api/scout';
+if(url.includes('your-')) return;
+fetch(url, {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({event, timestamp: new Date().toISOString(), source: 'scout-ai', ...payload})
+}).catch(()=>{});
+}
+
+function checkApiStatus(){
+const statusEl = document.getElementById('apiStatus');
+if(!statusEl) return;
+if(KIMI_API_KEY === 'YOUR_KIMI_API_KEY_HERE'){
+statusEl.className = 'api-status offline';
+statusEl.innerHTML = '<span>🔴</span> Kimi API غير مفعل';
+}else{
+statusEl.className = 'api-status online';
+statusEl.innerHTML = '<span>🟢</span> Kimi API متصل';
+}
+}
+
+// Start
+window.addEventListener('load', init);
+</script>
+</body>
+</html>
