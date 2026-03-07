@@ -1,5 +1,29 @@
-*.env
+# Dependencies
 node_modules/
-*.log
-secrets/
+package-lock.json
+
+# Secrets
+.env
+.env.local
 *.pem
+*.key
+
+# Logs
+*.log
+logs/
+
+# Backups
+*.tar.gz
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large files
+*.mp4
+*.mov
+
+# Data
+data/*.json
+!data/.gitkeep
