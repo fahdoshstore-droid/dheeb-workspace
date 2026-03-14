@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<title>SCOUT AI | كشافة المواهب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#0a0a0f;--surface:#16161f;--gold:#d4a843;--gold-d:#b8922e;--gold-glow:rgba(212,168,67,0.12);--white:#e8e6e3;--gray:#8a8a9a;--border:#2a2a3a;--lime:#84cc16;--sky:#38bdf8;--cyan:#18ffff;--whatsapp:#25d366;--danger:#ff5252;--warning:#ffc107}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--white);font-family:'Cairo',sans-serif;line-height:1.7}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:100px 20px}
+.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(32px,6vw,58px);font-weight:900;margin-bottom:16px}
+.hero h1 span{background:linear-gradient(135deg,var(--gold),var(--lime),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--gray);max-width:480px;margin:0 auto 28px;font-size:15px}
+.btn{display:inline-flex;gap:8px;padding:12px 28px;border-radius:10px;font-weight:700;text-decoration:none;transition:all 0.3s}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--bg);box-shadow:0 4px 20px var(--gold-glow)}
+.btn-outline{border:1.5px solid var(--border);color:var(--white)}
+.stats{display:flex;gap:32px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.stat{text-align:center}.stat-v{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--gold)}
+.stat-l{font-size:11px;color:var(--gray)}
+.problem{padding:60px 20px;max-width:800px;margin:0 auto}.problem h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:24px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
+.pc-n{font-size:36px;font-weight:900;color:rgba(212,168,67,0.15)}.pc-t{font-weight:700;margin:8px 0}.pc-d{font-size:12px;color:var(--gray)}
+.solution{background:#12121a;padding:60px 20px;text-align:center}.solution h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:16px}
+.hybrid{display:flex;align-items:center;justify-content:center;gap:20px;margin:30px 0;flex-wrap:wrap}
+.hy{flex:1;min-width:200px;padding:24px;border-radius:12px}
+.hy.ai{background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15)}
+.hy.sc{background:rgba(212,168,67,0.05);border:1px solid rgba(212,168,67,0.15)}
+.hy-pct{font-family:'Outfit',sans-serif;font-size:42px;font-weight:900}
+.hy.ai .hy-pct{color:var(--sky)}.hy.sc .hy-pct{color:var(--gold)}
+.steps{padding:60px 20px;max-width:900px;margin:0 auto}.steps h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.step-n{width:32px;height:32px;border-radius:8px;background:var(--gold-glow);color:var(--gold);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.clubs{background:#12121a;padding:60px 20px}.clubs h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
+.clubs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+.cta{text-align:center;padding:80px 20px}.cta h2{font-family:'Outfit',sans-serif;font-size:32px;font-weight:900;margin-bottom:16px}
+.cta p{color:var(--gray);margin-bottom:24px}
+footer{padding:20px;text-align:center;border-top:1px solid var(--border);color:var(--gray);font-size:12px}
+.app-page{display:none;padding:80px 20px 40px;min-height:100vh}.app-page.active{display:block}
+.app-container{max-width:900px;margin:0 auto}
+.back-btn{background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px;margin-bottom:16px}
+.upload-zone{border:2px dashed var(--border);border-radius:16px;padding:36px;text-align:center;cursor:pointer;background:var(--surface);margin-bottom:20px}
+.upload-zone:hover{border-color:var(--gold);background:var(--gold-glow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:14px}.form-group.full{grid-column:1/-1}
+label{display:block;font-size:11px;color:var(--gray);margin-bottom:5px}
+input,select{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--white);font-family:inherit;font-size:13px}
+input:focus,select:focus{border-color:var(--gold);outline:none}
+.analyzing-page{display:none;min-height:100vh;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:40px 20px}
+.analyzing-page.active{display:flex}
+.spinner{width:80px;height:80px;border:4px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress{width:200px;height:6px;background:var(--border);border-radius:3px;margin:20px auto;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);transition:width 0.3s}
+.score-circle{width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:14px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin:2px}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.player-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;cursor:pointer}
+.player-card:hover{border-color:var(--gold)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:1000}
+.modal.active{display:flex}
+.modal-content{background:var(--surface);border:2px solid var(--gold);border-radius:20px;padding:28px;max-width:460px;width:90%}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);padding:12px 24px;border-radius:50px;font-weight:700;display:none;z-index:1001}
+.toast.show{display:block}
+.stat-bar{margin-bottom:10px}.stat-bar-header{display:flex;justify-content:space-between;margin-bottom:3px;font-size:12px}
+.stat-bar-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1.2s}
+.confidence-bar{height:7px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:5px}
+.dna-position{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.dna-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+.dna-bar{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.tip-item{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px;padding:9px;border-radius:9px;background:var(--gold-glow)}
+.tip-num{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--bg)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.filters input,.filters select{flex:1;min-width:140px}
+.api-status{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-size:11px;margin-bottom:10px}
+.api-status.online{background:rgba(212,168,67,0.1);color:var(--gold);border:1px solid rgba(212,168,67,0.2)}
+.api-status.offline{background:rgba(239,68,68,0.1);color:var(--danger);border:1px solid rgba(239,68,68,0.2)}
+@media(max-width:700px){.grid,.steps-grid,.clubs-grid,.form-grid{grid-template-columns:1fr}.hybrid{flex-direction:column}}
+</style>
+</head>
+<body>
+<!-- Landing -->
+<section class="hero" id="landing">
+<h1>اكتشف المواهب<br><span>قبل الجميع</span></h1>
+<p class="sub">منصة ذكاء اصطناعي هجينة تجمع بين عين الكشّاف وقوة AI لتقييم اللاعبين بدقة غير مسبوقة</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+<a href="#" class="btn btn-primary" onclick="showApp('upload')">📸 حلل موهبتك</a>
+<a href="#" class="btn btn-outline" onclick="showApp('scout')">🔍 لوحة الكشاف</a>
+</div>
+<div class="stats">
+<div class="stat"><div class="stat-v">60%</div><div class="stat-l">Scout — خبرة بشرية</div></div>
+<div class="stat"><div class="stat-v">40%</div><div class="stat-l">AI — تحليل ذكي</div></div>
+<div class="stat"><div class="stat-v">3x</div><div class="stat-l">أسرع في الاكتشاف</div></div>
+</div>
+</section>
+<!-- Problem -->
+<section class="problem">
+<h2>المشكلة</h2>
+<div class="grid">
+<div class="pc"><div class="pc-n">01</div><div class="pc-t">التقييم الذاتي</div><div class="pc-d">الكشافون يعتمدون على الإحساس. نفس اللاعب يحصل تقييمات مختلفة.</div></div>
+<div class="pc"><div class="pc-n">02</div><div class="pc-t">ضياع البيانات</div><div class="pc-d">لا قاعدة بيانات موحدة للمقارنة والتتبع.</div></div>
+<div class="pc"><div class="pc-n">03</div><div class="pc-t">التغطية المحدودة</div><div class="pc-d">مواهب في الأكاديميات الصغيرة لا تُكتشف.</div></div>
+<div class="pc"><div class="pc-n">04</div><div class="pc-t">انعدام الثقة بالـ AI</div><div class="pc-d">الأندية لا تثق بأنظمة AI بحتة.</div></div>
+</div>
+</section>
+<!-- Solution -->
+<section class="solution">
+<h2>الحل — النموذج الهجين</h2>
+<div class="hybrid">
+<div class="hy ai"><div class="hy-pct">40%</div><div style="font-weight:700;margin:8px 0">AI Vision</div><div style="font-size:12px;color:var(--gray)">تحليل فيديو تلقائي</div></div>
+<div style="font-size:24px">⚡</div>
+<div class="hy sc"><div class="hy-pct">60%</div><div style="font-weight:700;margin:8px 0">Scout</div><div style="font-size:12px;color:var(--gray)">تقييم الكشاف المحترف</div></div>
+</div>
+</section>
+<!-- Steps -->
+<section class="steps">
+<h2>4 خطوات للاكتشاف</h2>
+<div class="steps-grid">
+<div class="step"><div class="step-n">1</div><div style="font-size:24px;margin:8px 0">📹</div><div class="pc-t">رفع الفيديو</div><div style="font-size:11px;color:var(--gray)">من الجوال</div></div>
+<div class="step"><div class="step-n">2</div><div style="font-size:24px;margin:8px 0">🤖</div><div class="pc-t">تحليل AI</div><div style="font-size:11px;color:var(--gray)">40% من الدرجة</div></div>
+<div class="step"><div class="step-n">3</div><div style="font-size:24px;margin:8px 0">📋</div><div class="pc-t">تقييم الكشاف</div><div style="font-size:11px;color:var(--gray)">60% من الدرجة</div></div>
+<div class="step"><div class="step-n">4</div><div style="font-size:24px;margin:8px 0">🎯</div><div class="pc-t">التقرير</div><div style="font-size:11px;color:var(--gray)">توصية نهائية</div></div>
+</div>
+</section>
+<!-- Clubs -->
+<section class="clubs">
+<h2>لماذا SCOUT AI؟</h2>
+<div class="clubs-grid">
+<div class="cc"><div style="font-size:24px;margin-bottom:8px">⏱️</div><div class="pc-t">وقت أقل</div><div class="pc-d">تقليل وقت التقييم 3 أضعاف</div></div>
+<div class="cc"><div style="font-size:24px;margin-bottom:8px">📊</div><div class="pc-t">بيانات موحدة</div><div class="pc-d">قارن وتتبع</div></div>
+<div class="cc"><div style="font-size:24px;margin-bottom:8px">🎯</div><div class="pc-t">دقة أعلى</div><div class="pc-d">AI + Scout معاً</div></div>
+<div class="cc"><div style="font-size:24px;margin-bottom:8px">🌍</div><div class="pc-t">تغطية أوسع</div><div class="pc-d">اكتشف مواهب جديدة</div></div>
+<div class="cc"><div style="font-size:24px;margin-bottom:8px">🤝</div><div class="pc-t">ثقة الكشاف</div><div class="pc-d">النموذج يحترم الخبرة</div></div>
+<div class="cc"><div style="font-size:24px;margin-bottom:8px">🇸🇦</div><div class="pc-t">Vision 2030</div><div class="pc-d">متوافق مع كأس 2034</div></div>
+</div>
+</section>
+<!-- CTA -->
+<section class="cta">
+<h2>المستقبل يبدأ من الملعب</h2>
+<p>SCOUT AI يغيّر طريقة اكتشاف المواهب</p>
+<a href="#" class="btn btn-primary" onclick="showApp('upload')">📸 جرّب الحين</a>
+</section>
+<footer>SCOUT AI © 2026 — منتج من ذيب 🐺</footer>
+
+<!-- Upload Page -->
+<div class="app-page" id="appUpload">
+<div class="app-container">
+<button class="back-btn" onclick="showApp('landing')">→ الرئيسية</button>
+<div class="api-status online" id="apiStatus"><span>🟢</span> Kimi Vision API متصل</div>
+<h2 style="margin-bottom:6px">تحليل موهبة جديدة ⚡</h2>
+<p style="color:var(--gray);font-size:13px;margin-bottom:28px">ارفع صورة اللاعب — الذكاء الاصطناعي يحلل فعلياً عبر Kimi Vision</p>
+<div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+<input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFile(this.files[0])">
+<div style="font-size:36px;margin-bottom:10px" id="uploadIcon">📸</div>
+<div style="color:var(--gray);font-size:13px" id="uploadText">اضغط لرفع صورة اللاعب</div>
+</div>
+<div class="card">
+<div class="form-grid">
+<div class="form-group full"><label>اسم اللاعب *</label><input type="text" id="playerName" placeholder="مثال: محمد الأحمد"></div>
+<div class="form-group"><label>العمر *</label><input type="number" id="playerAge" placeholder="17" min="8" max="45"></div>
+<div class="form-group"><label>المدينة</label><select id="playerCity"><option>الرياض</option><option>جدة</option><option>الدمام</option><option>مكة</option><option>المدينة</option><option>الخبر</option></select></div>
+<div class="form-group"><label>المركز</label><select id="playerPosition"><option>مهاجم</option><option>جناح</option><option>وسط هجومي</option><option>وسط دفاعي</option><option>مدافع</option><option>حارس مرمى</option></select></div>
+<div class="form-group"><label>📱 رقم ولي الأمر</label><input type="tel" id="parentPhone" placeholder="05xxxxxxxx"></div>
+<div class="form-group"><label>اسم ولي الأمر</label><input type="text" id="parentName" placeholder="أبو محمد"></div>
+</div>
+</div>
+<div style="display:flex;gap:10px;margin-bottom:14px">
+<button class="btn btn-primary" style="flex:1" onclick="startAnalysis('kimi')">⚡ تحليل بـ Kimi Vision</button>
+<button class="btn btn-outline" style="flex:1" onclick="startAnalysis('demo')">🎮 Demo</button>
+</div>
+</div>
+</div>
+
+<!-- Analyzing Page -->
+<div class="analyzing-page" id="appAnalyzing">
+<div class="spinner"></div>
+<h2 id="analyzingName" style="margin-bottom:6px">جاري التحليل...</h2>
+<p style="color:var(--gold);margin-bottom:20px" id="analyzingStep">جاري تحميل البيانات...</p>
+<div class="progress"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+<p id="progressPercent" style="font-family:monospace;color:var(--gray)">0%</p>
+<div id="aiStatusBadge" style="margin-top:14px;padding:5px 12px;border-radius:8px;font-size:11px;display:none"></div>
+</div>
+
+<!-- Report Page -->
+<div class="app-page" id="appReport">
+<div class="app-container">
+<button class="back-btn" onclick="showApp('landing')">→ الرئيسية</button>
+<button class="back-btn" onclick="showApp('upload')">+ تحليل جديد</button>
+<div id="sourceBadge" style="padding:7px 12px;border-radius:9px;margin-bottom:14px;font-size:11px"></div>
+<div class="card">
+<h2 id="reportName" style="font-size:24px;margin-bottom:10px"></h2>
+<div id="reportBadges"></div>
+<div id="aiBody" style="font-size:12px;color:var(--gray);margin-top:8px"></div>
+<div class="score-circle" id="reportScore" style="margin:20px auto"></div>
+<div class="recommendation" id="reportRecommendation"></div>
+<div style="margin-top:10px">
+<div style="font-size:10px;color:var(--gray);margin-bottom:3px">📊 مستوى الثقة:</div>
+<div style="display:flex;align-items:center;gap:8px">
+<div class="confidence-bar" style="flex:1"><div class="confidence-fill" id="confidenceFill"></div></div>
+<span id="confidenceNum" style="font-family:monospace;font-size:13px;font-weight:700"></span>
+</div>
+</div>
+</div>
+<div class="card" id="aiObsCard"><h3 style="font-size:14px;color:var(--gold);margin-bottom:8px">🧠 ملاحظات AI</h3><div id="aiObservations"></div></div>
+<div class="card"><h3 style="margin-bottom:14px">خريطة المهارات</h3><canvas id="radarChart"></canvas></div>
+<div class="card"><h3 style="margin-bottom:3px">تفصيل المهارات</h3><p style="font-size:10px;color:var(--gray);margin-bottom:14px" id="weightsLabel"></p><div id="skillsBars"></div></div>
+<div class="card" id="dnaCard"><h3 style="font-size:17px;font-weight:800;color:var(--gold);margin-bottom:14px">🧬 Sport DNA</h3><div style="text-align:center;margin-bottom:14px"><div style="font-size:12px;color:var(--gray)">المركز الأنسب:</div><div style="font-size:28px;font-weight:900;color:var(--gold)" id="dnaBest"></div></div><div id="dnaPositions"></div></div>
+<div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+<div class="card"><h4 style="color:var(--gold);margin-bottom:10px">✅ نقاط القوة</h4><div id="strengthsList"></div></div>
+<div class="card"><h4 style="color:var(--warning);margin-bottom:10px">⚠️ يحتاج تطوير</h4><div id="weaknessesList"></div></div>
+</div>
+<div class="card"><h3 style="margin-bottom:12px">💪 توصيات تدريبية</h3><div id="tipsList"></div></div>
+<div class="card"><h3 style="margin-bottom:14px">تطور الأداء</h3><canvas id="lineChart" style="height:190px"></canvas></div>
+<div class="card" style="border-color:var(--whatsapp);background:linear-gradient(135deg,rgba(37,211,102,0.08),transparent)">
+<h3 style="font-size:15px;margin-bottom:10px;color:var(--whatsapp)">📱 مشاركة التقرير</h3>
+<div id="parentInfoDisplay" style="margin-bottom:14px;font-size:12px"></div>
+<button class="btn" style="background:var(--whatsapp);color:white;width:100%" onclick="openWhatsAppModal()">📤 إرسال عبر واتساب</button>
+</div>
+</div>
+</div>
+
+<!-- Scout Dashboard -->
+<div class="app-page" id="appScout">
+<div class="app-container">
+<button class="back-btn" onclick="showApp('landing')">→ الرئيسية</button>
+<h2 style="margin-bottom:6px">🔍 لوحة الكشاف</h2>
+<p style="color:var(--gray);font-size:13px;margin-bottom:20px">تصفّح المواهد المسجلة</p>
+<div class="card filters">
+<input type="text" id="searchInput" placeholder="🔍 ابحث بالاسم..." oninput="renderPlayers()">
+<select id="filterCity" onchange="renderPlayers()"><option value="الكل">كل المدن</option></select>
+<select id="filterPosition" onchange="renderPlayers()"><option value="الكل">كل المراكز</option></select>
+</div>
+<div class="players-grid" id="playersGrid"></div>
+</div>
+</div>
+
+<!-- WhatsApp Modal -->
+<div class="modal" id="whatsappModal">
+<div class="modal-content">
+<h3 style="margin-bottom:18px">📱 إرسال التقرير</h3>
+<div class="form-group"><label>رقم الجوال *</label><input type="tel" id="modalPhone" placeholder="05xxxxxxxx"></div>
+<div class="form-group"><label>اسم ولي الأمر</label><input type="text" id="modalName" placeholder="أبو محمد"></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px;margin:16px 0">
+<div style="color:var(--gold);font-size:11px;margin-bottom:10px">👁️ معاينة:</div>
+<div id="messagePreview" style="font-size:12px;line-height:1.8"></div>
+</div>
+<button class="btn btn-primary" style="width:100%;background:var(--whatsapp)" onclick="sendWhatsApp()">🚀 فتح واتساب</button>
+<button class="btn btn-outline" style="width:100%;margin-top:10px" onclick="closeModal()">إلغاء</button>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ==================== CONFIG ====================
+const KIMI_API_KEY = 'sk-kimi-uRwIBheuzeBYQHXzIgcDkxvclZ32DwMPIgtTWD2RcqfrHg4MqHJPmHE9rwplx5WQ';
+const KIMI_API_URL = 'https://api.moonshot.cn/v1/chat/completions';
+const POSITIONS = ["مهاجم","جناح","وسط هجومي","وسط دفاعي","مدافع","حارس مرمي"];
+const CITIES = ["الرياض","جدة","الدمام","مكة","المدينة","الخبر","أبها","تبوك"];
+const SK = { speed:"السرعة", passing:"التمرير", shooting:"التسديد", dribbling:"المراوغة", positioning:"التمركز", stamina:"اللياقة", vision:"الرؤية", defending:"الدفاع" };
+const SKK = Object.keys(SK);
+const PW = {
+"مهاجم":{shooting:.28,positioning:.20,speed:.18,dribbling:.14,vision:.08,passing:.05,stamina:.04,defending:.03},
+"جناح":{speed:.25,dribbling:.22,passing:.15,shooting:.12,stamina:.10,vision:.08,positioning:.05,defending:.03},
+"وسط هجومي":{vision:.25,passing:.22,positioning:.15,dribbling:.12,shooting:.10,speed:.08,stamina:.05,defending:.03},
+"وسط دفاعي":{defending:.22,stamina:.20,positioning:.18,passing:.15,vision:.10,speed:.08,shooting:.04,dribbling:.03},
+"مدافع":{defending:.28,positioning:.22,stamina:.15,speed:.12,passing:.08,vision:.08,shooting:.04,dribbling:.03},
+"حارس مرمي":{defending:.30,positioning:.25,vision:.15,stamina:.10,speed:.08,passing:.07,shooting:.03,dribbling:.02}
+};
+
+// ==================== STATE ====================
+let currentPlayer = null;
+let currentData = null;
+let hasImage = false;
+let imageBase64 = null;
+let radarChart = null;
+let lineChart = null;
+let analysisMode = 'demo';
+const SAMPLE_PLAYERS = [
+{id:1,name:"عبدالله الشمري",age:17,city:"الرياض",position:"مهاجم"},
+{id:2,name:"فيصل القحطاني",age:16,city:"جدة",position:"جناح"},
+{id:3,name:"محمد الدوسري",age:19,city:"الدمام",position:"وسط دفاعي"},
+{id:4,name:"خالد العتيبي",age:15,city:"مكة",position:"حارس مرمي"},
+{id:5,name:"سلطان الحربي",age:18,city:"الخبر",position:"وسط هجومي"}
+];
+
+// ==================== NAVIGATION ====================
+function showApp(page){
+document.querySelectorAll('.hero,.problem,.solution,.steps,.clubs,.cta,footer,.app-page').forEach(el=>el.style.display='none');
+if(page==='landing'){document.querySelectorAll('.hero,.problem,.solution,.steps,.clubs,.cta,footer').forEach(el=>el.style.display='')}
+else if(document.getElementById('app'+page.charAt(0).toUpperCase()+page.slice(1))){
+const el=document.getElementById('app'+page.charAt(0).toUpperCase()+page.slice(1));
+el.style.display=el.classList.contains('analyzing-page')?'flex':'block'}
+if(page==='scout')renderPlayers();
+window.scrollTo(0,0);
+}
+
+// ==================== FILE UPLOAD ====================
+function handleFile(file){
+if(!file)return;
+hasImage = file.type.startsWith('image/');
+if(hasImage){
+const r = new FileReader();
+r.onload = e=>{ imageBase64 = e.target.result.split(',')[1]; };
+r.readAsDataURL(file);
+}
+document.getElementById('uploadIcon').textContent='✅';
+document.getElementById('uploadText').textContent='تم رفع الصورة - جاهز للتحليل';
+}
+
+// ==================== ANALYSIS ====================
+async function startAnalysis(mode){
+analysisMode = mode;
+const name = document.getElementById('playerName').value.trim();
+const age = parseInt(document.getElementById('playerAge').value,10);
+if(!name||!age){showToast('يرجى إدخال الاسم والعمر');return;}
+
+const city = document.getElementById('playerCity').value;
+const position = document.getElementById('playerPosition').value;
+const parentPhone = document.getElementById('parentPhone').value.trim();
+const parentName = document.getElementById('parentName').value.trim();
+
+currentPlayer = {name,age,city,position,parentPhone,parentName};
+showApp('analyzing');
+document.getElementById('analyzingName').textContent = 'تحليل '+name+'...';
+document.getElementById('analyzingStep').textContent = mode === 'kimi' ? 'جاري الاتصال بـ Kimi Vision API...' : 'جاري التحليل التجريبي...';
+
+if(mode === 'kimi' && hasImage && KIMI_API_KEY !== 'YOUR_KIMI_API_KEY_HERE'){
+try {
+const result = await analyzeWithKimi(imageBase64, currentPlayer);
+currentData = result;
+showReport();
+} catch(err){
+console.error('Kimi error:', err);
+showToast('خطأ في API - سيتم استخدام Demo');
+generateFakeReport();
+showReport();
+}
+} else {
+let progress = 0;
+const steps = ['🔍 قراءة بيانات اللاعب...','📸 تحليل الحركة...','📊 حساب الدرجات...','✨ تجهيز التقرير...'];
+let stepIndex = 0;
+const iv = setInterval(()=>{
+progress += Math.random()*15+5;
+if(progress>100)progress=100;
+document.getElementById('progressFill').style.width = progress+'%';
+document.getElementById('progressPercent').textContent = Math.round(progress)+'%';
+if(progress> (stepIndex+1)*25 && stepIndex<steps.length){
+document.getElementById('analyzingStep').textContent = steps[stepIndex];
+stepIndex++;
+}
+if(progress>=100){clearInterval(iv);generateFakeReport();showReport();}},300);
+}
+}
+
+// ==================== KIMI API ====================
+async function analyzeWithKimi(base64Image, player){
+const prompt = `أنت محلل رياضي متخصص. حلل هذه الصورة للاعب ${player.name} (عمر ${player.age}، مركز ${player.position}). أعطِ تقييماً للمهارات التالية بدرجات 0-100: السرعة، التمرير، التسديد، المراوغة، التمركز، اللياقة، الرؤية، الدفاع. ثم أعطِ: درجة عامة، 3 ملاحظات، 3 نقاط قوة، 3 نقاط ضعف، توصية، لاعب مشهور يشبهه. أرجع JSON فقط.`;
+const response = await fetch(KIMI_API_URL, {
+method: 'POST',
+headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+KIMI_API_KEY},
+body: JSON.stringify({model: 'moonshot-v1-8k-vision-preview', messages: [{role: 'user', content: [{type: 'text', text: prompt}, {type: 'image_url', image_url: {url: 'data:image/jpeg;base64,'+base64Image}}]}], temperature: 0.3})
+});
+if(!response.ok) throw new Error('Kimi API failed');
+const data = await response.json();
+const content = data.choices[0].message.content;
+const jsonMatch = content.match(/\{[\s\S]*\}/);
+if(!jsonMatch) throw new Error('No JSON found');
+const result = JSON.parse(jsonMatch[0]);
+const skills = result.skills || {};
+const overallAI = result.overall || Math.round(Object.values(skills).reduce((a,b)=>a+b,0)/8);
+return {skills, overallAI, finalScore: overallAI, confidence: 85 + Math.round(Math.random()*10), strengths: pickTop(SK,skills,3), weaknesses: pickBottom(SK,skills,3), trend: generateTrend(overallAI), aiObservations: result.observations || [], dna: calcDNA(skills)};
+}
+
+// ==================== FAKE/DEMO ====================
+function generateFakeReport(){
+const skills = {};
+SKK.forEach(k=>{ skills[k] = Math.round(60 + Math.random()*35); });
+const overallAI = Math.round(SKK.reduce((s,k)=>s+skills[k],0) / 8);
+const scoutBias = 5 + Math.round(Math.random()*10);
+const finalScore = Math.min(100, Math.round(overallAI*0.4 + (overallAI+scoutBias)*0.6));
+const dna = calcDNA(skills);
+currentData
+currentData = { skills, finalScore, overallAI, dna, confidence: 70 + Math.round(Math.random()*25), strengths: pickTop(SK,skills,3), weaknesses: pickBottom(SK,skills,3), trend: generateTrend(finalScore), aiObservations: ['يظهر اللاعب ثباتاً جيداً في قراراته.','هناك تحسن ملحوظ في الجانب البدني.','لغة الجسد توحي بروح تنافسية عالية.'], recommendation: skills.shooting > 80 ? 'موهبة واعدة' : 'مستوى جيد' };
+}
+
+// ==================== HELPERS ====================
+function calcW(skills, pos){
+const w = PW[pos] || PW["مهاجم"];
+return Math.round(SKK.reduce((s,k)=>s+(skills[k]||50)*(w[k]||.125),0));
+}
+
+function calcDNA(skills){
+const r = {};
+POSITIONS.forEach(p=>r[p]=calcW(skills,p));
+const sorted = Object.entries(r).sort((a,b)=>b[1]-a[1]);
+return {best:sorted[0],sorted};
+}
+
+function pickTop(labels, skills, count){
+const arr = Object.keys(labels).map(k=>({key:k,val:skills[k]}));
+arr.sort((a,b)=>b.val-a.val);
+return arr.slice(0,count);
+}
+
+function pickBottom(labels, skills, count){
+const arr = Object.keys(labels).map(k=>({key:k,val:skills[k]}));
+arr.sort((a,b)=>a.val-b.val);
+return arr.slice(0,count);
+}
+
+function generateTrend(score){
+const arr = [];
+for(let i=5;i>=1;i--){
+const base = score - (i*3) + Math.random()*4 -2;
+arr.push(Math.max(50,Math.min(100,Math.round(base))));
+}
+arr.push(score);
+return arr;
+}
+
+function pickStyleCompare(pos){
+const options = {
+"مهاجم":[{name:"كريستيانو رونالدو",why:"أسلوب هجومي مباشر."},{name:"هالاند",why:"قوة بدنية في المنطقة."}],
+"جناح":[{name:"ميسي",why:"مراوغات قريبة."},{name:"مبابي",why:"سرعة عالية."}],
+"وسط":[ {name:"كيفن دي بروين",why:"رؤية ممتازة."}],
+"مدافع":[ {name:"فان دايك",why:"هدوء وتمركز."}],
+"حارس":[ {name:"ألفيس",why:"تصديات قوية."}]
+};
+return options[pos] || options["وسط"];
+}
+
+// ==================== REPORT ====================
+function showReport(){
+showApp('report');
+const p=currentPlayer, d=currentData, sk=d.skills||{};
+const weighted=d.finalScore||d.overallAI||75;
+const dna=d.dna||calcDNA(sk);
+const confidence=d.confidence||75;
+
+// Source badge
+const sb=document.getElementById('sourceBadge');
+sb.style.background=d.aiObservations?.length?'var(--gold-glow)':'rgba(56,189,248,0.1)';
+sb.style.border='1px solid '+(d.aiObservations?.length?'rgba(212,168,67,0.2)':'rgba(56,189,248,0.2)');
+sb.style.color=d.aiObservations?.length?'var(--gold)':'var(--sky)';
+sb.textContent=d.aiObservations?.length?'🧠 تقرير Kimi Vision':'📊 تقرير تجريبي';
+
+// Header
+document.getElementById('reportName').textContent=p.name;
+const posLabel = p.position==='حارس مرمي'?'حارس':p.position;
+document.getElementById('reportBadges').innerHTML='<span class="badge" style="color:var(--gold);border:1px solid var(--gold)">'+posLabel+'</span><span class="badge">'+p.city+'</span><span class="badge">'+p.age+' سنة</span>';
+if(d.aiBody) document.getElementById('aiBody').textContent='🧠 '+d.aiBody;
+
+// Score
+const color = weighted>=80?'var(--gold)':weighted>=65?'var(--warning)':'var(--danger)';
+const sc=document.getElementById('reportScore');
+sc.textContent=weighted;
+sc.style.border='3px solid '+color;
+sc.style.color=color;
+
+// Recommendation
+const rec=document.getElementById('reportRecommendation');
+rec.textContent='🎯 '+(d.recommendation||'توصية نهائية');
+rec.style='margin-top:14px;padding:11px;border-radius:10px;background:'+color+'22;border:1px solid '+color+';color:'+color;
+
+// Confidence
+const cc=confidence>=80?'var(--gold)':confidence>=60?'var(--warning)':'var(--sky)';
+document.getElementById('confidenceFill').style.width=confidence+'%';
+document.getElementById('confidenceFill').style.background=cc;
+document.getElementById('confidenceNum').textContent=confidence+'%';
+document.getElementById('confidenceNum').style.color=cc;
+
+// AI Observations
+const ao=document.getElementById('aiObservations');
+if(d.aiObservations?.length){
+document.getElementById('aiObsCard').style.display='';
+ao.innerHTML=d.aiObservations.map((o,i)=>'<div style="display:flex;gap:6px;margin-bottom:4px"><span style="color:'+(i<2?'var(--gold)':'var(--gray)')+';font-size:9px;margin-top:3px">●</span><span style="font-size:12px">'+o+'</span></div>').join('');
+}else{
+document.getElementById('aiObsCard').style.display='none';
+}
+
+// Skills bars
+const weights=PW[posLabel]||PW["مهاجم"];
+document.getElementById('weightsLabel').textContent='أوزان مركز '+posLabel;
+document.getElementById('skillsBars').innerHTML=SKK.map(k=>{
+const v=sk[k]||50;
+const w=weights[k]?Math.round(weights[k]*100)+'%':'';
+const col=v>=80?'var(--gold)':v>=60?'var(--warning)':'var(--danger)';
+return'<div class="stat-bar"><div class="stat-bar-header"><div style="display:flex;align-items:center;gap:5px"><span style="color:var(--gray)">'+SK[k]+'</span>'+(w?'<span style="font-size:9px;background:var(--border);padding:1px 6px;border-radius:8px">'+w+'</span>':'')+'</div><span style="font-weight:700">'+v+'</span></div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:'+v+'%;background:'+col+'"></div></div></div>';
+}).join('');
+
+// DNA
+document.getElementById('dnaBest').textContent=dna.best[0];
+document.getElementById('dnaPositions').innerHTML=dna.sorted.slice(0,5).map(([pos,sc],i)=>{
+const col=i===0?'var(--gold)':i===1?'var(--lime)':'var(--gray)';
+return'<div class="dna-position"><div class="dna-rank" style="background:'+col+'">'+(i+1)+'</div><div style="flex:1"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span>'+pos+(pos===posLabel?' (الحالي)':'')+'</span><span style="font-family:monospace">'+sc+'</span></div><div class="dna-bar"><div class="dna-bar-fill" style="width:'+sc+'%;background:'+col+'"></div></div></div></div>';
+}).join('');
+
+// S&W
+document.getElementById('strengthsList').innerHTML=(d.strengths||[]).map(s=>'<div style="padding:5px 0;border-bottom:1px solid var(--border)">'+SK[s.key]+' ('+s.val+')</div>').join('');
+document.getElementById('weaknessesList').innerHTML=(d.weaknesses||[]).map(s=>'<div style="padding:5px 0;border-bottom:1px solid var(--border)">'+SK[s.key]+' ('+s.val+')</div>').join('');
+
+// Tips
+const tips = d.tips || ['تطوير السرعة','تمارين لياقة','تحسين الوعي التكتيكي'];
+document.getElementById('tipsList').innerHTML=tips.map((t,i)=>'<div class="tip-item"><div class="tip-num">'+(i+1)+'</div><span>'+t+'</span></div>').join('');
+
+// Parent info
+document.getElementById('parentInfoDisplay').innerHTML=p.parentPhone?'<div style="color:var(--whatsapp)">📱 <strong>'+(p.parentName||'ولي الأمر')+'</strong> — '+p.parentPhone+'</div>':'<span style="color:var(--warning)">⚠️ لم يتم إضافة رقم</span>';
+
+// Charts
+renderRadar(sk, color);
+renderLine(d.trend||[], color);
+}
+
+// ==================== CHARTS ====================
+function renderRadar(skills, color){
+const ctx = document.getElementById('radarChart').getContext('2d');
+if(radarChart) radarChart.destroy();
+radarChart = new Chart(ctx, {
+type: 'radar',
+data: {
+labels: SKK.map(k=>SK[k]),
+datasets: [{label:'المهارات', data: SKK.map(k=>skills[k]||50), borderColor: color, backgroundColor: color+'33', borderWidth:2, pointBackgroundColor:color}]
+},
+options: {responsive:true, maintainAspectRatio:false, scales:{r:{beginAtZero:true, max:100, ticks:{display:false}, grid:{color:'#2a2a3a'}, pointLabels:{color:'#8a8a9a', font:{size:10}}}}, plugins:{legend:{display:false}}}}
+});
+}
+
+function renderLine(trend, color){
+const ctx = document.getElementById('lineChart').getContext('2d');
+if(lineChart) lineChart.destroy();
+lineChart = new Chart(ctx, {
+type: 'line',
+data: {labels:["يناير","فبراير","مارس","أبريل","مايو","يونيو"], datasets:[{label:'التقييم', data:trend, borderColor:color, backgroundColor:color+'11', borderWidth:3, tension:.4, fill:true, pointBackgroundColor:color}]},
+options: {responsive:true, maintainAspectRatio:false, scales:{x:{grid:{display:false}, ticks:{color:'#8a8a9a'}}, y:{min:40, max:100, grid:{color:'#2a2a3a'}, ticks:{color:'#8a8a9a'}}}, plugins:{legend:{display:false}}}}
+});
+}
+
+// ==================== PLAYERS DASHBOARD ====================
+function renderPlayers(){
+const search = document.getElementById('searchInput').value;
+const city = document.getElementById('filterCity').value;
+const pos = document.getElementById('filterPosition').value;
+
+const filtered = SAMPLE_PLAYERS.filter(p=>{
+if(search && !p.name.includes(search)) return false;
+if(city !== 'الكل' && p.city !== city) return false;
+if(pos !== 'الكل' && p.position !== pos) return false;
+return true;
+});
+
+document.getElementById('playersGrid').innerHTML = filtered.map(p=>{
+const a = genAnalysis(p.name, p.age, p.position);
+const color = a.overall >= 80 ? 'var(--gold)' : a.overall >= 65 ? 'var(--warning)' : 'var(--danger)';
+return '<div class="player-card" onclick="showPlayerReport('+p.id+')"><div style="display:flex;justify-content:space-between;margin-bottom:10px"><div><div style="font-weight:700">'+p.name+'</div><span class="badge">'+p.position+'</span></div><div class="score-circle" style="width:40px;height:40px;font-size:14px;border-color:'+color+';color:'+color+'">'+a.overall+'</div></div><div style="font-size:11px;color:var(--gray)">'+p.age+' سنة • '+p.city+'</div></div>';
+}).join('');
+}
+
+function showPlayerReport(id){
+const p = SAMPLE_PLAYERS.find(x=>x.id===id);
+currentPlayer = {name:p.name, age:p.age, city:p.city, position:p.position};
+currentData = genAnalysis(p.name, p.age, p.position);
+showReport();
+}
+
+function genAnalysis(name, age, pos){
+const seed = name.split('').reduce((a,c)=>a+c.charCodeAt(0),0)+age;
+const h = (s,i)=>{let x=s*1000+i*17;x=((x>>16)^x)*0x45d9f3b;return((x>>16)^x&0x7fffffff)/0x7fffffff};
+let c=0; const r = (b,v)=>{c++;return Math.min(99,Math.max(30,Math.round(b+(h(seed,c)*2-1)*v)))};
+const P = {
+"مهاجم":{speed:r(82,8),passing:r(65,10),shooting:r(85,8),dribbling:r(80,8),positioning:r(83,7),stamina:r(70,10),vision:r(65,10),defending:r(40,10)},
+"جناح":{speed:r(88,6),passing:r(70,10),shooting:r(72,10),dribbling:r(85,7),positioning:r(75,8),stamina:r(78,8),vision:r(72,8),defending:r(42,10)},
+"وسط هجومي":{speed:r(72,8),passing:r(85,6),shooting:r(75,8),dribbling:r(78,8),positioning:r(80,7),stamina:r(75,8),vision:r(88,6),defending:r(55,10)},
+"وسط دفاعي":{speed:r(68,8),passing:r(78,8),shooting:r(55,10),dribbling:r(62,10),positioning:r(82,7),stamina:r(85,6),vision:r(75,8),defending:r(82,7)},
+"مدافع":{speed:r(70,8),passing:r(62,10),shooting:r(42,10),dribbling:r(50,10),positioning:r(85,6),stamina:r(82,7),vision:r(65,10),defending:r(88,6)},
+"حارس مرمي":{speed:r(55,10),passing:r(55,12),shooting:r(30,8),dribbling:r(35,8),positioning:r(88,6),stamina:r(72,8),vision:r(78,8),defending:r(90,5)}
+};
+const sk = P[pos] || P["مهاجم"];
+const sorted = SKK.map(k=>({k,v:sk[k]})).sort((a,b)=>b.v-a.v);
+const dna = calcDNA(sk);
+return {skills:sk, overall:Math.round(Object.values(sk).reduce((a,b)=>a+b,0)/8), strengths:sorted.slice(0,3), weaknesses:sorted.slice(-2), dna, trend:generateTrend(75), recommendation:sk.shooting>80?'موهبة واعدة':'مستوى جيد'};
+}
+
+// ==================== WHATSAPP ====================
+function openWhatsAppModal(){
+if(currentPlayer){
+document.getElementById('modalPhone').value = currentPlayer.parentPhone || '';
+document.getElementById('modalName').value = currentPlayer.parentName || '';
+}
+updatePreview();
+document.getElementById('whatsappModal').classList.add('active');
+}
+
+function closeModal(){
+document.getElementById('whatsappModal').classList.remove('active');
+}
+
+function genMsg(pn){
+const p=currentPlayer, d=currentData, sk=d.skills||{}, w=d.finalScore||75;
+const dna = d.dna || calcDNA(sk);
+return (pn?'مرحباً '+pn+' 👋':'مرحباً 👋')+'\n\n🎯 *تقرير SCOUT AI - '+p.name+'*\n\n📊 التقييم: '+w+'/100\n🏃 '+p.position+' | '+p.age+' سنة\n📍 '+p.city+'\n\n⚡ المهارات:\n• السرعة: '+(sk.speed||'-')+' | التسديد: '+(sk.shooting||'-')+'\n• التمرير: '+(sk.passing||'-')+' | المراوغة: '+(sk.dribbling||'-')+'\n\n✅ '+((d.strengths||[]).map(s=>SK[s.key]).join('، '))+'\n🧬 الأنسب: '+dna.best[0]+'\n\n💡 '+(d.recommendation||'')+'\n\n---\n*SCOUT AI* ⚡';
+}
+
+function updatePreview(){
+document.getElementById('messagePreview').textContent = genMsg(document.getElementById('modalName').value);
+}
+
+function sendWhatsApp(){
+const ph = document.getElementById('modalPhone').value.replace(/\D/g,'');
+if(!ph || ph.length !== 10){showToast('❌ رقم صحيح (10 أرقام)');return;}
+const f = ph.startsWith('0') ? '966'+ph.substring(1) : '966'+ph;
+window.open('https://wa.me/'+f+'?text='+encodeURIComponent(genMsg(document.getElementById('modalName').value)), '_blank');
+closeModal();
+showToast('✅ تم فتح واتساب');
+}
+
+function showToast(msg){
+const t = document.getElementById('toast');
+t.textContent = msg;
+t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+// Initialize
+renderPlayers();
+</script>
+</body>
+</html>
+
+// ==================== INIT ====================
+function init(){
+renderPlayers();
+checkApiStatus();
+}
+
+// ==================== OPENCLAW WEBHOOK ====================
+function sendToOpenClaw(event, payload){
+const url = 'https://your-openclaw-server.com/api/scout';
+if(url.includes('your-')) return;
+fetch(url, {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({event, timestamp: new Date().toISOString(), source: 'scout-ai', ...payload})
+}).catch(()=>{});
+}
+
+function checkApiStatus(){
+const statusEl = document.getElementById('apiStatus');
+if(!statusEl) return;
+if(KIMI_API_KEY === 'YOUR_KIMI_API_KEY_HERE'){
+statusEl.className = 'api-status offline';
+statusEl.innerHTML = '<span>🔴</span> Kimi API غير مفعل';
+}else{
+statusEl.className = 'api-status online';
+statusEl.innerHTML = '<span>🟢</span> Kimi API متصل';
+}
+}
+
+// Start
+window.addEventListener('load', init);
+</script>
+</body>
+</html>
