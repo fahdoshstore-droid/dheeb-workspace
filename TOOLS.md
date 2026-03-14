@@ -46,7 +46,21 @@ Things like:
 ### Tradovate
 - Username: fodiiis116229
 - Password: p$QcR4mJ9v
-- Status: Trying to connect via API
+- Status: ❌ Not connected (system stopped)
+
+### Package Manager (pnpm)
+- Always use: `pnpm install` (not npm)
+- Add packages: `pnpm add <pkg>`
+- Install global: `pnpm add -g <pkg>`
+
+### Weekly Cleanup
+```bash
+# Docker cleanup
+docker system prune -f
+
+# Delete old logs (7+ days)
+find /home/ubuntu -name "*.log" -mtime +7 -delete
+```
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
 

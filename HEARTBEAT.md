@@ -14,36 +14,45 @@
 
 ## Priority Queue
 
-| Project | Status |
-|---------|--------|
-| **Trading** | **ACTIVE** |
-| Scout AI | BUILDING |
-| QITAA | WAITING |
-| Automation | BACKLOG |
+| Project | Status | Deadline |
+|---------|--------|----------|
+| **Scout AI** | 🎯 **FOCUS - Hackathon April** | 2 weeks |
+| **Trading** | ⚠️ waiting for data | - |
+| QITAA | ⏸️ later | - |
+| Automation | ❌ BACKLOG | - |
 
 ---
 
-## Tested & Verified (March 7)
+## Scout AI - Hackathon Prep
+
+| Item | Status |
+|------|--------|
+| Backend | ✅ Port 3001 |
+| Frontend | ✅ Port 3007 |
+| Pitch Deck | ✅ HTML (8 slides) |
+| Demo | ✅ ngrok available |
+| Team | ✅ Defined |
+
+---
+
+## Tested & Verified (March 14)
 
 | System | Status |
 |--------|--------|
-| Trading System v3.0 | ✅ PASSED |
-| Structure Engine | ✅ PASSED |
-| Command Center | ✅ READY |
-| MemoryAgent | ✅ WORKING |
-| **Discord** | ❌ **TOKEN INVALID** (needs new token) |
-| **Perplexica** | ✅ **RUNNING** (port 3000) |
-| **Signal Bot** | ✅ **READY** |
-| **Analytics Dashboard** | ✅ **RUNNING** (port 3002) |
+| Scout AI | ✅ **RUNNING (port 3007)** |
+| Trading System v4 | ✅ Running (port 3000, waiting) |
+| DHEEB Frontend | ✅ Running (port 3006) |
+| OpenClaw Gateway | ✅ Running |
+| Discord Bot | ❌ Token Invalid |
+| WhatsApp | ✅ Connected |
 
 ---
 
 ## System Summary
 
-- **Trading:** `dheeb-trading-system/index.js`
-- **Structure Engine:** `dheeb-trading-system/core/structure-engine.js`
+- **Scout AI:** `/home/ubuntu/.openclaw/workspace/scout-ai-new/`
+- **Trading:** `dheeb-trading-system/bot.js`
 - **Discord:** Bot ready (TheebMind#5792)
-- **Skills:** 4 built
 
 ---
 
@@ -53,15 +62,9 @@
 |------|-------|
 | Bot | TheebMind#5792 |
 | Channel | #trading |
-| Helper | `scripts/discord-helper.js` |
 
 ---
 
-## Reminders
+## 🎯 Current Focus: Scout AI Hackathon
 
-### Kill Zone Alerts - Remember to Analyze:
-- **Silver Bullet** ⭐: 09:50-10:10 EST (13:50-14:10 UTC)
-- **NY Open**: 08:50-09:10 EST (12:50-13:10 UTC)
-- **NY AM 3**: 10:50-11:10 EST (14:50-15:10 UTC)
-
-**Action:** Send TRIL analysis to Discord when Kill Zone starts
+Next 2 weeks = Scout AI only!
