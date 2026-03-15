@@ -1,0 +1,6 @@
+{"timestamp":"2026-03-04T15:23:40.074Z","level":"INFO","message":"🚀 Enhanced DeepSeek Bridge started on port 3458"}
+{"timestamp":"2026-03-04T15:23:58.696Z","level":"INFO","message":"Request received","messageCount":1,"model":"claude-3-sonnet"}
+{"timestamp":"2026-03-04T15:24:01.666Z","level":"INFO","message":"Request completed","duration":2971,"responseLength":209}
+{"timestamp":"2026-03-04T15:26:17.567Z","level":"INFO","message":"Request received","messageCount":1,"model":"claude-3-sonnet"}
+{"timestamp":"2026-03-04T15:26:19.766Z","level":"INFO","message":"Streaming completed","duration":2199,"responseLength":13}
+{"timestamp":"2026-03-04T15:26:19.766Z","level":"INFO","message":"Streaming completed","duration":2199,"responseLength":13}

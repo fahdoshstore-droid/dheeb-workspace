@@ -1,0 +1,15 @@
+{
+  "name": "scout-ai",
+  "version": "1.0.0",
+  "description": "AI-powered football talent scouting platform",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}

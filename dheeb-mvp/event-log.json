@@ -1,0 +1,2068 @@
+[
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:15:02.663763",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:15:02.766Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:20:02.555710",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:20:02.557Z"
+    },
+    "timestamp": "2026-02-27T05:20:02.557Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:20:02.555710",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:20:02.558Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:20:02.555710",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:20:02.654Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:25:02.487993",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:25:02.489Z"
+    },
+    "timestamp": "2026-02-27T05:25:02.490Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:25:02.487993",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:25:02.490Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:25:02.487993",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:25:02.603Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:30:02.366620",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:30:02.368Z"
+    },
+    "timestamp": "2026-02-27T05:30:02.369Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:30:02.366620",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:30:02.369Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:30:02.366620",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:30:02.472Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:35:02.157516",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:35:02.159Z"
+    },
+    "timestamp": "2026-02-27T05:35:02.159Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:35:02.157516",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:35:02.160Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:35:02.157516",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:35:02.257Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:40:02.184869",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:40:02.186Z"
+    },
+    "timestamp": "2026-02-27T05:40:02.187Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:40:02.184869",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:40:02.187Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:40:02.184869",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:40:02.288Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:45:02.033147",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:45:02.035Z"
+    },
+    "timestamp": "2026-02-27T05:45:02.035Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:45:02.033147",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:45:02.035Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:45:02.033147",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:45:02.128Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:50:01.918026",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:50:01.920Z"
+    },
+    "timestamp": "2026-02-27T05:50:01.920Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:50:01.918026",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:50:01.920Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:50:01.918026",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:50:02.019Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:55:01.787838",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T05:55:01.789Z"
+    },
+    "timestamp": "2026-02-27T05:55:01.790Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:55:01.787838",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T05:55:01.790Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T05:55:01.787838",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T05:55:01.883Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:00:02.855649",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:00:02.857Z"
+    },
+    "timestamp": "2026-02-27T06:00:02.858Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:00:02.855649",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:00:02.858Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:00:02.855649",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:00:02.955Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:05:01.720885",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:05:01.723Z"
+    },
+    "timestamp": "2026-02-27T06:05:01.723Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:05:01.720885",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:05:01.723Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:05:01.720885",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:05:01.832Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:10:02.623183",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:10:02.625Z"
+    },
+    "timestamp": "2026-02-27T06:10:02.625Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:10:02.623183",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:10:02.626Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:10:02.623183",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:10:02.719Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:15:02.460593",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:15:02.462Z"
+    },
+    "timestamp": "2026-02-27T06:15:02.462Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:15:02.460593",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:15:02.463Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:15:02.460593",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:15:02.634Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:20:02.475628",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:20:02.477Z"
+    },
+    "timestamp": "2026-02-27T06:20:02.478Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:20:02.475628",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:20:02.478Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:20:02.475628",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:20:02.579Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:25:02.298238",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:25:02.300Z"
+    },
+    "timestamp": "2026-02-27T06:25:02.300Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:25:02.298238",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:25:02.301Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:25:02.298238",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:25:02.405Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:30:02.216060",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:30:02.218Z"
+    },
+    "timestamp": "2026-02-27T06:30:02.218Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:30:02.216060",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:30:02.218Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:30:02.216060",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:30:02.382Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:35:02.133260",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:35:02.135Z"
+    },
+    "timestamp": "2026-02-27T06:35:02.135Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:35:02.133260",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:35:02.135Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:35:02.133260",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:35:02.238Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:40:02.067222",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:40:02.069Z"
+    },
+    "timestamp": "2026-02-27T06:40:02.069Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:40:02.067222",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:40:02.069Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:40:02.067222",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:40:02.175Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:45:02.513493",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:45:02.518Z"
+    },
+    "timestamp": "2026-02-27T06:45:02.518Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:45:02.513493",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:45:02.519Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:45:02.513493",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:45:02.632Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:50:02.935763",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:50:02.938Z"
+    },
+    "timestamp": "2026-02-27T06:50:02.938Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:50:02.935763",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:50:02.939Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:50:02.935763",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:50:03.042Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:55:02.285341",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T06:55:02.289Z"
+    },
+    "timestamp": "2026-02-27T06:55:02.290Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:55:02.285341",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T06:55:02.290Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T06:55:02.285341",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T06:55:02.408Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:00:02.940326",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:00:02.943Z"
+    },
+    "timestamp": "2026-02-27T07:00:02.943Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:00:02.940326",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:00:02.944Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:00:02.940326",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:00:03.089Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:05:02.518185",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:05:02.520Z"
+    },
+    "timestamp": "2026-02-27T07:05:02.520Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:05:02.518185",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:05:02.521Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:05:02.518185",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:05:02.622Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:10:02.810254",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:10:02.812Z"
+    },
+    "timestamp": "2026-02-27T07:10:02.813Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:10:02.810254",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:10:02.813Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:10:02.810254",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:10:02.915Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:15:02.497264",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:15:02.500Z"
+    },
+    "timestamp": "2026-02-27T07:15:02.501Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:15:02.497264",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:15:02.501Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:15:02.497264",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:15:02.630Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:20:02.881551",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:20:02.885Z"
+    },
+    "timestamp": "2026-02-27T07:20:02.885Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:20:02.881551",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:20:02.885Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:20:02.881551",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:20:03.188Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:25:02.322697",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:25:02.325Z"
+    },
+    "timestamp": "2026-02-27T07:25:02.325Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:25:02.322697",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:25:02.326Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:25:02.322697",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:25:02.510Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:30:02.640429",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:30:02.645Z"
+    },
+    "timestamp": "2026-02-27T07:30:02.645Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:30:02.640429",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:30:02.646Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:30:02.640429",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:30:02.761Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:35:02.950110",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:35:02.953Z"
+    },
+    "timestamp": "2026-02-27T07:35:02.953Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:35:02.950110",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:35:02.954Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:35:02.950110",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:35:03.063Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:40:02.471692",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:40:02.474Z"
+    },
+    "timestamp": "2026-02-27T07:40:02.474Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:40:02.471692",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:40:02.475Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:40:02.471692",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:40:02.576Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:45:02.485700",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:45:02.488Z"
+    },
+    "timestamp": "2026-02-27T07:45:02.488Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:45:02.485700",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:45:02.488Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:45:02.485700",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:45:02.598Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:50:02.972023",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:50:02.974Z"
+    },
+    "timestamp": "2026-02-27T07:50:02.974Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:50:02.972023",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:50:02.975Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:50:02.972023",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:50:03.077Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:55:02.330196",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T07:55:02.333Z"
+    },
+    "timestamp": "2026-02-27T07:55:02.334Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:55:02.330196",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T07:55:02.334Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T07:55:02.330196",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T07:55:02.432Z"
+  },
+  {
+    "event": "signal:new",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T11:00:03.602129",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "timestamp": "2026-02-27T11:00:03.624Z"
+    },
+    "timestamp": "2026-02-27T11:00:03.624Z"
+  },
+  {
+    "event": "risk:rejected",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T11:00:03.602129",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "WAIT",
+        "reason": "Outside Kill Zone"
+      },
+      "reason": "RRR check"
+    },
+    "timestamp": "2026-02-27T11:00:03.625Z"
+  },
+  {
+    "event": "decision:final",
+    "data": {
+      "signal": {
+        "timestamp": "2026-02-27T11:00:03.602129",
+        "symbol": "NDX",
+        "price": 25034.37,
+        "setup": "NONE",
+        "killzone": false,
+        "direction": "NONE",
+        "high_5d": 25343.97,
+        "low_5d": 24618.23
+      },
+      "decision": {
+        "decision": "REJECTED",
+        "reason": "Risk check failed"
+      }
+    },
+    "timestamp": "2026-02-27T11:00:03.726Z"
+  }
+]

@@ -1,0 +1,38 @@
+# 🔴 أخطاء اليوم - 2026-02-23
+
+## Error 1: Security Critical
+- الوقت: 07:03 UTC
+- النوع: 🔴 CRITICAL
+- الوصف: Config file is writable by others (mode=664)
+- الإجراء: chmod 600 ~/.openclaw/openclaw.json ✅
+- الحالة: ✅محلول
+
+## Error 2: Security Warning  
+- الوقت: 07:03 UTC
+- النوع: 🟡 WARNING
+- الوصف: plugins.allow not set
+- الإجراء: Added plugins.allow to config ✅
+- الحالة: ✅ محلول
+
+## Error 3: Cron Delivery Failed
+- الوقت: متكرر
+- النوع: 🟡 WARNING
+- الوصف: cron announce delivery failed
+- الأسباب:
+  1. Wrong phone number format
+  2. Model not allowed (minimax/mini)
+- الإصلاحات:
+  1. Fixed phone to +966565111696 ✅
+  2. Changed model to minimax/MiniMax-M2.5 ✅
+- الحالة: ✅ محلول
+
+## Error 4: Kill Zone Time Mismatch
+- الوقت: 07:17 UTC
+- النوع: 🟢 INFO
+- الوصف: London Kill Zone showed CLOSED when it should be OPEN soon
+- السبب: System check at 7:17 UTC (opens 8:00)
+- الإجراء: Added London Open Alert cron ✅
+- الحالة: ✅ محلول
+
+---
+Last Updated: 07:42 UTC

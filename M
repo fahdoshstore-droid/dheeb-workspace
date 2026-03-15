@@ -1,0 +1,8 @@
+
+## Backtesting Complete (Feb 26)
+- Created: ict_backtest.py
+- Win Rate: 63.64%
+- Total Return: 10R
+- Max Drawdown: 4R
+- Trades: 11
+- Status: Working!

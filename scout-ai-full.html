@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCOUT AI — اكتشف المواهب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --bg: #0a0f1a; --card: #111827; --accent: #00e676; --text: #f0f4f8; --text-dim: #8892a4; --border: #1e2a3a; --danger: #ff5252; --gold: #ffd700; --cyan: #00bcd4; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Noto Kufi Arabic', sans-serif; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .hidden { display: none !important; }
+        
+        /* Navigation */
+        .nav { display: flex; gap: 10px; padding: 20px 0; flex-wrap: wrap; }
+        .nav-btn { padding: 10px 20px; border: none; border-radius: 10px; background: var(--card); color: var(--text); cursor: pointer; font-family: inherit; font-weight: 600; transition: 0.3s; }
+        .nav-btn.active { background: var(--accent); color: var(--bg); }
+        
+        /* Cards */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+        
+        /* Forms */
+        input, select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 10px; font-family: inherit; }
+        
+        /* Buttons */
+        .btn { padding: 12px 24px; border: none; border-radius: 10px; font-family: inherit; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-primary { background: var(--accent); color: var(--bg); }
+        .btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+        
+        /* Tabs */
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab { padding: 10px 20px; border-radius: 10px; background: var(--card); cursor: pointer; }
+        .tab.active { background: var(--accent); color: var(--bg); }
+        
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        
+        /* Video Upload */
+        .upload-zone { border: 2px dashed var(--border); border-radius: 16px; padding: 40px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .upload-zone:hover { border-color: var(--accent); }
+        
+        /* Comparison */
+        .compare-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .player-box { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 20px; }
+        .vs { display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; color: var(--gold); }
+        
+        /* Timeline */
+        .timeline-item { display: flex; gap: 15px; padding: 15px; border-right: 2px solid var(--accent); margin-right: 10px; position: relative; }
+        .timeline-dot { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: absolute; right: -7px; }
+        
+        /* Stats */
+        .stat-box { text-align: center; padding: 15px; }
+        .stat-num { font-size: 28px; font-weight: 800; color: var(--accent); }
+        
+        /* Modal */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+        .modal-content { background: var(--card); border-radius: 20px; padding: 30px; max-width: 500px; width: 90%; }
+        
+        /* Progress bar */
+        .progress { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); transition: width 0.3s; }
+        
+        /* Badge */
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .badge-gold { background: rgba(255,215,0,0.2); color: var(--gold); }
+        
+        @media (max-width: 768px) { .compare-container { grid-template-columns: 1fr; } .vs { padding: 20px 0; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center;margin:20px 0">⚡ SCOUT AI</h1>
+        
+        <div class="nav">
+            <button class="nav-btn active" onclick="showPage('home')">🏠 الرئيسية</button>
+            <button class="nav-btn" onclick="showPage('analyze')">🔬 تحليل</button>
+            <button class="nav-btn" onclick="showPage('compare')">📊 مقارنة</button>
+            <button class="nav-btn" onclick="showPage('history')">📈 التطور</button>
+            <button class="nav-btn" onclick="showPage('team')">👥 الفريق</button>
+        </div>
+
+        <!-- HOME PAGE -->
+        <div id="home">
+            <div class="card" style="text-align:center">
+                <h2>🎯 اكتشف موهبتك</h2>
+                <p style="color:var(--text-dim);margin:10px 0">ارفع فيديو أو صورة واحصل على تحليل احترافي</p>
+                <button class="btn btn-primary" onclick="showPage('analyze')">ابدأ الآن</button>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🎥 فيديو من جهازك</h3>
+                    <p style="color:var(--text-dim)">ارفع فيديو مباشر للتحليل</p>
+                </div>
+                <div class="card">
+                    <h3>📊 مقارنة</h3>
+                    <p style="color:var(--text-dim)">قارن بين لاعبين</p>
+                </div>
+                <div class="card">
+                    <h3>📈 تطور</h3>
+                    <p style="color:var(--text-dim">تتبع تطور اللاعب</p>
+                </div>
+                <div class="card">
+                    <h3>👥 فريق</h3>
+                    <p style="color:var(--text-dim)">إدارة الأكاديمية</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANALYZE PAGE -->
+        <div id="analyze" class="hidden">
+            <div class="tabs">
+                <div class="tab active" onclick="setAnalyzeMode('video')">🎥 فيديو</div>
+                <div class="tab" onclick="setAnalyzeMode('image')">📷 صورة</div>
+                <div class="tab" onclick="setAnalyzeMode('manual')">✏️ يدوي</div>
+            </div>
+            
+            <div class="card">
+                <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" accept="video/*,image/*" style="display:none" onchange="handleFile(this.files[0])">
+                    <div style="font-size:48px;margin-bottom:10px">📤</div>
+                    <p>اضغط لرفع ملف</p>
+                    <p style="color:var(--text-dim);font-size:12px;margin-top:10px">MP4, MOV, PNG, JPG</p>
+                </div>
+                <div id="videoPreview" class="hidden" style="margin-top:20px">
+                    <video id="previewVideo" controls style="width:100%;border-radius:10px"></video>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>معلومات اللاعب</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                    <input type="text" id="playerName" placeholder="اسم اللاعب">
+                    <input type="number" id="playerAge" placeholder="العمر">
+                    <select id="playerPosition">
+                        <option value="">المركز</option>
+                        <option value="مهاجم">مهاجم</option>
+                        <option value="جناح">جناح</option>
+                        <option value="وسط">وسط</option>
+                        <option value="مدافع">مدافع</option>
+                        <option value="حارس">حارس</option>
+                    </select>
+                    <select id="playerCity">
+                        <option value="">المدينة</option>
+                        <option value="الرياض">الرياض</option>
+                        <option value="جدة">جدة</option>
+                        <option value="الدمام">الدمام</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="startAnalysis()">🔬 بدء التحليل</button>
+            </div>
+            
+            <div id="analysisResult" class="hidden">
+                <div class="card">
+                    <h3>📊 نتيجة التحليل</h3>
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center">
+                        <div class="stat-box"><div class="stat-num" id="overallScore">85</div><div style="font-size:12px;color:var(--text-dim)">التقييم</div></div>
+                        <div class="stat-box"><div class="stat-num" id="speedScore">88</div><div style="font-size:12px;color:var(--text-dim)">السرعة</div></div>
+                        <div class="stat-box"><div class="stat-num" id="skillScore">82</div><div style="font-size:12px;color:var(--text-dim)">المهارة</div></div>
+                        <div class="stat-box"><div class="stat-num" id="staminaScore">75</div><div style="font-size:12px;color:var(--text-dim)">اللياقة</div></div>
+                    </div>
+                    <canvas id="radarChart" style="margin-top:20px"></canvas>
+                </div>
+                
+                <div class="card">
+                    <h3>🧬 Sport DNA</h3>
+                    <p id="bestPosition" style="font-size:24px;font-weight:800;color:var(--accent);text-align:center">مهاجم</p>
+                    <div id="dnaBars"></div>
+                </div>
+                
+                <div class="card">
+                    <h3>💪 التوصيات</h3>
+                    <div id="recommendations"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARE PAGE -->
+        <div id="compare" class="hidden">
+            <div class="compare-container">
+                <div class="player-box">
+                    <h3>اللاعب 1</h3>
+                    <select id="comparePlayer1" onchange="comparePlayers()">
+                        <option value="">اختر لاعب</option>
+                    </select>
+                    <div id="player1Stats"></div>
+                </div>
+                <div class="player-box">
+                    <h3>اللاعب 2</h3>
+                    <select id="comparePlayer2" onchange="comparePlayers()">
+                        <option value="">اختر لاعب</option>
+                    </select>
+                    <div id="player2Stats"></div>
+                </div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="card">
+                <h3>📊 مقارنة المهارات</h3>
+                <canvas id="compareChart"></canvas>
+            </div>
+        </div>
+
+        <!-- HISTORY PAGE -->
+        <div id="history" class="hidden">
+            <div class="card">
+                <h3>📈 تاريخ التحليلات</h3>
+                <select id="historyPlayer" onchange="loadHistory()">
+                    <option value="">اختر لاعب</option>
+                </select>
+            </div>
+            <div id="historyTimeline"></div>
+            <div class="card">
+                <h3>تطور المهارات</h3>
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+
+        <!-- TEAM PAGE -->
+        <div id="team" class="hidden">
+            <div class="card">
+                <h3>👥 إدارة الفريق</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                    <button class="btn btn-primary" onclick="showModal('addPlayer')">➕ إضافة لاعب</button>
+                    <button class="btn btn-secondary" onclick="showModal('bulkUpload')">📤 رفع جماعي</button>
+                </div>
+            </div>
+            <div class="grid" id="teamPlayers"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 id="modalTitle" style="margin-bottom:20px"></h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Data Storage
+        let players = JSON.parse(localStorage.getItem('scoutPlayers') || '[]');
+        let analysisHistory = JSON.parse(localStorage.getItem('scoutHistory') || '[]');
+        let currentAnalyzeMode = 'video';
+        let currentFile = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePlayerSelects();
+            renderTeam();
+        });
+
+        function showPage(page) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('analyze').classList.add('hidden');
+            document.getElementById('compare').classList.add('hidden');
+            document.getElementById('history').classList.add('hidden');
+            document.getElementById('team').classList.add('hidden');
+            document.getElementById(page).classList.remove('hidden');
+        }
+
+        function setAnalyzeMode(mode) {
+            currentAnalyzeMode = mode;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function handleFile(file) {
+            if (!file) return;
+            currentFile = file;
+            const preview = document.getElementById('videoPreview');
+            const video = document.getElementById('previewVideo');
+            
+            if (file.type.startsWith('video/')) {
+                preview.classList.remove('hidden');
+                video.src = URL.createObjectURL(file);
+            } else if (file.type.startsWith('image/')) {
+                alert('Image uploaded! Ready for analysis.');
+            }
+        }
+
+        function startAnalysis() {
+            const name = document.getElementById('playerName').value;
+            const age = document.getElementById('playerAge').value;
+            const position = document.getElementById('playerPosition').value;
+            
+            if (!name || !age || !position) {
+                alert('املأ كل الحقول!');
+                return;
+            }
+
+            // Simulate analysis
+            const scores = generateRandomScores();
+            const player = { id: Date.now(), name, age: parseInt(age), position, scores, date: new Date().toISOString() };
+            
+            // Save
+            players.push(player);
+            analysisHistory.push({ playerId: player.id, ...player });
+            localStorage.setItem('scoutPlayers', JSON.stringify(players));
+            localStorage.setItem('scoutHistory', JSON.stringify(analysisHistory));
+
+            // Display results
+            displayResults(player);
+        }
+
+        function generateRandomScores() {
+            return {
+                overall: Math.floor(60 + Math.random() * 35),
+                speed: Math.floor(60 + Math.random() * 35),
+                shooting: Math.floor(60 + Math.random() * 35),
+                passing: Math.floor(60 + Math.random() * 35),
+                dribbling: Math.floor(60 + Math.random() * 35),
+                defending: Math.floor(60 + Math.random() * 35),
+                stamina: Math.floor(60 + Math.random() * 35),
+                vision: Math.floor(60 + Math.random() * 35)
+            };
+        }
+
+        function displayResults(player) {
+            document.getElementById('analysisResult').classList.remove('hidden');
+            document.getElementById('overallScore').textContent = player.scores.overall;
+            document.getElementById('speedScore').textContent = player.scores.speed;
+            document.getElementById('skillScore').textContent = (player.scores.dribbling + player.scores.shooting) / 2;
+            document.getElementById('staminaScore').textContent = player.scores.stamina;
+
+            // Radar chart
+            new Chart(document.getElementById('radarChart'), {
+                type: 'radar',
+                data: {
+                    labels: ['السرعة', 'التسديد', 'التمرير', 'المراوغة', 'الدفاع', 'اللياقة', 'الرؤية'],
+                    datasets: [{
+                        data: [player.scores.speed, player.scores.shooting, player.scores.passing, player.scores.dribbling, player.scores.defending, player.scores.stamina, player.scores.vision],
+                        backgroundColor: 'rgba(0,230,118,0.2)',
+                        borderColor: '#00e676',
+                        borderWidth: 2
+                    }]
+                },
+                options: { scales: { r: { min: 50, max: 100 } } }
+            });
+
+            // Best position
+            const positions = { 'مهاجم': player.scores.shooting, 'جناح': player.scores.dribbling, 'وسط': player.scores.passing, 'مدافع': player.scores.defending, 'حارس': player.scores.stamina };
+            const best = Object.entries(positions).reduce((a, b) => a[1] > b[1] ? a : b);
+            document.getElementById('bestPosition').textContent = best[0];
+
+            // Recommendations
+            const recs = generateRecommendations(player.scores);
+            document.getElementById('recommendations').innerHTML = recs.map(r => `<p style="margin:5px 0">• ${r}</p>`).join('');
+
+            updatePlayerSelects();
+            renderTeam();
+        }
+
+        function generateRecommendations(scores) {
+            const recs = [];
+            if (scores.speed < 70) recs.push('تحسين السرعة: تمارين HIIT وجري');
+            if (scores.shooting < 70) recs.push('تحسين التسديد: تمريناتPrecision');
+            if (scores.stamina < 70) recs.push('تحسين اللياقة: cardio منتظم');
+            if (recs.length === 0) recs.push('مستوى excellent! استمر');
+            return recs;
+        }
+
+        function updatePlayerSelects() {
+            const opts = '<option value="">اختر لاعب</option>' + players.map(p => `<option value="${p.id}">${p.name} - ${p.position}</option>`).join('');
+            document.getElementById('comparePlayer1').innerHTML = opts;
+            document.getElementById('comparePlayer2').innerHTML = opts;
+            document.getElementById('historyPlayer').innerHTML = opts;
+        }
+
+        function comparePlayers() {
+            const p1Id = document.getElementById('comparePlayer1').value;
+            const p2Id = document.getElementById('comparePlayer2').value;
+            if (!p1Id || !p2Id) return;
+
+            const p1 = players.find(p => p.id == p1Id);
+            const p2 = players.find(p => p.id == p2Id);
+
+            document.getElementById('player1Stats').innerHTML = `<p>التقييم: <strong>${p1.scores.overall}</strong></p><p>المركز: ${p1.position}</p>`;
+            document.getElementById('player2Stats').innerHTML = `<p>التقييم: <strong>${p2.scores.overall}</strong></p><p>المركز: ${p2.position}</p>`;
+
+            // Compare chart
+            if (window.compareChart) window.compareChart.destroy();
+            window.compareChart = new Chart(document.getElementById('compareChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['السرعة', 'التسديد', 'التمرير', 'المراوغة'],
+                    datasets: [
+                        { label: p1.name, data: [p1.scores.speed, p1.scores.shooting, p1.scores.passing, p1.scores.dribbling], backgroundColor: '#00e676' },
+                        { label: p2.name, data: [p2.scores.speed, p2.scores.shooting, p2.scores.passing, p2.scores.dribbling], backgroundColor: '#00bcd4' }
+                    ]
+                }
+            });
+        }
+
+        function loadHistory() {
+            const playerId = document.getElementById('historyPlayer').value;
+            if (!playerId) return;
+
+            const history = analysisHistory.filter(h => h.playerId == playerId);
+            const timeline = document.getElementById('historyTimeline');
+            
+            timeline.innerHTML = history.map(h => `
+                <div class="card timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div>
+                        <p><strong>${new Date(h.date).toLocaleDateString('ar')}</strong></p>
+                        <p>التقييم: ${h.scores.overall}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTeam() {
+            document.getElementById('teamPlayers').innerHTML = players.map(p => `
+                <div class="card">
+                    <h4>${p.name}</h4>
+                    <p style="color:var(--text-dim)">${p.age} سنة | ${p.position}</p>
+                    <span class="badge badge-gold">${p.scores.overall}</span>
+                </div>
+            `).join('') || '<p style="color:var(--text-dim)">لا يوجد لاعبون</p>';
+        }
+
+        function showModal(type) {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('hidden');
+            
+            if (type === 'addPlayer') {
+                document.getElementById('modalTitle').textContent = '➕ إضافة لاعب';
+                document.getElementById('modalBody').innerHTML = `
+                    <input type="text" id="newName" placeholder="الاسم">
+                    <input type="number" id="newAge" placeholder="العمر">
+                    <select id="newPosition">
+                        <option value="مهاجم">مهاجم</option>
+                        <option value="جناح">جناح</option>
+                        <option value="وسط">وسط</option>
+                        <option value="مدافع">مدافع</option>
+                    </select>
+                    <button class="btn btn-primary" style="width:100%" onclick="addPlayer()">حفظ</button>
+                `;
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        function addPlayer() {
+            const name = document.getElementById('newName').value;
+            const age = parseInt(document.getElementById('newAge').value);
+            const position = document.getElementById('newPosition').value;
+            
+            if (!name || !age) return;
+            
+            const player = { id: Date.now(), name, age, position, scores: generateRandomScores(), date: new Date().toISOString() };
+            players.push(player);
+            localStorage.setItem('scoutPlayers', JSON.stringify(players));
+            
+            updatePlayerSelects();
+            renderTeam();
+            closeModal();
+        }
+    </script>
+</body>
+</html>

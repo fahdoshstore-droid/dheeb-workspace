@@ -1,0 +1,12 @@
+{
+  "active_focus": "trading",
+  "projects": {
+    "trading": "ACTIVE",
+    "scout-ai": "BUILDING",
+    "qitaa": "WAITING",
+    "perplexica": "RUNNING",
+    "automation": "BACKLOG"
+  },
+  "updated": "2026-03-07",
+  "next_review": "2026-03-10"
+}

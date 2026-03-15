@@ -1,0 +1,1 @@
+{"timestamp":"2026-03-07T16:26:37.996Z","decision":"OBSERVE","gates":{"marketCondition":{"pass":true,"status":"RANGING","details":{"adx":25,"atr":15,"volumeRatio":0.8333333333333334}},"news":{"pass":true,"status":"CLEAR"}},"setup":null,"reason":"Outside Kill Zone"}

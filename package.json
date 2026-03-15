@@ -1,0 +1,59 @@
+{
+  "name": "dheeb-coaching-system",
+  "version": "1.0.0",
+  "description": "🐺 DHEEB - Real-time Trading Coaching System via Telegram & Notion",
+  "main": "run-coach.js",
+  "scripts": {
+    "start": "node run-coach.js",
+    "dev": "node run-coach.js --debug",
+    "pm2:start": "pm2 start run-coach.js --name 'dheeb-coach'",
+    "pm2:logs": "pm2 logs dheeb-coach",
+    "pm2:stop": "pm2 stop dheeb-coach",
+    "pm2:restart": "pm2 restart dheeb-coach",
+    "pm2:delete": "pm2 delete dheeb-coach",
+    "test:telegram": "node -e \"console.log(process.env.TELEGRAM_BOT_TOKEN ? '✅ Token Found' : '❌ Token Missing')\"",
+    "test:notion": "node -e \"console.log(process.env.NOTION_API_KEY ? '✅ API Key Found' : '❌ API Key Missing')\"",
+    "analyze": "node master-coach.js",
+    "backtest": "node backtest-engine.js"
+  },
+  "keywords": [
+    "trading",
+    "coaching",
+    "telegram",
+    "notion",
+    "psychology",
+    "discipline",
+    "forex",
+    "dheeb"
+  ],
+  "author": "Dheeb Trading Coach",
+  "license": "MIT",
+  "dependencies": {
+    "@notionhq/client": "^2.3.0",
+    "discord.js": "^14.25.1",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "googleapis": "^171.4.0",
+    "imap-simple": "^5.1.0",
+    "node-telegram-bot-api": "^0.61.0",
+    "nodemailer": "^8.0.1",
+    "pg": "^8.18.0",
+    "playwright": "^1.58.2",
+    "yahoo-finance2": "^3.13.1"
+  },
+  "devDependencies": {
+    "pm2": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/dheeb-coaching.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/dheeb-coaching/issues"
+  },
+  "homepage": "https://github.com/your-username/dheeb-coaching#readme"
+}

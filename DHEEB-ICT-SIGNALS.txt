@@ -1,0 +1,69 @@
+//@version=5
+// DHEEB ICT Signals - TradingView Pine Script
+// Sends signals to webhook: https://unnotational-gus-unsenescent.ngrok-free.dev/webhook/ict
+
+//@indicator DHEEB ICT Signals
+strategy("DHEEB ICT Strategy", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=1)
+
+// === INPUTS ===
+enableWebhook = input.bool(true, title="Enable Webhook")
+webhookURL = input.string("https://unnotational-gus-unsenescent.ngrok-free.dev/webhook/ict", title="Webhook URL")
+symbolName = input.string("US100", title="Symbol")
+
+// ICT Inputs
+showFVG = input.bool(true, title="Show Fair Value Gaps")
+showOB = input.bool(true, title="Show Order Blocks")
+showLiquidity = input.bool(true, title="Show Liquidity Sweeps")
+
+// Risk Management
+rrRatio = input.float(2.5, title="Risk:Reward Ratio")
+slATRmult = input.float(1.5, title="SL ATR Multiplier")
+
+// === ICT INDICATORS ===
+
+// Fair Value Gap
+fvgBuy = low > high[2] + ta.true_range
+fvgSell = high < low[2] - ta.true_range
+
+// Order Block (last bearish/bullish candle before liquidity sweep)
+var float obHigh = na
+var float obLow = na
+obCondition = false
+
+// Liquidity Sweep
+highSweep = high > ta.highest(high, 20)[1]
+lowSweep = low < ta.lowest(low, 20)[1]
+
+// === PLOTTING ===
+plotshape(showFVG and fvgBuy, title="FVG Buy", color=color.green, text="FVG", style=shape.labelup, location=location.belowbar)
+plotshape(showFVG and fvgSell, title="FVG Sell", color=color.red, text="FVG", style=shape.labeldown, location=location.abovebar)
+plotshape(showLiquidity and highSweep, title="High Sweep", color=color.red, text="LH", style=shape.xcross)
+plotshape(showLiquidity and lowSweep, title="Low Sweep", color=color.green, text="LL", style=shape.xcross)
+
+// === ALERTS ===
+alertcondition(fvgBuy, title="FVG Buy Signal", message='{"symbol":"{{ticker}}","signal":"FVG_BUY","price":{{close}},"entry":{{close}},"fvg":true,"orderblock":false,"liquidity":false}')
+alertcondition(fvgSell, title="FVG Sell Signal", message='{"symbol":"{{ticker}}","signal":"FVG_SELL","price":{{close}},"entry":{{close}},"fvg":true,"orderblock":false,"liquidity":false}')
+alertcondition(highSweep, title="Liquidity Sweep High", message='{"symbol":"{{ticker}}","signal":"LIQ_SWEEP_HIGH","price":{{close}},"liquidity":true}')
+alertcondition(lowSweep, title="Liquidity Sweep Low", message='{"symbol":"{{ticker}}","signal":"LIQ_SWEEP_LOW","price":{{close}},"liquidity":true}')
+
+// === STRATEGY ===
+if (fvgBuy and enableWebhook)
+    // Webhook will be triggered by TradingView's alert system
+    // Use: {{strategy.order.alert_message}} in alert
+    
+    sl = low - ta.atr(14) * slATRmult
+    tp = close + (close - sl) * rrRatio
+    
+    strategy.entry("DHEEB_Buy", strategy.long)
+    strategy.exit("DHEEB_Exit", stop=sl, limit=tp, alert_message=webhookURL)
+
+if (fvgSell and enableWebhook)
+    sl = high + ta.atr(14) * slATRmult
+    tp = close - (sl - close) * rrRatio
+    
+    strategy.entry("DHEEB_Sell", strategy.short)
+    strategy.exit("DHEEB_Exit", stop=sl, limit=tp)
+
+// === WEBSOCKET ALERT FORMAT (for TradingView Alert) ===
+// Use this message in TradingView Alert:
+// {"symbol":"US100","signal":"FVG_BUY","price":{{close}},"entry":{{close}},"sl":{{low}},"tp":{{high}}}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHEEB - TRIL Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0f1a; font-family: 'Inter', 'Noto Kufi Arabic', sans-serif; color: #f0f4f8; padding: 20px; }
+    
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    .header { text-align: center; margin-bottom: 30px; }
+    .logo { font-size: 32px; font-weight: bold; }
+    .logo span { color: #00e676; }
+    .subtitle { color: #8892a4; margin-top: 5px; font-size: 14px; }
+    
+    .card { background: #111827; padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid #1e2a3a; }
+    .card-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; color: #00e676; }
+    
+    /* TRIL Status */
+    .tril-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .tril-item { background: #0a0f1a; padding: 15px; border-radius: 12px; text-align: center; }
+    .tril-label { font-size: 12px; color: #8892a4; margin-bottom: 8px; }
+    .tril-value { font-size: 18px; font-weight: bold; }
+    .tril-value.pass { color: #00e676; }
+    .tril-value.fail { color: #ff5252; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th { text-align: right; padding: 12px; color: #8892a4; border-bottom: 1px solid #1e2a3a; font-weight: 600; }
+    .data-table td { padding: 12px; border-bottom: 1px solid #1e2a3a; }
+    .data-table .direction-bearish { color: #ff5252; font-weight: bold; }
+    .data-table .direction-bullish { color: #00e676; font-weight: bold; }
+    .data-table .prob-high { color: #00e676; font-weight: bold; }
+    .data-table .best { color: #00e676; font-weight: bold; }
+    .data-table .loss { color: #ff5252; }
+    
+    /* Scenarios Grid */
+    .scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .scenario { background: #0a0f1a; padding: 15px; border-radius: 12px; text-align: center; }
+    .scenario-name { font-size: 12px; color: #8892a4; margin-bottom: 8px; }
+    .scenario-prob { font-size: 20px; font-weight: bold; color: #ff9800; }
+    .scenario-prob.high { color: #00e676; }
+    
+    /* Setup Box */
+    .setup-box { background: linear-gradient(135deg, #1e2a3a, #111827); padding: 20px; border-radius: 16px; border: 2px solid #00e676; }
+    .setup-title { font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 15px; }
+    .setup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
+    .setup-item { background: #0a0f1a; padding: 15px; border-radius: 10px; }
+    .setup-label { font-size: 11px; color: #8892a4; }
+    .setup-value { font-size: 16px; font-weight: bold; color: #00e676; }
+    .setup-value.sl { color: #ff5252; }
+    
+    /* Decision */
+    .decision { text-align: center; padding: 20px; }
+    .decision-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+    .decision-title.allow { color: #00e676; }
+    .decision-title.deny { color: #ff5252; }
+    .decision-reason { color: #8892a4; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .tril-grid, .scenarios, .setup-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">DHEEB <span>TRIL</span> Analysis</div>
+      <div class="subtitle">MNQ - March 7, 2026 |叔叔</div>
+    </div>
+    
+    <!-- TRIL Status -->
+    <div class="card">
+      <div class="card-title">🔄 TRIL Status | حالة تريل</div>
+      <div class="tril-grid">
+        <div class="tril-item">
+          <div class="tril-label">T - Time | الوقت</div>
+          <div class="tril-value fail">❌ OUTSIDE | خارج Zone</div>
+        </div>
+        <div class="tril-item">
+          <div class="tril-label">R - Raid | الحادث</div>
+          <div class="tril-value pass">✅ SWEPT | تم Sweep</div>
+        </div>
+        <div class="tril-item">
+          <div class="tril-label">I - Imbalance | الاختلال</div>
+          <div class="tril-value pass">✅ FVG | موجود</div>
+        </div>
+        <div class="tril-item">
+          <div class="tril-label">L - Location | الموقع</div>
+          <div class="tril-value pass">✅ DISCOUNT | تخفيض</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trend -->
+    <div class="card">
+      <div class="card-title">📈 Trend | الاتجاه</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Timeframe | المدة</th>
+            <th>Direction | الاتجاه</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Long Term | طويل المدى</td>
+            <td class="direction-bearish">📉 Bearish | هابط</td>
+          </tr>
+          <tr>
+            <td>Medium | متوسط</td>
+            <td>Range | نطاق (24,350 - 25,200)</td>
+          </tr>
+          <tr>
+            <td>Short Term | قصير</td>
+            <td class="direction-bearish">📉 Bearish | هابط</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Scenarios -->
+    <div class="card">
+      <div class="card-title">🎯 Scenarios | السيناريوهات</div>
+      <div class="scenarios">
+        <div class="scenario">
+          <div class="scenario-name">Bearish Continuation | استمرار هابط</div>
+          <div>Entry: 24,700</div>
+          <div>TP: 24,500</div>
+          <div>SL: 24,900</div>
+          <div class="scenario-prob high">60%</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-name">Double Bottom | قاع مزدوج</div>
+          <div>Entry: 24,400</div>
+          <div>TP: 24,700</div>
+          <div>SL: 24,250</div>
+          <div class="scenario-prob">25%</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-name">Breakout | كسر النطاق</div>
+          <div>Entry: 25,200</div>
+          <div>TP: 25,500</div>
+          <div>SL: 24,900</div>
+          <div class="scenario-prob">15%</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Risk/Reward -->
+    <div class="card">
+      <div class="card-title">⚖️ Risk/Reward | المخاطر والعائد</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario | السيناريو</th>
+            <th>Risk | المخاطر</th>
+            <th>Reward | العائد</th>
+            <th>RRR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bearish | هابط</td>
+            <td>200 pts</td>
+            <td>200 pts</td>
+            <td>1:1</td>
+          </tr>
+          <tr>
+            <td class="best">Wait for OTE ⭐ | انتظر OTE</td>
+            <td class="best">150 pts</td>
+            <td class="best">300 pts</td>
+            <td class="best">1:2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Setup -->
+    <div class="card">
+      <div class="setup-box">
+        <div class="setup-title">🎯 Best Setup | أفضل Setup</div>
+        <div class="setup-grid">
+          <div class="setup-item">
+            <div class="setup-label">Type | النوع</div>
+            <div class="setup-value">Bearish | هابط</div>
+          </div>
+          <div class="setup-item">
+            <div class="setup-label">Entry | الدخول</div>
+            <div class="setup-value">24,550</div>
+          </div>
+          <div class="setup-item">
+            <div class="setup-label">TP | الهدف</div>
+            <div class="setup-value">24,800</div>
+          </div>
+          <div class="setup-item">
+            <div class="setup-label">SL | Stop</div>
+            <div class="setup-value sl">24,350</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decision -->
+    <div class="card">
+      <div class="decision">
+        <div class="decision-title deny">⛔ NOT ALLOWED | غير مسموح</div>
+        <div class="decision-reason">Outside Kill Zone - Wait for Sunday 14:00 UTC | خارج Zone - انتظر الأحد 14:00</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

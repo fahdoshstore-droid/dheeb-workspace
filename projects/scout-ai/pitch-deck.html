@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout AI - Pitch Deck</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Kufi Arabic', sans-serif; background: #0a0f1a; color: white; overflow: hidden; }
+        .slide { display: none; height: 100vh; padding: 40px; justify-content: center; align-items: center; flex-direction: column; text-align: center; }
+        .slide.active { display: flex; }
+        h1 { font-size: 4rem; margin-bottom: 20px; color: #00ff88; }
+        h2 { font-size: 2.5rem; margin-bottom: 30px; color: #00ff88; }
+        p { font-size: 1.5rem; line-height: 1.8; color: #ccc; }
+        ul { list-style: none; font-size: 1.3rem; }
+        li { padding: 10px; color: #aaa; }
+        li::before { content: "✓ "; color: #00ff88; }
+        .tagline { font-size: 2rem; color: #666; margin-top: 20px; }
+        .problem { color: #ff4444; }
+        .solution { color: #00ff88; }
+        .market { font-size: 3rem; color: #ffaa00; }
+        .team { font-size: 1.8rem; }
+        .cta { font-size: 2rem; color: #ffaa00; }
+        .demo-url { background: #1a1f2e; padding: 20px; border-radius: 10px; margin: 20px; font-family: monospace; }
+        .nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+        .nav button { padding: 10px 20px; background: #00ff88; border: none; cursor: pointer; font-size: 1rem; border-radius: 5px; }
+        .nav button:hover { background: #00cc6a; }
+        .slide-num { position: fixed; bottom: 20px; right: 20px; color: #666; font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide active">
+    <h1>⚽ Scout AI</h1>
+    <p class="tagline">الكشافة الذكية في ثواني</p>
+    <p>AI-Powered Football Talent Scouting</p>
+</div>
+
+<!-- Slide 2: المشكلة -->
+<div class="slide">
+    <h2 class="problem">المشكلة</h2>
+    <ul>
+        <li>الكشافة التقليدية = 80% وقت + تكلفة عالية</li>
+        <li>Manual evaluation = subjective</li>
+        <li>No data tracking</li>
+        <li>تكلفة $500+ لكل لاعب</li>
+    </ul>
+</div>
+
+<!-- Slide 3: الحل -->
+<div class="slide">
+    <h2 class="solution">الحل: Scout AI</h2>
+    <ul>
+        <li>AI تحليل + تقرير خلال ثواني</li>
+        <li>Objective data</li>
+        <li>WhatsApp export للأهل</li>
+        <li>مقارنة اللاعبين</li>
+    </ul>
+</div>
+
+<!-- Slide 4: Demo -->
+<div class="slide">
+    <h2>Demo 🎯</h2>
+    <div class="demo-url">
+        URL: http://server:3007<br>
+        - Upload صورة/فيديو<br>
+        - تحليل تلقائي<br>
+        - WhatsApp report
+    </div>
+</div>
+
+<!-- Slide 5: السوق -->
+<div class="slide">
+    <h2>السوق 🇸🇦</h2>
+    <p class="market">+1B SAR</p>
+    <ul>
+        <li>10,000+ أكاديمية كرة قدم</li>
+        <li>300 مليون لاعب مسجل عالميا</li>
+    </ul>
+</div>
+
+<!-- Slide 6: الفريق -->
+<div class="slide">
+    <h2>الفريق</h2>
+    <ul class="team">
+        <li>فهد - Founder</li>
+        <li>صالح الصالح</li>
+        <li>أحمد الحجي</li>
+        <li>مبارك المعيويد</li>
+        <li>عثمان التويجي</li>
+        <li>عمر الجغيمان</li>
+    </ul>
+</div>
+
+<!-- Slide 7: CTA -->
+<div class="slide">
+    <h2 class="cta">ندعوك للاستثمار 🤝</h2>
+    <ul>
+        <li>$50,000 للتوسع</li>
+        <li>شراكات مع الأكاديميات</li>
+    </ul>
+</div>
+
+<!-- Slide 8: Thank You -->
+<div class="slide">
+    <h1>شكرا! 🙏</h1>
+    <p class="tagline">Scout AI - الكشافة الذكية في ثواني</p>
+</div>
+
+<div class="nav">
+    <button onclick="prevSlide()">⬅️ السابق</button>
+    <button onclick="nextSlide()">التالي ➡️</button>
+</div>
+<div class="slide-num" id="slideNum">1 / 8</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('slideNum').textContent = (currentSlide + 1) + ' / ' + totalSlides;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+</script>
+
+</body>
+</html>

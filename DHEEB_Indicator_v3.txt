@@ -1,0 +1,524 @@
+// ============================================================
+// DHEEB ICT INDICATOR v3.0 — ذيب
+// Visual Boxes | Candle Colors | Alerts
+// ICT: OB | FVG | IFVG | Liquidity | Sessions | AMD | SD
+// ============================================================
+// @version=5
+indicator("DHEEB ICT v3.0 — ذيب", overlay=true, max_boxes_count=200, max_lines_count=300, max_labels_count=200)
+
+// ============================================================
+// INPUTS
+// ============================================================
+
+// --- Sessions ---
+grpSess = "⏰ SESSIONS"
+enableSessions  = input.bool(true,  "Enable Sessions",      group=grpSess)
+sessionAsia     = input.bool(true,  "Asia    (00-08 UTC)",  group=grpSess)
+sessionLondon   = input.bool(true,  "London  (08-11 UTC)",  group=grpSess)
+sessionNY       = input.bool(true,  "NY      (13:30-16 UTC)", group=grpSess)
+colorAsia       = input.color(color.new(color.blue,  88), "Asia Color",   group=grpSess)
+colorLondon     = input.color(color.new(color.green, 88), "London Color", group=grpSess)
+colorNY         = input.color(color.new(color.red,   88), "NY Color",     group=grpSess)
+
+// --- Order Blocks ---
+grpOB = "📦 ORDER BLOCKS"
+enableOB        = input.bool(true,  "Show Order Blocks",    group=grpOB)
+obLookback      = input.int(10,     "OB Lookback",          group=grpOB, minval=2)
+obBullColor     = input.color(color.new(#00e676, 75), "Bullish OB Color", group=grpOB)
+obBearColor     = input.color(color.new(#ff1744, 75), "Bearish OB Color", group=grpOB)
+obExtend        = input.int(20,     "OB Extend Bars",       group=grpOB, minval=1)
+
+// --- FVG ---
+grpFVG = "⚡ FVG / IFVG"
+enableFVG       = input.bool(true,  "Show FVG",             group=grpFVG)
+fvgBullColor    = input.color(color.new(#00bcd4, 80), "Bull FVG Color",  group=grpFVG)
+fvgBearColor    = input.color(color.new(#ff9800, 80), "Bear FVG Color",  group=grpFVG)
+enableIFVG      = input.bool(true,  "Show IFVG",            group=grpFVG)
+ifvgBullColor   = input.color(color.new(#76ff03, 82), "Bull IFVG Color", group=grpFVG)
+ifvgBearColor   = input.color(color.new(#ff6d00, 82), "Bear IFVG Color", group=grpFVG)
+fvgMitigation   = input.bool(true,  "Remove FVG on Mitigate", group=grpFVG)
+
+// --- Liquidity ---
+grpLiq = "💧 LIQUIDITY"
+enableLiquidity = input.bool(true,  "Show Liquidity Lines",  group=grpLiq)
+liqLookback     = input.int(20,     "Liquidity Lookback",    group=grpLiq, minval=5)
+liqHighColor    = input.color(#ef5350, "Buy-Side Liq Color",  group=grpLiq)
+liqLowColor     = input.color(#26a69a, "Sell-Side Liq Color", group=grpLiq)
+
+// --- SD Levels ---
+grpSD = "📐 STANDARD DEVIATION"
+enableSD        = input.bool(true,  "Show SD Levels",  group=grpSD)
+sdLength        = input.int(20,     "SD Length",       group=grpSD, minval=5)
+showSD3         = input.bool(true,  "Show SD3",        group=grpSD)
+showSD4         = input.bool(false, "Show SD4",        group=grpSD)
+
+// --- Candle Colors ---
+grpCandle = "🕯️ CANDLE COLORS"
+enableCandleColor = input.bool(true, "Color Candles by Zone", group=grpCandle)
+
+// --- Risk ---
+grpRisk = "🛡️ RISK"
+maxRisk = input.float(1.0, "Max Risk %", group=grpRisk)
+rrMin   = input.float(2.5, "Min R:R",    group=grpRisk)
+
+// ============================================================
+// TIME
+// ============================================================
+
+hourUTC   = hour(time, "UTC")
+minuteUTC = minute(time, "UTC")
+
+// ============================================================
+// SESSIONS
+// ============================================================
+
+inAsia   = enableSessions and sessionAsia   and (hourUTC >= 0  and hourUTC < 8)
+inLondon = enableSessions and sessionLondon and (hourUTC >= 8  and hourUTC < 11)
+inNY     = enableSessions and sessionNY     and ((hourUTC == 13 and minuteUTC >= 30) or (hourUTC >= 14 and hourUTC < 16))
+
+var string macroTime = "OFF-HOURS"
+if hourUTC >= 0 and hourUTC < 8
+    macroTime := "ASIA 🌏"
+else if hourUTC >= 8 and hourUTC < 11
+    macroTime := "LONDON 🇬🇧"
+else if (hourUTC == 13 and minuteUTC >= 30) or (hourUTC >= 14 and hourUTC < 16)
+    macroTime := "NEW YORK 🗽"
+else
+    macroTime := "OFF-HOURS"
+
+bgcolor(inAsia   ? colorAsia   : na, title="Asia BG")
+bgcolor(inLondon ? colorLondon : na, title="London BG")
+bgcolor(inNY     ? colorNY     : na, title="NY BG")
+
+// ============================================================
+// SESSION HIGH / LOW
+// ============================================================
+
+var float asianHigh  = na
+var float asianLow   = na
+var float londonHigh = na
+var float londonLow  = na
+var float nyHigh     = na
+var float nyLow      = na
+
+if inAsia and not inAsia[1]
+    asianHigh := high
+    asianLow  := low
+else if inAsia
+    asianHigh := math.max(asianHigh, high)
+    asianLow  := math.min(asianLow,  low)
+
+if inLondon and not inLondon[1]
+    londonHigh := high
+    londonLow  := low
+else if inLondon
+    londonHigh := math.max(londonHigh, high)
+    londonLow  := math.min(londonLow,  low)
+
+if inNY and not inNY[1]
+    nyHigh := high
+    nyLow  := low
+else if inNY
+    nyHigh := math.max(nyHigh, high)
+    nyLow  := math.min(nyLow,  low)
+
+amd = ta.sma(high - low, 14)
+
+// ============================================================
+// STANDARD DEVIATION
+// ============================================================
+
+sd        = ta.stdev(close, sdLength)
+upperSD1  = close + sd * 1
+lowerSD1  = close - sd * 1
+upperSD2  = close + sd * 2
+lowerSD2  = close - sd * 2
+upperSD3  = close + sd * 3
+lowerSD3  = close - sd * 3
+upperSD4  = close + sd * 4
+lowerSD4  = close - sd * 4
+
+plot(enableSD ? upperSD1 : na, "SD1+", color.new(color.blue,   50), linewidth=1)
+plot(enableSD ? lowerSD1 : na, "SD1-", color.new(color.blue,   50), linewidth=1)
+plot(enableSD ? upperSD2 : na, "SD2+", color.new(color.orange, 40), linewidth=2)
+plot(enableSD ? lowerSD2 : na, "SD2-", color.new(color.orange, 40), linewidth=2)
+plot(enableSD and showSD3 ? upperSD3 : na, "SD3+", color.new(color.red, 30), linewidth=2)
+plot(enableSD and showSD3 ? lowerSD3 : na, "SD3-", color.new(color.red, 30), linewidth=2)
+plot(enableSD and showSD4 ? upperSD4 : na, "SD4+", color.new(#b71c1c, 20), linewidth=2, style=plot.style_circles)
+plot(enableSD and showSD4 ? lowerSD4 : na, "SD4-", color.new(#b71c1c, 20), linewidth=2, style=plot.style_circles)
+
+// ============================================================
+// ORDER BLOCKS — BOXES
+// ============================================================
+
+var box bullOBBox = na
+var box bearOBBox = na
+
+bullishOB = false
+bearishOB = false
+var float obHighBull = na
+var float obLowBull  = na
+var float obHighBear = na
+var float obLowBear  = na
+
+for i = 1 to obLookback
+    if enableOB and close[i] > open[i] and close[i-1] < open[i-1]
+        if low < low[i]
+            bullishOB := true
+            obLowBull  := low[i]
+            obHighBull := high[i]
+            break
+
+for i = 1 to obLookback
+    if enableOB and close[i] < open[i] and close[i-1] > open[i-1]
+        if high > high[i]
+            bearishOB := true
+            obLowBear  := low[i]
+            obHighBear := high[i]
+            break
+
+if bullishOB and enableOB
+    bullOBBox := box.new(bar_index, obHighBull, bar_index + obExtend, obLowBull,
+         border_color=color.new(#00e676, 0),
+         bgcolor=obBullColor,
+         border_width=1,
+         text="OB 🟢",
+         text_color=color.white,
+         text_size=size.tiny)
+
+if bearishOB and enableOB
+    bearOBBox := box.new(bar_index, obHighBear, bar_index + obExtend, obLowBear,
+         border_color=color.new(#ff1744, 0),
+         bgcolor=obBearColor,
+         border_width=1,
+         text="OB 🔴",
+         text_color=color.white,
+         text_size=size.tiny)
+
+// ============================================================
+// FVG — BOXES
+// ============================================================
+
+fvgBull = enableFVG and (low[2] > high[1])
+fvgBear = enableFVG and (high[2] < low[1])
+ifvgBull = enableIFVG and (low[1] > high[2]) and (low > high[1])
+ifvgBear = enableIFVG and (high[1] < low[2]) and (high < low[1])
+
+var float fvgTopVal    = na
+var float fvgBottomVal = na
+
+if fvgBull
+    fvgTopVal    := low[2]
+    fvgBottomVal := high[1]
+    if enableFVG
+        fvgBox = box.new(bar_index - 2, fvgTopVal, bar_index + obExtend, fvgBottomVal,
+             border_color=color.new(#00bcd4, 0),
+             bgcolor=fvgBullColor,
+             border_width=1,
+             text="FVG 🔵",
+             text_color=color.white,
+             text_size=size.tiny)
+
+if fvgBear
+    fvgTopVal    := high[2]
+    fvgBottomVal := low[1]
+    if enableFVG
+        fvgBox = box.new(bar_index - 2, fvgTopVal, bar_index + obExtend, fvgBottomVal,
+             border_color=color.new(#ff9800, 0),
+             bgcolor=fvgBearColor,
+             border_width=1,
+             text="FVG 🟠",
+             text_color=color.white,
+             text_size=size.tiny)
+
+if ifvgBull and enableIFVG
+    label.new(bar_index, low, "IFVG ↑",
+         color=color.new(#76ff03, 0),
+         textcolor=color.black,
+         style=label.style_label_up,
+         size=size.tiny)
+
+if ifvgBear and enableIFVG
+    label.new(bar_index, high, "IFVG ↓",
+         color=color.new(#ff6d00, 0),
+         textcolor=color.white,
+         style=label.style_label_down,
+         size=size.tiny)
+
+// ============================================================
+// LIQUIDITY LINES
+// ============================================================
+
+lastHigh = ta.highest(high, liqLookback)
+lastLow  = ta.lowest(low,  liqLookback)
+
+bullGrabbed = enableLiquidity and close < lastLow
+bearGrabbed = enableLiquidity and close > lastHigh
+
+plot(enableLiquidity ? lastHigh : na, "Buy-Side Liq",  color=liqHighColor, linewidth=1, style=plot.style_stepline)
+plot(enableLiquidity ? lastLow  : na, "Sell-Side Liq", color=liqLowColor,  linewidth=1, style=plot.style_stepline)
+
+// Grab labels
+if bullGrabbed
+    label.new(bar_index, low, "🐻 Bear Grab",
+         color=color.new(#ef5350, 0),
+         textcolor=color.white,
+         style=label.style_label_up,
+         size=size.small)
+
+if bearGrabbed
+    label.new(bar_index, high, "🐂 Bull Grab",
+         color=color.new(#26a69a, 0),
+         textcolor=color.white,
+         style=label.style_label_down,
+         size=size.small)
+
+// ============================================================
+// MARKET STRUCTURE
+// ============================================================
+
+var string marketStructure = "NEUTRAL"
+if bearGrabbed and close < open
+    marketStructure := "DISTRIBUTION"
+if bullGrabbed and close > open
+    marketStructure := "ACCUMULATION"
+
+// ============================================================
+// SMART MONEY ZONES
+// ============================================================
+
+var string smartMoneyZone = "NONE"
+
+if fvgBull or (bullishOB and bullGrabbed)
+    smartMoneyZone := "REV LONG"
+if fvgBear or (bearishOB and bearGrabbed)
+    smartMoneyZone := "REV SHORT"
+
+retracement = close > open and (close < (asianHigh + asianLow) / 2) and (close > asianLow)
+if retracement
+    smartMoneyZone := "RETRACEMENT"
+if close > londonHigh
+    smartMoneyZone := "EXP LONG"
+if close < londonLow
+    smartMoneyZone := "EXP SHORT"
+if (high - low) < amd * 0.5
+    smartMoneyZone := close > open ? "ACCUM" : "DIST"
+
+// ============================================================
+// CANDLE COLORING
+// ============================================================
+
+candleColor = color.new(color.gray, 0)
+
+if enableCandleColor
+    if bullishOB
+        candleColor := color.new(#00e676, 0)   // OB Bullish — أخضر مشع
+    else if bearishOB
+        candleColor := color.new(#ff1744, 0)   // OB Bearish — أحمر مشع
+    else if fvgBull
+        candleColor := color.new(#00bcd4, 0)   // FVG Bull — سماوي
+    else if fvgBear
+        candleColor := color.new(#ff9800, 0)   // FVG Bear — برتقالي
+    else if bullGrabbed
+        candleColor := color.new(#69f0ae, 30)  // Liquidity Bull Grab
+    else if bearGrabbed
+        candleColor := color.new(#ff5252, 30)  // Liquidity Bear Grab
+    else if inLondon
+        candleColor := close > open ? color.new(#b9f6ca, 30) : color.new(#ffcdd2, 30)
+    else if inNY
+        candleColor := close > open ? color.new(#a5d6a7, 20) : color.new(#ef9a9a, 20)
+
+plotcandle(open, high, low, close,
+     color        = enableCandleColor ? candleColor : na,
+     wickcolor    = enableCandleColor ? candleColor : na,
+     bordercolor  = enableCandleColor ? candleColor : na)
+
+// ============================================================
+// CONFLUENCES & CONFIDENCE
+// ============================================================
+
+htfTrend  = close > ta.sma(close, 50) ? "BULL" : "BEAR"
+momentum  = ta.rsi(close, 14)
+
+var int confluences = 0
+confluences := 0
+if inAsia or inLondon or inNY             : confluences += 1
+if bullGrabbed or bearGrabbed             : confluences += 1
+if bullishOB or bearishOB                 : confluences += 1
+if fvgBull or fvgBear or ifvgBull or ifvgBear : confluences += 1
+if close >= upperSD2 or close <= lowerSD2 : confluences += 1
+if smartMoneyZone != "NONE"               : confluences += 1
+if htfTrend == "BULL" and close > open    : confluences += 1
+if htfTrend == "BEAR" and close < open    : confluences += 1
+if (momentum > 50 and close > open) or (momentum < 50 and close < open) : confluences += 1
+
+var float confidence = 0.0
+confidence := confluences * 11.1
+
+// High confidence signal label
+if confidence >= 77.7
+    signalDir = htfTrend == "BULL" ? "▲ LONG" : "▼ SHORT"
+    signalLbl = "⭐ " + signalDir + " | CONF: " + str.tostring(math.round(confidence)) + "%"
+    signalColor = htfTrend == "BULL" ? color.new(#00e676, 0) : color.new(#ff1744, 0)
+    signalLoc   = htfTrend == "BULL" ? low  : high
+    signalStyle = htfTrend == "BULL" ? label.style_label_up : label.style_label_down
+    label.new(bar_index, signalLoc, signalLbl,
+         color=signalColor,
+         textcolor=color.black,
+         style=signalStyle,
+         size=size.normal)
+
+// ============================================================
+// SESSION H/L LINES
+// ============================================================
+
+var line asiaHLine  = na
+var line asiaLLine  = na
+var line lonHLine   = na
+var line lonLLine   = na
+
+if not inAsia and inAsia[1] and not na(asianHigh)
+    asiaHLine := line.new(bar_index - 1, asianHigh, bar_index + 50, asianHigh,
+         color=colorAsia, width=1, style=line.style_dashed)
+    asiaLLine := line.new(bar_index - 1, asianLow,  bar_index + 50, asianLow,
+         color=colorAsia, width=1, style=line.style_dashed)
+    label.new(bar_index, asianHigh, "Asia H", color=colorAsia, textcolor=color.white, size=size.tiny, style=label.style_label_left)
+    label.new(bar_index, asianLow,  "Asia L", color=colorAsia, textcolor=color.white, size=size.tiny, style=label.style_label_left)
+
+if not inLondon and inLondon[1] and not na(londonHigh)
+    lonHLine := line.new(bar_index - 1, londonHigh, bar_index + 50, londonHigh,
+         color=colorLondon, width=1, style=line.style_dashed)
+    lonLLine := line.new(bar_index - 1, londonLow,  bar_index + 50, londonLow,
+         color=colorLondon, width=1, style=line.style_dashed)
+    label.new(bar_index, londonHigh, "London H", color=colorLondon, textcolor=color.white, size=size.tiny, style=label.style_label_left)
+    label.new(bar_index, londonLow,  "London L", color=colorLondon, textcolor=color.white, size=size.tiny, style=label.style_label_left)
+
+// ============================================================
+// INFO TABLE
+// ============================================================
+
+var table infoTable = table.new(position.top_right, 2, 16,
+     bgcolor=color.new(#1a1a2e, 10),
+     frame_color=color.new(#7c4dff, 60),
+     frame_width=2,
+     border_color=color.new(#7c4dff, 70),
+     border_width=1)
+
+// Header
+table.cell(infoTable, 0, 0, "DHEEB ICT v3.0", text_color=#7c4dff, text_size=size.small, bgcolor=color.new(#1a1a2e, 0))
+table.cell(infoTable, 1, 0, "ذيب",            text_color=#7c4dff, text_size=size.small, bgcolor=color.new(#1a1a2e, 0))
+
+sessColor = inAsia ? colorAsia : inLondon ? colorLondon : inNY ? colorNY : color.gray
+table.cell(infoTable, 0, 1, "SESSION",   text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 1, macroTime,   text_color=sessColor,   text_size=size.small)
+
+obText    = bullishOB ? "🟢 BULL" : bearishOB ? "🔴 BEAR" : "—"
+obColor   = bullishOB ? #00e676 : bearishOB ? #ff1744 : color.gray
+table.cell(infoTable, 0, 2, "ORDER BLOCK", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 2, obText,        text_color=obColor,     text_size=size.small)
+
+fvgText  = fvgBull ? "🔵 BULL" : fvgBear ? "🟠 BEAR" : "—"
+fvgColor = fvgBull ? #00bcd4 : fvgBear ? #ff9800 : color.gray
+table.cell(infoTable, 0, 3, "FVG",    text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 3, fvgText,  text_color=fvgColor,    text_size=size.small)
+
+ifvgText  = ifvgBull ? "🟡 BULL" : ifvgBear ? "🟣 BEAR" : "—"
+ifvgColor = ifvgBull ? #76ff03 : ifvgBear ? #ff6d00 : color.gray
+table.cell(infoTable, 0, 4, "IFVG",   text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 4, ifvgText, text_color=ifvgColor,   text_size=size.small)
+
+grabText  = bullGrabbed ? "🐻 BEARS" : bearGrabbed ? "🐂 BULLS" : "—"
+grabColor = bullGrabbed ? #ef5350 : bearGrabbed ? #26a69a : color.gray
+table.cell(infoTable, 0, 5, "LIQ GRAB", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 5, grabText,   text_color=grabColor,   text_size=size.small)
+
+smColor = smartMoneyZone == "REV LONG" ? #00e676 : smartMoneyZone == "REV SHORT" ? #ff1744 : smartMoneyZone == "NONE" ? color.gray : color.yellow
+table.cell(infoTable, 0, 6, "SM ZONE",        text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 6, smartMoneyZone,   text_color=smColor,     text_size=size.small)
+
+trendColor = htfTrend == "BULL" ? #00e676 : #ff1744
+table.cell(infoTable, 0, 7, "TREND",   text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 7, htfTrend,  text_color=trendColor,  text_size=size.small)
+
+sdText = close >= upperSD3 or close <= lowerSD3 ? "SD3 ⚠️" : close >= upperSD2 or close <= lowerSD2 ? "SD2" : "SD1"
+sdClr  = close >= upperSD3 or close <= lowerSD3 ? #ff1744 : close >= upperSD2 or close <= lowerSD2 ? #ff9800 : #00bcd4
+table.cell(infoTable, 0, 8, "SD ZONE", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 8, sdText,    text_color=sdClr,       text_size=size.small)
+
+rsiColor = momentum > 70 ? #ff1744 : momentum > 50 ? #00e676 : momentum < 30 ? #00bcd4 : #ff9800
+table.cell(infoTable, 0, 9, "RSI",    text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 9, str.tostring(momentum, "#.#"), text_color=rsiColor, text_size=size.small)
+
+table.cell(infoTable, 0, 10, "AMD",    text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 10, str.tostring(amd, "#.##") + " pts", text_color=#a5d6a7, text_size=size.small)
+
+table.cell(infoTable, 0, 11, "ASIA H/L",   text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 11, str.tostring(asianHigh, "#.##") + " / " + str.tostring(asianLow, "#.##"), text_color=color.new(colorAsia, 0), text_size=size.small)
+
+table.cell(infoTable, 0, 12, "LONDON H/L", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 12, str.tostring(londonHigh, "#.##") + " / " + str.tostring(londonLow, "#.##"), text_color=color.new(colorLondon, 0), text_size=size.small)
+
+table.cell(infoTable, 0, 13, "NY H/L",     text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 13, str.tostring(nyHigh, "#.##") + " / " + str.tostring(nyLow, "#.##"), text_color=color.new(colorNY, 0), text_size=size.small)
+
+confColor = confidence >= 77 ? #00e676 : confidence >= 55 ? #ffeb3b : #ff5252
+confBar   = confidence >= 77 ? "████████ " : confidence >= 55 ? "█████    " : "███      "
+table.cell(infoTable, 0, 14, "CONFIDENCE",  text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 14, confBar + str.tostring(math.round(confidence)) + "%", text_color=confColor, text_size=size.small)
+
+strText = marketStructure == "DISTRIBUTION" ? "📉 DIST" : marketStructure == "ACCUMULATION" ? "📈 ACCUM" : "NEUTRAL"
+strClr  = marketStructure == "DISTRIBUTION" ? #ff5252 : marketStructure == "ACCUMULATION" ? #00e676 : color.gray
+table.cell(infoTable, 0, 15, "STRUCTURE", text_color=color.white, text_size=size.small)
+table.cell(infoTable, 1, 15, strText,     text_color=strClr,      text_size=size.small)
+
+// ============================================================
+// ALERTS
+// ============================================================
+
+// Session Alerts
+alertcondition(inLondon  and not inLondon[1],  "🟢 London Open",  "London session opened")
+alertcondition(inNY      and not inNY[1],      "🔴 NY Open",      "New York session opened")
+
+// Order Block Alerts
+alertcondition(bullishOB, "📦 Bullish OB Detected",  "Bullish Order Block formed — potential long zone")
+alertcondition(bearishOB, "📦 Bearish OB Detected",  "Bearish Order Block formed — potential short zone")
+
+// Price Reaching OB Zone
+obBullEntry = bullishOB and (close <= obHighBull) and (close >= obLowBull)
+obBearEntry = bearishOB and (close >= obLowBear)  and (close <= obHighBear)
+alertcondition(obBullEntry, "🎯 Price in Bull OB",  "Price entered Bullish OB zone — watch for rejection")
+alertcondition(obBearEntry, "🎯 Price in Bear OB",  "Price entered Bearish OB zone — watch for rejection")
+
+// FVG Alerts
+alertcondition(fvgBull,  "⚡ Bullish FVG",  "Bullish Fair Value Gap formed")
+alertcondition(fvgBear,  "⚡ Bearish FVG",  "Bearish Fair Value Gap formed")
+alertcondition(ifvgBull, "⚡ Bull IFVG",    "Bullish Inverse FVG — potential continuation")
+alertcondition(ifvgBear, "⚡ Bear IFVG",    "Bearish Inverse FVG — potential continuation")
+
+// Liquidity Grabs
+alertcondition(bullGrabbed, "💧 Bearish Liq Grab",  "Bears grabbed sell-side liquidity — reversal watch")
+alertcondition(bearGrabbed, "💧 Bullish Liq Grab",  "Bulls grabbed buy-side liquidity — reversal watch")
+
+// SD Extremes
+alertcondition(close >= upperSD2, "📐 Price at SD2+",  "Price reached +2 Standard Deviation")
+alertcondition(close <= lowerSD2, "📐 Price at SD2-",  "Price reached -2 Standard Deviation")
+alertcondition(close >= upperSD3, "🚨 Price at SD3+",  "Price reached +3 Standard Deviation — EXTREME")
+alertcondition(close <= lowerSD3, "🚨 Price at SD3-",  "Price reached -3 Standard Deviation — EXTREME")
+
+// Structure
+alertcondition(marketStructure == "ACCUMULATION",  "📈 Accumulation",   "Market structure: ACCUMULATION")
+alertcondition(marketStructure == "DISTRIBUTION",  "📉 Distribution",   "Market structure: DISTRIBUTION")
+
+// Smart Money Zones
+alertcondition(smartMoneyZone == "REV LONG",   "🔄 SMC Long Reversal",  "Smart Money reversal LONG setup")
+alertcondition(smartMoneyZone == "REV SHORT",  "🔄 SMC Short Reversal", "Smart Money reversal SHORT setup")
+alertcondition(smartMoneyZone == "EXP LONG",   "🚀 Expansion Long",     "Price expanding above London High")
+alertcondition(smartMoneyZone == "EXP SHORT",  "💥 Expansion Short",    "Price expanding below London Low")
+
+// High Confidence Signal
+alertcondition(confidence >= 77.7 and htfTrend == "BULL", "⭐ HIGH CONF LONG",  "High Confidence LONG Signal: " + str.tostring(math.round(confidence)) + "%")
+alertcondition(confidence >= 77.7 and htfTrend == "BEAR", "⭐ HIGH CONF SHORT", "High Confidence SHORT Signal: " + str.tostring(math.round(confidence)) + "%")
+
+// Combo Alert (OB + FVG)
+alertcondition((bullishOB and fvgBull) or (bullishOB and bullGrabbed), "🔥 Bull Confluence",  "BULL: OB + FVG/Grab confluence!")
+alertcondition((bearishOB and fvgBear) or (bearishOB and bearGrabbed), "🔥 Bear Confluence",  "BEAR: OB + FVG/Grab confluence!")

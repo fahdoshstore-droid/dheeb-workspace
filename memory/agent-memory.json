@@ -1,0 +1,73 @@
+{
+  "projects": {
+    "trading": {
+      "status": "ACTIVE",
+      "files": {
+        "main": "dheeb-trading-system/index.js",
+        "engine": "dheeb-trading-system/v2-bot.js",
+        "structure": "dheeb-trading-system/core/structure-engine.js"
+      },
+      "version": "3.0.0"
+    },
+    "scout-ai": {
+      "status": "BUILDING",
+      "files": {
+        "main": "scout-ai-site/index.html"
+      }
+    },
+    "qitaa": {
+      "status": "WAITING",
+      "files": {
+        "bot": "projects/qitaa/scripts/qitaa-bot.js"
+      }
+    },
+    "automation": {
+      "status": "BACKLOG"
+    }
+  },
+  "trading_rules": {
+    "maxTradesPerDay": 2,
+    "maxRiskPerDay": 600,
+    "minRRR": 2.5,
+    "forbiddenDays": [
+      3,
+      5
+    ],
+    "allowedDays": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "killZones": {
+      "london": "08:00-12:00 UTC",
+      "ny": "13:00-16:00 UTC",
+      "silverBullet": "14:50-15:10 UTC"
+    }
+  },
+  "skills": {
+    "dheeb-trading": {
+      "value": "skills/dheeb-trading/SKILL.md",
+      "timestamp": "2026-03-07T16:36:16.226Z"
+    },
+    "project-builder": {
+      "value": "skills/project-builder/SKILL.md",
+      "timestamp": "2026-03-07T16:36:16.227Z"
+    },
+    "business-manager": {
+      "value": "skills/business-manager/SKILL.md",
+      "timestamp": "2026-03-07T16:36:16.228Z"
+    }
+  },
+  "command_center": {
+    "strategy": "command-center/strategy.md",
+    "priorities": "command-center/priorities.json",
+    "rules": "command-center/rules.md",
+    "dailyLoop": "command-center/daily-loop.md"
+  },
+  "tested_today": {
+    "trading_system": "PASSED",
+    "structure_engine": "PASSED",
+    "command_center": "READY"
+  }
+}

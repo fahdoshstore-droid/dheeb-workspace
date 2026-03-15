@@ -1,0 +1,29 @@
+{
+  "lastAnalysis": {
+    "symbol": "MNQ",
+    "timestamp": "2026-02-27T02:41:14.389Z",
+    "trend": "BULLISH",
+    "rsi": 51.472265174368445,
+    "confidence": 0.863230481177435,
+    "hasSetup": true,
+    "setup": {
+      "type": "Bullish FVG",
+      "zone": "25001.545106951107",
+      "action": "LONG"
+    }
+  },
+  "currentSetups": [
+    {
+      "type": "Bullish FVG",
+      "zone": "25001.545106951107",
+      "action": "LONG"
+    }
+  ],
+  "activeTrades": [],
+  "signalsSent": 18,
+  "decisions": {
+    "enter": 18,
+    "wait": 25,
+    "reject": 0
+  }
+}

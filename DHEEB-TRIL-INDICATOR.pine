@@ -1,0 +1,263 @@
+// =============================================================================
+// DHEEB TRADING SYSTEM - Complete Indicator
+// ICT + SMC + TRIL + Kill Zones
+// Version: 1.0
+// =============================================================================
+
+//@version=5
+indicator("DHEEB System [ICT+SMC+TRIL]", overlay = true, max_labels_count = 500, max_lines_count = 500, max_boxes_count = 500)
+
+// =============================================================================
+// INPUTS - KILL ZONES
+// =============================================================================
+
+// Session Colors
+asiaColor = input.color(color.new(#14B8A6, 80), "Asia Color")
+londonColor = input.color(color.new(#F59E0B, 80), "London Color")
+nyamColor = input.color(color.new(#EF4444, 80), "NY AM Color")
+nyluColor = input.color(color.new(#EAB308, 80), "NY Lunch Color")
+nypmColor = input.color(color.new(#8B5CF6, 80), "NY PM Color")
+
+// Kill Zone Sessions (NY Time) - Exact Times from ICT
+showAsia = input.bool(true, "Show Asia Kill Zone")
+asiaStart = input.session("2000-0000", "Asia Session")  // 8PM-12AM NY
+
+showLondon = input.bool(true, "Show London Kill Zone")
+londonStart = input.session("0200-0500", "London Session")  // 2AM-5AM NY
+
+showNYAM = input.bool(true, "Show NY AM Kill Zone")
+nyamStart = input.session("0930-1100", "NY AM Session")  // 9:30AM-11AM NY
+
+showNYLunch = input.bool(true, "Show NY Lunch Kill Zone")
+nyluStart = input.session("1200-1300", "NY Lunch Session")  // 12PM-1PM NY
+
+showNYPM = input.bool(true, "Show NY PM Kill Zone")
+nypmStart = input.session("1330-1600", "NY PM Session")  // 1:30PM-4PM NY
+
+// =============================================================================
+// INPUTS - SMC/ICT CONCEPTS
+// =============================================================================
+
+// Order Blocks
+showOB = input.bool(true, "Show Order Blocks")
+obLookback = input.int(10, "OB Lookback")
+
+// Fair Value Gaps
+showFVG = input.bool(true, "Show FVGs")
+fvgLookback = input.int(3, "FVG Lookback")
+
+// Liquidity
+showLiquidity = input.bool(true, "Show Liquidity Levels")
+showPDH = input.bool(true, "Show PDH")
+showPDL = input.bool(true, "Show PDL")
+
+// Structure
+showStructure = input.bool(true, "Show Structure (BoS/CHoCH)")
+
+// =============================================================================
+// SESSION DETECTION
+// =============================================================================
+
+// Get NY Time
+nyHour = hour(time, "America/New_York")
+nyMinute = minute(time, "America/New_York")
+
+// Check if in session
+inAsia() => not na(time(session(asiaStart, "America/New_York")))
+inLondon() => not na(time(session(londonStart, "America/New_York")))
+inNYAM() => not na(time(session(nyamStart, "America/New_York")))
+inNYLunch() => not na(time(session(nyluStart, "America/New_York")))
+inNYPM() => not na(time(session(nypmStart, "America/New_York")))
+
+// Current Kill Zone
+currentKillZone = switch
+    inNYPM() => "NY PM"
+    inNYLunch() => "NY Lunch"
+    inNYAM() => "NY AM"
+    inLondon() => "London"
+    inAsia() => "Asia"
+    => "Off Hours"
+
+// =============================================================================
+// DRAW KILL ZONES
+// =============================================================================
+
+// Asia Session Background
+plotkillzone(sess, col) =>
+    inSession = not na(time(session(sess, "America/New_York")))
+    inSession[1] and not inSession
+
+killzoneColor = switch currentKillZone
+    "Asia" => asiaColor
+    "London" => londonColor
+    "NY AM" => nyamColor
+    "NY Lunch" => nyluColor
+    "NY PM" => nypmColor
+    => color.new(color.gray, 90)
+
+bgcolor(color.new(killzoneColor, 50))
+
+// =============================================================================
+// FAIR VALUE GAP (FVG)
+// =============================================================================
+
+fvg(direction) =>
+    fvgUpper = math.max(high[1], high[2])
+    fvgLower = math.min(low[1], low[2])
+    
+    bullFvg = direction == 1 and close[1] > open[1] and low < fvgLower
+    bearFvg = direction == -1 and close[1] < open[1] and high > fvgUpper
+    
+    [bullFvg, bearFvg, fvgUpper, fvgLower]
+
+[bullFvg, bearFvg, fvgUp, fvgLow] = fvg(1)
+
+// Plot FVG boxes
+var fvgBoxesUp = array.new_box()
+var fvgBoxesDn = array.new_box()
+
+if showFVG
+    // Bullish FVG
+    if close > open and low < low[2]
+        box.new(bar_index - 2, low[2], bar_index, low[1], bgcolor = color.new(#14B8A6, 80), border_color = #14B8A6)
+    
+    // Bearish FVG  
+    if close < open and high > high[2]
+        box.new(bar_index - 2, high[1], bar_index, high[2], bgcolor = color.new(#EF4444, 80), border_color = #EF4444)
+
+// =============================================================================
+// ORDER BLOCKS
+// =============================================================================
+
+// Find Order Blocks
+var obUp = array.new_box()
+var obDn = array.new_box()
+
+// Bullish OB (green candle before big drop)
+if showOB and bar_index > obLookback
+    for i = 1 to obLookback
+        if close[i] > open[i] and close[i-1] < open[i-1]
+            // Bearish candle after bullish = potential OB
+            obLevel = low[i]
+            box.new(bar_index - i, obLevel, bar_index - i + 5, obLevel * 0.999, bgcolor = color.new(#14B8A6, 90), border_color = #14B8A6)
+
+// =============================================================================
+// LIQUIDITY LEVELS
+// =============================================================================
+
+// Previous Day High/Low
+[pdh, pdl] = request.security(syminfo.tickerid, "D", [high[1], low[1]])
+
+// Plot Liquidity
+plot(showPDH and not na(pdh), "PDH", pdh, color = color.orange, linewidth = 2, style = plot.style_circles)
+plot(showPDL and not na(pdl), "PDL", pdl, color = color.blue, linewidth = 2, style = plot.style_circles)
+
+// =============================================================================
+// MARKET STRUCTURE
+// =============================================================================
+
+// Swing High/Low
+swingsens = 5
+var float swingHi = na
+var float swingLo = na
+
+if bar_index > swingsens
+    swingHi := high[swingsens]
+    swingLo := low[swingsens]
+    for i = 1 to swingsens
+        if high[i] > swingHi
+            swingHi := high[i]
+        if low[i] < swingLo
+            swingLo := low[i]
+
+// BoS Detection
+var bool bullishBoS = false
+var bool bearishBoS = false
+
+if showStructure and bar_index > 1
+    if close > high[1]
+        bullishBoS := true
+        bearishBoS := false
+    if close < low[1]
+        bearishBoS := true
+        bullishBoS := false
+
+// =============================================================================
+// INFO TABLE
+// =============================================================================
+
+var table infoTable = table.new(position.top_right, 4, 6, bgcolor = color.new(#1E1E1E, 90))
+
+if barstate.islast
+    // Kill Zone
+    table.cell(infoTable, 0, 0, "SESSION", text_color = color.white, text_size = size.small)
+    table.cell(infoTable, 1, 0, currentKillZone, text_color = killzoneColor, text_size = size.small, text_halign = text.align_center)
+    
+    // Price
+    table.cell(infoTable, 0, 1, "PRICE", text_color = color.white, text_size = size.small)
+    table.cell(infoTable, 1, 1, str.tostring(close, "#.##"), text_color = color.white, text_size = size.small)
+    
+    // PDH/PDL
+    if showLiquidity
+        table.cell(infoTable, 0, 2, "PDH", text_color = color.white, text_size = size.small)
+        table.cell(infoTable, 1, 2, str.tostring(pdh, "#.##"), text_color = color.orange, text_size = size.small)
+        table.cell(infoTable, 2, 2, "PDL", text_color = color.white, text_size = size.small)
+        table.cell(infoTable, 3, 2, str.tostring(pdl, "#.##"), text_color = color.blue, text_size = size.small)
+    
+    // Session Status
+    table.cell(infoTable, 0, 3, "STATUS", text_color = color.white, text_size = size.small)
+    statusText = inNYAM() or inNYPM() or inLondon() or inAsia() ? "ACTIVE" : "WAIT"
+    statusColor = inNYAM() or inNYPM() or inLondon() or inAsia() ? color.green : color.gray
+    table.cell(infoTable, 1, 3, statusText, text_color = statusColor, text_size = size.small)
+
+// =============================================================================
+// ALERTS
+// =============================================================================
+
+alertcondition(inNYAM() or inNYPM() or inLondon(), title = "Kill Zone Alert", message = "Entering Kill Zone")
+alertcondition(bullishBoS, title = "Bullish BoS", message = "Bullish Break of Structure")
+alertcondition(bearishBoS, title = "Bearish BoS", message = "Bearish Break of Structure")
+
+// =============================================================================
+// END
+// =============================================================================
+
+// @version=5
+// indicator("DHEEB TRIL System", overlay=true)
+
+// =============================================================================
+// KILL ZONES SUMMARY (For Reference)
+// =============================================================================
+
+/*
+
+TRIL = T + R + I + L
+
+T - TREND
+- BoS (Break of Structure)
+- CHoCH (Change of Character)
+- HH/LL (Higher Highs/Lower Lows)
+
+R - RAID (Liquidity)
+- BSL (Buy Side Liquidity)
+- SSL (Sell Side Liquidity)  
+- PDH/PDL (Previous Day High/Low)
+
+I - IMBALANCE
+- FVG (Fair Value Gap)
+- Order Blocks
+- MSS (Market Structure Shift)
+
+L - LOCATION
+- Kill Zones:
+  * Asia: 20:00-00:00 NY
+  * London: 02:00-05:00 NY  
+  * NY AM: 09:30-11:00 NY
+  * NY Lunch: 12:00-13:00 NY
+  * NY PM: 13:30-16:00 NY
+
+*/
+
+// =============================================================================
+// END OF INDICATOR
+// =============================================================================
