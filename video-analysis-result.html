@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada2AI - Video Analysis Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; }
+        .field { background: linear-gradient(180deg, #134e4a 0%, #166534 50%, #134e4a 100%); position: relative; border-radius: 12px; overflow: hidden; }
+        .field::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.3); }
+        .field::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; }
+        .player-circle { width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s; }
+        .player-circle:hover { transform: scale(1.1); }
+        .player-number { font-size: 18px; font-weight: 700; color: white; }
+        .rating-bubble { position: absolute; top: -8px; right: -8px; background: white; color: #0f172a; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .gk { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .def { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .mid { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .fwd { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="text-white p-6">
+    <!-- Header -->
+    <header class="glass rounded-xl p-4 mb-6 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <span class="text-3xl">⚽</span>
+            <div>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Ada2AI</h1>
+                <p class="text-gray-400 text-sm">Video Analysis Results - نتائج تحليل الفيديو</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="text-green-400 text-sm">Analysis Complete</span>
+        </div>
+    </header>
+
+    <!-- Video Info -->
+    <div class="glass rounded-xl p-4 mb-6">
+        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+            <span>📹</span> Video Analysis Report / تقرير تحليل الفيديو
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Duration</p>
+                <p class="text-xl font-bold text-cyan-400">34.4s</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Resolution</p>
+                <p class="text-xl font-bold text-cyan-400">480x848</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">FPS</p>
+                <p class="text-xl font-bold text-cyan-400">30</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Players Found</p>
+                <p class="text-xl font-bold text-green-400">11</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Field -->
+        <div class="lg:col-span-2 space-y-4">
+            <div class="field h-[400px] relative p-8" id="pitch">
+                <div class="absolute top-2 left-2 bg-black/50 rounded-lg px-3 py-1 text-sm">
+                    📍 Detected Players on Field
+                </div>
+                <!-- Players from video analysis -->
+                <div class="player-circle mid" style="position: absolute; top: 25%; left: 30%;" onclick="showPlayer(4)">
+                    <span class="player-number">#4</span>
+                    <div class="rating-bubble">🏃</div>
+                </div>
+                <div class="player-circle def" style="position: absolute; top: 35%; left: 50%;" onclick="showPlayer(14)">
+                    <span class="player-number">#14</span>
+                    <div class="rating-bubble">🛡️</div>
+                </div>
+                <div class="player-circle mid" style="position: absolute; top: 30%; left: 70%;" onclick="showPlayer(17)">
+                    <span class="player-number">#17</span>
+                    <div class="rating-bubble">🏃</div>
+                </div>
+                <div class="player-circle fwd" style="position: absolute; top: 50%; left: 25%;" onclick="showPlayer(18)">
+                    <span class="player-number">#18</span>
+                    <div class="rating-bubble">⚡</div>
+                </div>
+                <div class="player-circle fwd" style="position: absolute; top: 55%; left: 50%;" onclick="showPlayer(21)">
+                    <span class="player-number">#21</span>
+                    <div class="rating-bubble">🔥</div>
+                </div>
+            </div>
+
+            <!-- Speed Chart -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>⚡</span> Speed Analysis / تحليل السرعة
+                </h3>
+                <canvas id="speedChart" height="100"></canvas>
+            </div>
+        </div>
+
+        <!-- Stats Panel -->
+        <div class="space-y-4">
+            <!-- Speed Stats -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>📊</span> Speed Stats / إحصائيات السرعة
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Average</span>
+                        <span class="font-bold text-cyan-400">4.9 km/h</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Maximum</span>
+                        <span class="font-bold text-red-400">16.6 km/h</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">P90</span>
+                        <span class="font-bold text-yellow-400">7.3 km/h</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Players by Speed -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>🏆</span> Top Speed / أسرع اللاعبين
+                </h3>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3 p-2 bg-white/5 rounded-lg">
+                        <span class="text-red-400 font-bold">#21</span>
+                        <span class="flex-1">Fastest Sprint</span>
+                        <span class="font-bold text-red-400">43.7 km/h</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-white/5 rounded-lg">
+                        <span class="text-orange-400 font-bold">#4</span>
+                        <span class="flex-1">Most Active</span>
+                        <span class="font-bold text-orange-400">1823 px</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-white/5 rounded-lg">
+                        <span class="text-blue-400 font-bold">#14</span>
+                        <span class="flex-1">Consistent</span>
+                        <span class="font-bold text-blue-400">11.8 km/h</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Details -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>👥</span> Player Details / تفاصيل اللاعبين
+                </h3>
+                <div class="space-y-2">
+                    <div class="p-2 bg-white/5 rounded-lg cursor-pointer hover:bg-white/10" onclick="showPlayer(4)">
+                        <div class="flex justify-between">
+                            <span class="font-bold">Player #4</span>
+                            <span class="text-cyan-400">Distance: 1823.6 px</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Appearances: 81 frames</p>
+                    </div>
+                    <div class="p-2 bg-white/5 rounded-lg cursor-pointer hover:bg-white/10" onclick="showPlayer(14)">
+                        <div class="flex justify-between">
+                            <span class="font-bold">Player #14</span>
+                            <span class="text-cyan-400">Distance: 563.6 px</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Appearances: 35 frames</p>
+                    </div>
+                    <div class="p-2 bg-white/5 rounded-lg cursor-pointer hover:bg-white/10" onclick="showPlayer(17)">
+                        <div class="flex justify-between">
+                            <span class="font-bold">Player #17</span>
+                            <span class="text-cyan-400">Distance: 200.1 px</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Appearances: 14 frames</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>⚡</span> Actions / إجراءات
+                </h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 p-3 rounded-lg text-sm">
+                        📤 Export PDF
+                    </button>
+                    <button class="bg-green-600/20 hover:bg-green-600/40 border border-green-500/30 p-3 rounded-lg text-sm">
+                        📊 Full Report
+                    </button>
+                    <button class="bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/30 p-3 rounded-lg text-sm">
+                        🎯 Compare
+                    </button>
+                    <button class="bg-orange-600/20 hover:bg-orange-600/40 border border-orange-500/30 p-3 rounded-lg text-sm">
+                        📋 Add to Team
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Modal -->
+    <div id="playerModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50" onclick="closeModal()">
+        <div class="glass rounded-2xl p-6 max-w-md w-full mx-4" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center gap-4">
+                    <div id="modalPlayerCircle" class="player-circle mid">
+                        <span id="modalPlayerNumber" class="player-number">#4</span>
+                    </div>
+                    <div>
+                        <h3 id="modalPlayerName" class="text-xl font-bold">Player Details</h3>
+                        <p id="modalPlayerPosition" class="text-gray-400">Video Analysis</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="bg-white/5 rounded-lg p-3 text-center">
+                    <p class="text-gray-400 text-sm">Distance</p>
+                    <p id="modalDistance" class="text-2xl font-bold text-cyan-400">1823.6</p>
+                </div>
+                <div class="bg-white/5 rounded-lg p-3 text-center">
+                    <p class="text-gray-400 text-sm">Max Speed</p>
+                    <p id="modalMaxSpeed" class="text-2xl font-bold text-red-400">34.6</p>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Appearances</span>
+                    <span id="modalAppearances">81 frames</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Position Trend</span>
+                    <span id="modalTrend">Moving Forward</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-6 text-center text-gray-500 text-sm">
+        <p>Ada2AI Sports Intelligence Platform © 2026</p>
+    </footer>
+
+    <script>
+        // Real data from video analysis
+        const playerData = {
+            4: { distance: 1823.6, maxSpeed: 34.6, appearances: 81, trend: "Active" },
+            14: { distance: 563.6, maxSpeed: 11.8, appearances: 35, trend: "Stable" },
+            17: { distance: 200.1, maxSpeed: 19.9, appearances: 14, trend: "Moving" },
+            18: { distance: 213.9, maxSpeed: 16.6, appearances: 9, trend: "Moving" },
+            21: { distance: 281.2, maxSpeed: 43.7, appearances: 8, trend: "Sprinting" }
+        };
+
+        function showPlayer(num) {
+            const player = playerData[num];
+            if (!player) return;
+            
+            document.getElementById('modalPlayerNumber').textContent = '#' + num;
+            document.getElementById('modalDistance').textContent = player.distance.toFixed(1) + ' px';
+            document.getElementById('modalMaxSpeed').textContent = player.maxSpeed.toFixed(1) + ' km/h';
+            document.getElementById('modalAppearances').textContent = player.appearances + ' frames';
+            document.getElementById('modalTrend').textContent = player.trend;
+            
+            document.getElementById('playerModal').classList.remove('hidden');
+            document.getElementById('playerModal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('playerModal').classList.add('hidden');
+            document.getElementById('playerModal').classList.remove('flex');
+        }
+
+        // Speed Chart
+        new Chart(document.getElementById('speedChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Player #4', 'Player #14', 'Player #17', 'Player #18', 'Player #21'],
+                datasets: [{
+                    label: 'Max Speed (km/h)',
+                    data: [34.6, 11.8, 19.9, 16.6, 43.7],
+                    backgroundColor: ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#dc2626'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { labels: { color: '#9ca3af' } } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#9ca3af' } },
+                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#9ca3af' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

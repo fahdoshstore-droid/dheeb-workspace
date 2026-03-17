@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada2AI - Coach Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        body { 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .field {
+            background: linear-gradient(180deg, #134e4a 0%, #166534 50%, #134e4a 100%);
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .field::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+        .field::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+        .player-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .player-circle:hover {
+            transform: scale(1.1);
+        }
+        .player-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+        .rating-bubble {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: white;
+            color: #0f172a;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .gk { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .def { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .mid { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .fwd { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .glass {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .injury-warning {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="text-white p-6">
+    <!-- Header -->
+    <header class="glass rounded-xl p-4 mb-6 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <span class="text-3xl">⚽</span>
+            <div>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Ada2AI</h1>
+                <p class="text-gray-400 text-sm">Coach Dashboard - لوحة المدرب</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-green-400 text-sm">System Online</span>
+            </div>
+            <select class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1 text-sm">
+                <option>4-3-3</option>
+                <option>4-4-2</option>
+                <option>3-5-2</option>
+                <option>4-2-3-1</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Alerts Section -->
+    <div class="glass rounded-xl p-4 mb-6">
+        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+            <span>⚠️</span> التنبيهات / Alerts
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="bg-red-500/20 border border-red-500/30 rounded-lg p-3 flex items-center gap-3">
+                <span class="text-2xl">🦵</span>
+                <div>
+                    <p class="font-bold text-red-400">Injury Risk</p>
+                    <p class="text-sm text-gray-300">Ahmed #7 - Hamstring strain</p>
+                </div>
+            </div>
+            <div class="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 flex items-center gap-3">
+                <span class="text-2xl">⚠️</span>
+                <div>
+                    <p class="font-bold text-yellow-400">Fatigue Warning</p>
+                    <p class="text-sm text-gray-300">3 players above 85% load</p>
+                </div>
+            </div>
+            <div class="bg-blue-500/20 border border-blue-500/30 rounded-lg p-3 flex items-center gap-3">
+                <span class="text-2xl">📅</span>
+                <div>
+                    <p class="font-bold text-blue-400">Training Session</p>
+                    <p class="text-sm text-gray-300">Tomorrow 6:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Field -->
+        <div class="lg:col-span-2 space-y-4">
+            <div class="field h-[450px] relative p-8" id="pitch">
+                <!-- Goalkeeper -->
+                <div class="player-circle gk" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);" onclick="showPlayer(1)">
+                    <span class="player-number">1</span>
+                    <div class="rating-bubble">82</div>
+                </div>
+                
+                <!-- Defenders -->
+                <div class="player-circle def" style="position: absolute; top: 35%; left: 15%;" onclick="showPlayer(4)">
+                    <span class="player-number">4</span>
+                    <div class="rating-bubble">78</div>
+                </div>
+                <div class="player-circle def" style="position: absolute; top: 30%; left: 35%;" onclick="showPlayer(5)">
+                    <span class="player-number">5</span>
+                    <div class="rating-bubble">80</div>
+                </div>
+                <div class="player-circle def" style="position: absolute; top: 30%; right: 35%;" onclick="showPlayer(3)">
+                    <span class="player-number">3</span>
+                    <div class="rating-bubble">75</div>
+                </div>
+                <div class="player-circle def" style="position: absolute; top: 35%; right: 15%;" onclick="showPlayer(2)">
+                    <span class="player-number">2</span>
+                    <div class="rating-bubble">77</div>
+                </div>
+                
+                <!-- Midfielders -->
+                <div class="player-circle mid" style="position: absolute; top: 55%; left: 20%;" onclick="showPlayer(8)">
+                    <span class="player-number">8</span>
+                    <div class="rating-bubble">85</div>
+                </div>
+                <div class="player-circle mid" style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%);" onclick="showPlayer(6)">
+                    <span class="player-number">6</span>
+                    <div class="rating-bubble">81</div>
+                </div>
+                <div class="player-circle mid injury-warning" style="position: absolute; top: 55%; right: 20%; border: 2px solid red;" onclick="showPlayer(10)">
+                    <span class="player-number">10</span>
+                    <div class="rating-bubble">88</div>
+                </div>
+                
+                <!-- Forwards -->
+                <div class="player-circle fwd injury-warning" style="position: absolute; top: 75%; left: 20%; border: 2px solid red;" onclick="showPlayer(7)">
+                    <span class="player-number">7</span>
+                    <div class="rating-bubble">83</div>
+                </div>
+                <div class="player-circle fwd" style="position: absolute; top: 70%; left: 50%; transform: translateX(-50%);" onclick="showPlayer(9)">
+                    <span class="player-number">9</span>
+                    <div class="rating-bubble">86</div>
+                </div>
+                <div class="player-circle fwd" style="position: absolute; top: 75%; right: 20%;" onclick="showPlayer(11)">
+                    <span class="player-number">11</span>
+                    <div class="rating-bubble">84</div>
+                </div>
+            </div>
+
+            <!-- Performance Chart -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>📈</span> Team Performance - أداء الفريق
+                </h3>
+                <canvas id="performanceChart" height="100"></canvas>
+            </div>
+        </div>
+
+        <!-- Stats Panel -->
+        <div class="space-y-4">
+            <!-- Team Stats -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>📊</span> Team Stats - إحصائيات الفريق
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Players</span>
+                        <span class="font-bold text-white">11</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Avg Rating</span>
+                        <span class="font-bold text-cyan-400">81.7</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Attack</span>
+                        <span class="font-bold text-red-400">84.3</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Defense</span>
+                        <span class="font-bold text-blue-400">77.5</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Midfield</span>
+                        <span class="font-bold text-green-400">82.0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Session Info -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>🎯</span> Training Session - الجلسة التدريبية
+                </h3>
+                <div class="space-y-3">
+                    <div class="bg-white/5 rounded-lg p-3">
+                        <p class="text-gray-400 text-sm">Date / التاريخ</p>
+                        <p class="font-semibold">Tomorrow - الغد</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3">
+                        <p class="text-gray-400 text-sm">Time / الوقت</p>
+                        <p class="font-semibold">6:00 PM</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3">
+                        <p class="text-gray-400 text-sm">Focus / التركيز</p>
+                        <p class="font-semibold text-yellow-400">Set Pieces & Counter</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3">
+                        <p class="text-gray-400 text-sm">Duration / المدة</p>
+                        <p class="font-semibold">90 min</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Players -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>⭐</span> Top Players - أفضل اللاعبين
+                </h3>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3 p-2 bg-white/5 rounded-lg">
+                        <span class="text-yellow-400 font-bold">10</span>
+                        <span class="flex-1">Mohamed</span>
+                        <span class="text-cyan-400 font-bold">88</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-white/5 rounded-lg">
+                        <span class="text-yellow-400 font-bold">9</span>
+                        <span class="flex-1">Ahmed</span>
+                        <span class="text-cyan-400 font-bold">86</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-white/5 rounded-lg">
+                        <span class="text-yellow-400 font-bold">8</span>
+                        <span class="flex-1">Salem</span>
+                        <span class="text-cyan-400 font-bold">85</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="glass rounded-xl p-4">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <span>⚡</span> Quick Actions - إجراءات سريعة
+                </h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 p-3 rounded-lg text-sm transition">
+                        📝 إضافة لاعب
+                    </button>
+                    <button class="bg-green-600/20 hover:bg-green-600/40 border border-green-500/30 p-3 rounded-lg text-sm transition">
+                        📋 تشكيلة جديدة
+                    </button>
+                    <button class="bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/30 p-3 rounded-lg text-sm transition">
+                        📈 تحليل
+                    </button>
+                    <button class="bg-orange-600/20 hover:bg-orange-600/40 border border-orange-500/30 p-3 rounded-lg text-sm transition">
+                        📤 تصدير PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Modal -->
+    <div id="playerModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50" onclick="closeModal()">
+        <div class="glass rounded-2xl p-6 max-w-md w-full mx-4" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center gap-4">
+                    <div id="modalPlayerCircle" class="player-circle">
+                        <span id="modalPlayerNumber" class="player-number">10</span>
+                    </div>
+                    <div>
+                        <h3 id="modalPlayerName" class="text-xl font-bold">Player Name</h3>
+                        <p id="modalPlayerPosition" class="text-gray-400">Position</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="bg-white/5 rounded-lg p-3 text-center">
+                    <p class="text-gray-400 text-sm">Rating</p>
+                    <p id="modalRating" class="text-2xl font-bold text-cyan-400">88</p>
+                </div>
+                <div class="bg-white/5 rounded-lg p-3 text-center">
+                    <p class="text-gray-400 text-sm">Potential</p>
+                    <p id="modalPotential" class="text-2xl font-bold text-green-400">92</p>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Speed</span>
+                    <span id="modalSpeed">85</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Strength</span>
+                    <span id="modalStrength">78</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Stamina</span>
+                    <span id="modalStamina">82</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-6 text-center text-gray-500 text-sm">
+        <p>Ada2AI Sports Intelligence Platform © 2026</p>
+    </footer>
+
+    <script>
+        // Player Data
+        const players = {
+            1: { name: "Youssef", position: "Goalkeeper", rating: 82, potential: 84, speed: 45, strength: 70, stamina: 60, class: "gk" },
+            2: { name: "Omar", position: "Right Back", rating: 77, potential: 82, speed: 80, strength: 72, stamina: 85, class: "def" },
+            3: { name: "Ali", position: "Left Back", rating: 75, potential: 80, speed: 78, strength: 68, stamina: 82, class: "def" },
+            4: { name: "Hassan", position: "Center Back", rating: 78, potential: 83, speed: 55, strength: 85, stamina: 70, class: "def" },
+            5: { name: "Ibrahim", position: "Center Back", rating: 80, potential: 85, speed: 58, strength: 88, stamina: 72, class: "def" },
+            6: { name: "Khalid", position: "Defensive Mid", rating: 81, potential: 86, speed: 70, strength: 75, stamina: 88, class: "mid" },
+            7: { name: "Fahad", position: "Winger", rating: 83, potential: 88, speed: 92, strength: 65, stamina: 84, class: "fwd" },
+            8: { name: "Majed", position: "Midfielder", rating: 85, potential: 89, speed: 78, strength: 70, stamina: 86, class: "mid" },
+            9: { name: "Nasser", position: "Striker", rating: 86, potential: 90, speed: 85, strength: 80, stamina: 78, class: "fwd" },
+            10: { name: "Mohamed", position: "Attacking Mid", rating: 88, potential: 92, speed: 86, strength: 68, stamina: 85, class: "mid" },
+            11: { name: "Yasser", position: "Winger", rating: 84, potential: 87, speed: 90, strength: 62, stamina: 82, class: "fwd" }
+        };
+
+        function showPlayer(num) {
+            const player = players[num];
+            const modal = document.getElementById('playerModal');
+            const circle = document.getElementById('modalPlayerCircle');
+            
+            circle.className = 'player-circle ' + player.class;
+            document.getElementById('modalPlayerNumber').textContent = num;
+            document.getElementById('modalPlayerName').textContent = player.name;
+            document.getElementById('modalPlayerPosition').textContent = player.position;
+            document.getElementById('modalRating').textContent = player.rating;
+            document.getElementById('modalPotential').textContent = player.potential;
+            document.getElementById('modalSpeed').textContent = player.speed;
+            document.getElementById('modalStrength').textContent = player.strength;
+            document.getElementById('modalStamina').textContent = player.stamina;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('playerModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Performance Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Match 1', 'Match 2', 'Match 3', 'Match 4', 'Match 5'],
+                datasets: [{
+                    label: 'Attack',
+                    data: [78, 82, 85, 80, 88],
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Defense',
+                    data: [72, 75, 78, 82, 80],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Possession',
+                    data: [55, 58, 62, 60, 65],
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#9ca3af' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 40,
+                        max: 100,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#9ca3af' }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#9ca3af' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

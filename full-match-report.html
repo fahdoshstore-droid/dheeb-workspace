@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada2AI - Full Match Analysis Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; }
+        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="text-white p-6">
+    <!-- Header -->
+    <header class="glass rounded-xl p-4 mb-6 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <span class="text-3xl">⚽</span>
+            <div>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Ada2AI</h1>
+                <p class="text-gray-400 text-sm">Full Match Analysis Report - تقرير تحليل المباراة الكامل</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="text-green-400 text-sm">Analysis Complete</span>
+        </div>
+    </header>
+
+    <!-- Match Info -->
+    <div class="glass rounded-xl p-4 mb-6">
+        <h3 class="text-lg font-bold mb-3">🎬 Match Information - معلومات المباراة</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Duration</p>
+                <p class="text-2xl font-bold text-cyan-400">90 min</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Players Found</p>
+                <p class="text-2xl font-bold text-green-400">11</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Frames Analyzed</p>
+                <p class="text-2xl font-bold text-yellow-400">5000</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-3 text-center">
+                <p class="text-gray-400 text-sm">Sprints</p>
+                <p class="text-2xl font-bold text-red-400">45</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Player Analysis -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Main Stats -->
+        <div class="glass rounded-xl p-4">
+            <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                <span>🏆</span> Player Analysis - تحليل اللاعب
+            </h3>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                    <span class="text-gray-400">Total Distance</span>
+                    <span class="text-2xl font-bold text-cyan-400">10.2 km</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                        <p class="text-gray-400 text-sm">Max Speed</p>
+                        <p class="text-xl font-bold text-red-400">32.1 km/h</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                        <p class="text-gray-400 text-sm">Avg Speed</p>
+                        <p class="text-xl font-bold text-yellow-400">6.8 km/h</p>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-lg p-3 text-center">
+                    <p class="text-gray-400 text-sm">Sprint Count</p>
+                    <p class="text-xl font-bold text-green-400">45 sprints</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zone Analysis -->
+        <div class="glass rounded-xl p-4">
+            <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                <span>🗺️</span> Field Zones - مناطق الملعب
+            </h3>
+            <div class="space-y-3">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-red-400">⚔️ Attack Zone</span>
+                        <span>35%</span>
+                    </div>
+                    <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-red-500 rounded-full" style="width: 35%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-yellow-400">⚖️ Midfield</span>
+                        <span>40%</span>
+                    </div>
+                    <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-yellow-500 rounded-full" style="width: 40%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-blue-400">🛡️ Defense Zone</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Speed Chart -->
+    <div class="glass rounded-xl p-4 mb-6">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <span>📈</span> Speed Over Time - السرعة عبر الوقت
+        </h3>
+        <canvas id="speedChart" height="100"></canvas>
+    </div>
+
+    <!-- All Players Comparison -->
+    <div class="glass rounded-xl p-4 mb-6">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <span>👥</span> All Players Comparison - مقارنة اللاعبين
+        </h3>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="text-gray-400 text-sm border-b border-white/10">
+                        <th class="text-left p-2">Player</th>
+                        <th class="text-right p-2">Distance (km)</th>
+                        <th class="text-right p-2">Max Speed</th>
+                        <th class="text-right p-2">Avg Speed</th>
+                        <th class="text-right p-2">Sprints</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-white/5">
+                        <td class="p-2 font-bold text-cyan-400">#10 - Mohamed</td>
+                        <td class="p-2 text-right">10.2</td>
+                        <td class="p-2 text-right text-red-400">32.1</td>
+                        <td class="p-2 text-right">6.8</td>
+                        <td class="p-2 text-right text-green-400">45</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="p-2 font-bold">#7 - Fahad</td>
+                        <td class="p-2 text-right">9.8</td>
+                        <td class="p-2 text-right text-red-400">30.5</td>
+                        <td class="p-2 text-right">6.2</td>
+                        <td class="p-2 text-right text-green-400">38</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="p-2 font-bold">#8 - Majed</td>
+                        <td class="p-2 text-right">8.5</td>
+                        <td class="p-2 text-right text-red-400">28.3</td>
+                        <td class="p-2 text-right">5.9</td>
+                        <td class="p-2 text-right text-green-400">32</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="p-2 font-bold">#9 - Nasser</td>
+                        <td class="p-2 text-right">7.2</td>
+                        <td class="p-2 text-right text-red-400">25.6</td>
+                        <td class="p-2 text-right">4.8</td>
+                        <td class="p-2 text-right text-green-400">22</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 font-bold">#6 - Khalid</td>
+                        <td class="p-2 text-right">11.1</td>
+                        <td class="p-2 text-right text-red-400">22.4</td>
+                        <td class="p-2 text-right">4.2</td>
+                        <td class="p-2 text-right text-green-400">18</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Heat Map Section -->
+    <div class="glass rounded-xl p-4 mb-6">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <span>🗺️</span> Heat Map - خريطة الحرارة
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="text-center">
+                <div class="bg-white/5 rounded-lg p-4 h-48 flex items-center justify-center">
+                    <span class="text-4xl">⚽</span>
+                </div>
+                <p class="mt-2 text-gray-400">Player #10</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-white/5 rounded-lg p-4 h-48 flex items-center justify-center">
+                    <span class="text-4xl">⚽</span>
+                </div>
+                <p class="mt-2 text-gray-400">Player #7</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-white/5 rounded-lg p-4 h-48 flex items-center justify-center">
+                    <span class="text-4xl">⚽</span>
+                </div>
+                <p class="mt-2 text-gray-400">Player #8</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="glass rounded-xl p-4">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <span>⚡</span> Export Options - خيارات التصدير
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <button class="bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 p-3 rounded-lg text-sm">
+                📄 PDF Report
+            </button>
+            <button class="bg-green-600/20 hover:bg-green-600/40 border border-green-500/30 p-3 rounded-lg text-sm">
+                📊 Excel Data
+            </button>
+            <button class="bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/30 p-3 rounded-lg text-sm">
+                🎬 Highlight Video
+            </button>
+            <button class="bg-orange-600/20 hover:bg-orange-600/40 border border-orange-500/30 p-3 rounded-lg text-sm">
+                📧 Send to Coach
+            </button>
+        </div>
+    </div>
+
+    <footer class="mt-6 text-center text-gray-500 text-sm">
+        <p>Ada2AI Sports Intelligence Platform © 2026</p>
+    </footer>
+
+    <script>
+        // Speed Chart
+        new Chart(document.getElementById('speedChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90'],
+                datasets: [{
+                    label: 'Player #10',
+                    data: [5.2, 6.8, 12.3, 18.5, 25.2, 32.1, 28.4, 15.6, 8.2, 4.5],
+                    borderColor: '#22d3ee',
+                    backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Player #7',
+                    data: [4.8, 5.5, 10.2, 15.8, 22.5, 30.5, 25.2, 12.4, 7.8, 3.2],
+                    borderColor: '#f97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Player #8',
+                    data: [3.5, 4.2, 8.5, 12.4, 18.2, 28.3, 22.1, 10.5, 6.2, 2.8],
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#9ca3af' } }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Speed (km/h)', color: '#9ca3af' },
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#9ca3af' }
+                    },
+                    x: {
+                        title: { display: true, text: 'Minutes', color: '#9ca3af' },
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#9ca3af' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
